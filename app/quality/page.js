@@ -1,0 +1,43 @@
+import Image from 'next/image';
+
+export const metadata = { title: 'Quality of Life — How Texas Is Built' };
+
+// Step 5 accent — Quality of Life
+const ACCENT = '#EAB308';
+
+export default function QualityPage() {
+  return (
+    <div className="page--accent" style={{ '--accent': ACCENT }}>
+      <header className="page-hero" style={{ '--hero-img': 'url(/images/038808855-beautiful-city-buildings-green.jpg)' }}>
+        <div className="page-hero-bg"></div>
+        <div className="page-hero-overlay"></div>
+        <div className="page-hero-inner">
+          <div className="page-hero-content reveal">
+            <p className="eyebrow light">Quality of Life</p>
+            <h1 className="page-hero-title">Quality of Life<br /><span className="red">Starts with Infrastructure</span></h1>
+            <p className="page-hero-sub">Shorter commutes, safer roads, affordable homes, reliable water — the everyday benefits Texans feel, made possible by the materials beneath them.</p>
+          </div>
+        </div>
+      </header>
+
+      <article className="article reveal">
+        <p className="article-kicker">Quality of Life</p>
+        <p className="article-lead">Quality of life isn&apos;t an abstraction. It&apos;s the commute home, the hospital across town, the water from the tap. Aggregates and concrete are underneath all of it.</p>
+
+        <p>From shorter commutes and safer roads to modern hospitals, affordable housing, and clean water, these materials help make everyday life in Texas possible &mdash; keeping communities connected, affordable, and ready for what&apos;s next.</p>
+
+        <h2>The benefits Texans feel every day</h2>
+        <p>Start with the road in front of your house. Reliable roads, bridges, and transportation infrastructure cut congestion and connect Texans to jobs, schools, healthcare, and recreation &mdash; which means more time with family and less time stuck in traffic. Those same materials make housing more affordable: every new neighborhood needs roads, utilities, drainage, sidewalks, and public infrastructure, and locally sourced materials help build it while keeping costs in check. And when minutes matter, durable infrastructure and strong transportation networks get patients and first responders to modern hospitals, ERs, and clinics fast.</p>
+        <p>Clean water depends on it too. Treatment plants, reservoirs, drainage systems, and pipelines deliver safe drinking water and protect communities from flooding, day in and day out. Growing communities need new schools, expanded campuses, and athletic facilities &mdash; modern learning environments that help prepare the next generation for success. And the quality of that infrastructure decides where businesses put down roots: good roads, utilities, and transportation access attract employers, create jobs, and help Texas communities compete for investment.</p>
+        <p>It shows up in the places people gather, too &mdash; parks, trails, sidewalks, sports complexes, and public plazas that make communities healthier and more connected, where families can spend time together. And it stretches every public dollar. Local construction materials lower transportation costs and deliver projects more efficiently, freeing up budget for roads, schools, and public safety.</p>
+        <figure>
+          <Image src="/images/quality-of-life/1-the-benefits-texans-feel-every-day.png" alt="The benefits Texans feel every day: shorter commutes and more time at home, more affordable housing, faster access to healthcare, safe and reliable water, better schools and education, economic opportunity close to home, more recreation and community spaces, and lower costs for taxpayers" width={1448} height={1086} style={{ width: '100%', height: 'auto' }} sizes="(max-width:700px) 90vw, 1000px" />
+        </figure>
+
+        <h2>It&apos;s not about materials. It&apos;s about people.</h2>
+        <p>Here&apos;s the thing. The aggregates and concrete industry doesn&apos;t improve quality of life because it produces materials. It improves quality of life because of what those materials make possible &mdash; more time with family, more affordable housing options, better access to healthcare, safer roads and shorter commutes, reliable water and public services, stronger schools, more jobs and economic opportunity, and better parks and community spaces.</p>
+        <p>When infrastructure works, most people never think about it. They simply enjoy the benefits. That&apos;s the point. It&apos;s not really about concrete or aggregates &mdash; it&apos;s about helping Texans live, work, and thrive in stronger communities.</p>
+      </article>
+    </div>
+  );
+}
