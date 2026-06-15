@@ -645,30 +645,52 @@ footer{background:var(--night);padding:54px 5vw 36px}
 @media(max-width:640px){.posts{grid-template-columns:1fr}}
 
 /* ════════════════════════════════════════════════════
-   EDITORIAL ARTICLE — inner pages (Smart Brevity)
-   single flowing column, images break wider than text
+   EDITORIAL ARTICLE — step pages (Smart Brevity)
+   Centered 780px prose column. Images float and wrap;
+   very-wide images break to a full-width cinematic band.
+   Accent color comes from the page's --accent.
    ════════════════════════════════════════════════════ */
-.article{max-width:720px;margin:0 auto;padding:78px 5vw 104px}
+/* page wrapper above the text column: full width, NO max-width (computed: none) */
+.page--accent{width:100%;margin:0}
+/* the ONLY element with a max-width — the editorial text column (responsive) */
+.article{max-width:100%;margin:0 auto;padding:80px clamp(20px,5vw,40px) 100px}
+@media(min-width:1024px){.article{max-width:780px}}   /* 1024–1279 */
+@media(min-width:1280px){.article{max-width:900px}}   /* 1280+ */
 .article::after{content:"";display:block;clear:both}
-.article > .article-kicker{margin:0 0 18px;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
-.article > .article-lead{margin:0 0 26px;font-family:'Libre Baskerville',serif;font-size:clamp(1.2rem,2.1vw,1.5rem);line-height:1.5;color:var(--charcoal)}
-.article > p{margin:0 0 22px;font-size:1.075rem;line-height:1.78;color:#2b3445}
-.article > p strong{color:var(--charcoal);font-weight:700}
-.article > h2{margin:54px 0 16px;font-family:'Libre Baskerville',serif;font-size:clamp(1.35rem,2.6vw,1.85rem);line-height:1.25;color:var(--charcoal)}
-.article > h3{margin:40px 0 12px;font-size:1.12rem;font-weight:700;color:var(--blue)}
-.article a.inline{color:var(--red);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(191,10,48,.35);transition:border-color .15s}
-.article a.inline:hover{border-bottom-color:var(--red)}
-/* landscape figures break out wider than the reading column, centered; clear any float */
-.article figure{width:min(1000px,90vw);margin:46px 0 46px 50%;transform:translateX(-50%);clear:both}
-.article figure img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow-sm)}
-/* portrait/tall figures: smaller, float right, prose wraps around them */
-.article figure.portrait{float:right;clear:none;width:38%;margin:0 0 20px 32px;transform:none}
-.article figure.portrait img{box-shadow:var(--shadow-md)}
-.article figure figcaption{margin:12px 0 0;font-size:.82rem;line-height:1.5;color:var(--mid-gray);text-align:center}
-@media(max-width:700px){.article{padding:56px 6vw 72px}}
-@media(max-width:600px){
-  .article figure{width:100%;margin-left:0;transform:none}
-  .article figure.portrait{float:none;width:100%;margin:0 0 24px 0}
+
+/* back-to-home link, top of the article */
+.article-back{display:inline-block;margin:0 0 26px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent,var(--red));text-decoration:none;transition:opacity .15s}
+.article-back:hover{opacity:.65}
+
+.article > .article-kicker{margin:0 0 16px;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,var(--red))}
+/* lead: slightly larger entry paragraph (size, not bold) */
+.article > .article-lead{margin:0 0 1.7rem;font-family:'Libre Baskerville',serif;font-weight:400;font-size:1.15rem;line-height:1.75;color:#2a2a2a}
+/* body: editorial serif */
+.article > p{margin:0 0 1.4rem;font-family:'Libre Baskerville',serif;font-size:1.05rem;line-height:1.9;color:#3a3a3a}
+.article > p strong{color:#1f1f1f;font-weight:700}
+/* subheads: Bebas Neue, accent-colored, clearing floats */
+.article > h2{clear:both;margin:2.5rem 0 .75rem;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;line-height:1.1;color:var(--accent,var(--charcoal))}
+.article > h3{clear:both;margin:2rem 0 .6rem;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.03em;color:var(--accent,var(--blue))}
+/* thin accent rule for major topic shifts */
+.article > hr{clear:both;border:0;height:1px;margin:2.5rem 0;background:color-mix(in srgb,var(--accent,#999) 20%,transparent)}
+/* pull quote: indented, left accent border, no box */
+.article > blockquote{clear:both;margin:2rem 0;padding:.1rem 0 .1rem 1.4rem;border-left:3px solid var(--accent,var(--red));font-family:'Libre Baskerville',serif;font-style:italic;font-size:1.15rem;line-height:1.6;color:#2a2a2a}
+.article a.inline{color:var(--accent,var(--red));font-weight:600;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent,var(--red)) 38%,transparent);transition:border-color .15s}
+.article a.inline:hover{border-bottom-color:var(--accent,var(--red))}
+
+/* ── article images: plain <img> floated right (float/size set inline on each
+   <img>). .article-body is a plain block container (NO flex/grid) so the img
+   and its adjacent paragraph are siblings and the text wraps. ── */
+.article-body{display:block;width:100%}
+.article-body img{display:block;box-shadow:var(--shadow-sm)}
+
+/* ── responsive: stack images full-width on phones ──── */
+@media (max-width: 640px) {
+  .article-body img {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 1.25rem 0 !important;
+  }
 }
 
 /* ============================================================
