@@ -10,7 +10,7 @@ const CARDS = [
   { src: '/images/stock/7b.jpg', alt: 'Environmental monitoring at a Texas industrial site', title: 'Full Environmental Coverage', desc: 'Air, water, emissions, and stormwater all regulated.' },
 ];
 
-export default function RegulationStats({ accentColor = '#EF4444' }) {
+export default function RegulationStats({ accentColor = '#22C55E' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-grid gfx-quad">

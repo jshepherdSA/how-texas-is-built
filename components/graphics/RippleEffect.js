@@ -7,7 +7,7 @@
 
 const SECTORS = ['Retail & Services', 'Housing', 'Restaurants', 'Education', 'Healthcare', 'And More'];
 
-export default function RippleEffect({ accentColor = '#22C55E' }) {
+export default function RippleEffect({ accentColor = '#3B82F6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-ripple">

@@ -4,7 +4,7 @@ import LocalSourcingFact from '@/components/graphics/LocalSourcingFact';
 export const metadata = { title: 'Why Local Sourcing Matters — How Texas Is Built' };
 
 // Step 3 accent — Local Sourcing
-const ACCENT = '#3B82F6';
+const ACCENT = '#8B5CF6';
 
 export default function CommunityPage() {
   return (

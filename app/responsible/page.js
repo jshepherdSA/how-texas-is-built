@@ -5,7 +5,7 @@ import RegulationStats from '@/components/graphics/RegulationStats';
 export const metadata = { title: 'Responsible Operations — How Texas Is Built' };
 
 // Step 4 accent — Responsible Operations
-const ACCENT = '#EF4444';
+const ACCENT = '#22C55E';
 
 export default function OperationsPage() {
   return (

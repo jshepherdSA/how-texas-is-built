@@ -32,7 +32,7 @@ export default function WhyPage() {
 
         <div style={{ clear: 'both' }} />
         <h2>By the numbers</h2>
-        <img src="/images/fueling-texas-growth/1-by-the-numbers.png" alt="Aerial view of a growing Texas residential neighborhood" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />
+        <img src="/images/texas-is-growing/1-by-the-numbers.png" alt="Aerial view of a growing Texas residential neighborhood" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />
         <p>Between 1,000 and 1,500 new residents arrive every single day. That&apos;s a brand-new neighborhood, daily. Across a year, Texas adds 350,000 to 500,000 people &mdash; and one recent year alone brought more than 560,000, one of the largest single-year increases on record. More than 31 million people now live, work, and build their future here. By 2036, the state is on track to add 3 to 5 million more.</p>
         <p>The big picture is simple. Texas isn&apos;t just growing. It&apos;s growing faster than nearly every other state in the nation. Every new family, business, school, hospital, and community needs the infrastructure that makes modern life work.</p>
 

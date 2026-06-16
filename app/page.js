@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StepIndicator from './components/StepIndicator';
+import StepSection from './components/StepSections';
 
 /* ------------------------------------------------------------------
    Journey content — extracted from journey-outline.pdf.
@@ -18,6 +19,7 @@ const STEPS = [
     name: 'Texas Is Growing',
     subhead: 'Fueling the Texas Miracle',
     route: '/fueling-growth',
+    img: '/images/home/H-%20texas%20is%20growing.jpg',
     points: [
       { title: 'The Texas Miracle', text: 'Favorable business and tax environment leads to the highest population growth rate in the nation.' },
       // NOTE: the aggregate figure is left blank ("__") in journey-outline.pdf.
@@ -30,6 +32,7 @@ const STEPS = [
     name: 'Economic Impact',
     subhead: 'Affordable Materials. Local Jobs. A Stronger Texas.',
     route: '/jobs',
+    img: '/images/home/H-%20economic%20impact.jpg',
     points: [
       { title: 'An Economic Engine', text: 'The Texas aggregates and concretes industry produces $10B+ of Annual Economic Activity.' },
       { title: 'A Pillar of Local Texas Economies', text: 'Each job in the aggregates industry supports 6 jobs in other industries. Each dollar of wages earned in the aggregates industry creates another $4.95 in other industries.' },
@@ -41,6 +44,7 @@ const STEPS = [
     name: 'Local Sourcing',
     subhead: 'Building Texas Affordably Starts Close to Home',
     route: '/local-sourcing',
+    img: '/images/home/H-%20local%20sourcing.jpg',
     // NOTE: the outline lists only two supporting points for Local Sourcing
     // (no "d."). The first point combines its two sentences (i. + ii.).
     points: [
@@ -53,6 +57,7 @@ const STEPS = [
     name: 'Responsible Operations',
     subhead: 'Protecting Texas Resources While Building Its Future',
     route: '/responsible',
+    img: '/images/home/H-%20responsible%20operations.jpg',
     points: [
       { title: 'Strictly Regulated, Monitored, and Accountable', text: 'Aggregates and concrete operations are regulated heavily with strict oversight from multiple agencies at every level of government.' },
       { title: 'Proactive Air Quality Controls at Every Facility', text: 'All facilities are required to control dust and emissions, with emission projections being modeled before any permits are issued.' },
@@ -64,6 +69,7 @@ const STEPS = [
     name: 'Quality of Life',
     subhead: 'Supporting Growth Starts with Infrastructure',
     route: '/quality',
+    img: '/images/home/H-%20quality%20of%20life.jpg',
     points: [
       { title: 'Keeping the Texas Miracle Possible', text: 'Businesses often choose locations based on infrastructure quality. Strong infrastructure helps communities compete for investment which fuels the Texas Miracle.' },
       { title: 'Affordability', text: 'When materials are locally accessible, transportation becomes affordable allowing communities to stretch public dollars further while delivering on infrastructure timely and efficiently.' },
@@ -74,7 +80,7 @@ const STEPS = [
 
 // Per-step accent color (left → right). Drives both the hero journey button
 // borders and each step component's accents — defined once, referenced throughout.
-const STEP_COLORS = ['#F97316', '#22C55E', '#3B82F6', '#EF4444', '#EAB308'];
+const STEP_COLORS = ['#F97316', '#3B82F6', '#8B5CF6', '#22C55E', '#EAB308'];
 
 export default function HomePage() {
   return (
@@ -110,43 +116,10 @@ export default function HomePage() {
           Shows each step's full title, colored with its accent when active. */}
       <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: STEP_COLORS[i] }))} />
 
-      {/* CHANGE 3 — five journey step components */}
-      {STEPS.map((step) => {
-        const dark = step.num % 2 === 0; // alternate navy / off-white
-        const stepNum = String(step.num).padStart(2, '0');
-        return (
-          <section
-            key={step.num}
-            data-step={step.num}
-            id={`step-${step.num}`}
-            className={`step ${dark ? 'step--dark' : 'step--light'}`}
-            style={{ '--step-color': STEP_COLORS[step.num - 1] }}
-          >
-            <div className="step-inner">
-              <div className="step-head">
-                <div className="step-head-text reveal">
-                  <span className="step-num">{stepNum}</span>
-                  <h2 className="step-name">{step.name}</h2>
-                  <p className="step-subhead">{step.subhead}</p>
-                </div>
-                {/* TODO: replace with actual step image from /public/images/ */}
-                <div className="step-img reveal" aria-hidden="true">
-                  <span className="step-img-ph">Step {step.num}</span>
-                </div>
-              </div>
-
-              <div className="step-tiles">
-                {step.points.map((p, i) => (
-                  <article className="step-tile reveal" key={i}>
-                    <h3 className="step-tile-title">{p.title}</h3>
-                    <p className="step-tile-text">{p.text}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })}
+      {/* Five bespoke step sections — one distinct layout each (see StepSections.js) */}
+      {STEPS.map((step) => (
+        <StepSection key={step.num} step={step} color={STEP_COLORS[step.num - 1]} />
+      ))}
     </>
   );
 }

@@ -3,7 +3,7 @@
 // landscape. Full-width banner: stat text on the left, photo floated right at
 // 42% so the supporting sentence wraps around it; clears on mobile to full width.
 
-export default function LocalSourcingFact({ accentColor = '#3B82F6' }) {
+export default function LocalSourcingFact({ accentColor = '#8B5CF6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-banner">

@@ -7,7 +7,7 @@ import RippleEffect from '@/components/graphics/RippleEffect';
 export const metadata = { title: 'Jobs & Economic Impact — How Texas Is Built' };
 
 // Step 2 accent — Economic Impact
-const ACCENT = '#22C55E';
+const ACCENT = '#3B82F6';
 
 export default function EconomicPage() {
   return (

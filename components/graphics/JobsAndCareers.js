@@ -18,7 +18,7 @@ function SkillsIcon() {
   );
 }
 
-export default function JobsAndCareers({ accentColor = '#22C55E' }) {
+export default function JobsAndCareers({ accentColor = '#3B82F6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-jobs-intro">

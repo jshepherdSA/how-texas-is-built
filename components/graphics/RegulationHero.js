@@ -10,7 +10,7 @@ const POINTS = [
   { title: 'Clean Air & Water', desc: 'Protecting the natural resources Texans value most.' },
 ];
 
-export default function RegulationHero({ accentColor = '#EF4444' }) {
+export default function RegulationHero({ accentColor = '#22C55E' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-hero">

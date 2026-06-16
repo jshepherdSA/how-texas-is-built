@@ -16,7 +16,7 @@ const CELLS = [
   { photo: PHOTOS.truck, stat: '16%+', label: 'Of total U.S. ready-mix concrete supply' },
 ];
 
-export default function EconomicImpactStats({ accentColor = '#22C55E' }) {
+export default function EconomicImpactStats({ accentColor = '#3B82F6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-grid gfx-2x2">

@@ -11,7 +11,7 @@ const CARDS = [
   { src: '/images/stock/9e.jpg', alt: 'An industry support professional working in an office', title: 'Support Professionals', desc: 'HR, finance, IT, safety, administrative' },
 ];
 
-export default function CareersGrid({ accentColor = '#22C55E' }) {
+export default function CareersGrid({ accentColor = '#3B82F6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-grid gfx-five">
