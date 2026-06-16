@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import StepIndicator from './components/StepIndicator';
-import StepSection from './components/StepSections';
 
 /* ------------------------------------------------------------------
    Journey content — extracted from journey-outline.pdf.
@@ -116,10 +115,46 @@ export default function HomePage() {
           Shows each step's full title, colored with its accent when active. */}
       <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: STEP_COLORS[i] }))} />
 
-      {/* Five bespoke step sections — one distinct layout each (see StepSections.js) */}
-      {STEPS.map((step) => (
-        <StepSection key={step.num} step={step} color={STEP_COLORS[step.num - 1]} />
-      ))}
+      {/* Five journey step components — uniform layout, hero image floated right */}
+      {STEPS.map((step) => {
+        const dark = step.num % 2 === 0; // alternate navy / off-white
+        const stepNum = String(step.num).padStart(2, '0');
+        return (
+          <section
+            key={step.num}
+            data-step={step.num}
+            id={`step-${step.num}`}
+            className={`step ${dark ? 'step--dark' : 'step--light'}`}
+            style={{ '--step-color': STEP_COLORS[step.num - 1] }}
+          >
+            <div className="step-inner">
+              <div className="step-head">
+                <div className="step-head-text reveal">
+                  <img
+                    src={step.img}
+                    alt={step.name}
+                    className="step-hero-img"
+                    style={{ float: 'right', width: '38%', margin: '0 0 16px 24px', borderRadius: '6px', objectFit: 'cover', display: 'block' }}
+                  />
+                  <span className="step-num">{stepNum}</span>
+                  <h2 className="step-name">{step.name}</h2>
+                  <p className="step-subhead">{step.subhead}</p>
+                  <div style={{ clear: 'both' }} />
+                </div>
+              </div>
+
+              <div className="step-tiles">
+                {step.points.map((p, i) => (
+                  <article className="step-tile reveal" key={i}>
+                    <h3 className="step-tile-title">{p.title}</h3>
+                    <p className="step-tile-text">{p.text}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
     </>
   );
 }

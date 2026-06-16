@@ -41,7 +41,7 @@ export default function StepIndicator({ steps, count = 5 }) {
   // Reveal the indicator when step 1's heading ("Texas Is Growing") is at least
   // 50% in view; hide it again when that heading scrolls back up out of view.
   useEffect(() => {
-    const heading = document.querySelector('[data-step="1"] .hsec-title');
+    const heading = document.querySelector('[data-step="1"] .step-name');
     if (!heading || !('IntersectionObserver' in window)) {
       setVisible(true);
       return;
