@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StepIndicator from './components/StepIndicator';
+import WaterRecycledDonut from '@/components/graphics/WaterRecycledDonut';
 
 /* ------------------------------------------------------------------
    Journey content — extracted from journey-outline.pdf.
@@ -81,6 +82,42 @@ const STEPS = [
 // borders and each step component's accents — defined once, referenced throughout.
 const STEP_COLORS = ['#F97316', '#3B82F6', '#8B5CF6', '#22C55E', '#EAB308'];
 
+// One stat callout per section. Never boxed; the number sits inline in Bebas Neue
+// accent color. Position within each section is handled by where this is slotted
+// into the markup below (and CSS order on mobile).
+//   · Step 1 — large "400 tons" feature number on its own line above the sentence.
+//   · Step 2 — 2×2 grid of figures.
+//   · Step 3 — stat removed (transportation footnote deleted per brief).
+//   · Step 4 — replaced by the <WaterRecycledDonut/> SVG, rendered below the subhead.
+//   · Step 5 — replaced by the full-width yellow fact tile, rendered below the tiles.
+function renderStat(num) {
+  switch (num) {
+    case 1:
+      return (
+        <p className="step-stat step-stat--feature">
+          <span className="step-stat-bignum">400 tons</span>
+          <span className="step-stat-caption">of aggregates go into building the average home</span>
+        </p>
+      );
+    case 2:
+      return (
+        <div className="step-stat step-stat--grid">
+          {[
+            ['100K+', 'Texans employed'],
+            ['$4.95', 'Created per $1 in wages'],
+          ].map(([n, l], i) => (
+            <div className="step-stat-cell" key={i}>
+              <span className="step-stat-num">{n}</span>
+              <span className="step-stat-celllabel">{l}</span>
+            </div>
+          ))}
+        </div>
+      );
+    default:
+      return null;
+  }
+}
+
 export default function HomePage() {
   return (
     <>
@@ -115,10 +152,12 @@ export default function HomePage() {
           Shows each step's full title, colored with its accent when active. */}
       <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: STEP_COLORS[i] }))} />
 
-      {/* Five journey step components — uniform layout, hero image floated right */}
+      {/* Five journey step components — same room, rearranged per section: image
+          side, tile orientation, and one stat callout vary by data-step. */}
       {STEPS.map((step) => {
         const dark = step.num % 2 === 0; // alternate navy / off-white
         const stepNum = String(step.num).padStart(2, '0');
+        const stat = renderStat(step.num);
         return (
           <section
             key={step.num}
@@ -128,20 +167,23 @@ export default function HomePage() {
             style={{ '--step-color': STEP_COLORS[step.num - 1] }}
           >
             <div className="step-inner">
-              <div className="step-head">
-                <div className="step-head-text reveal">
-                  <img
-                    src={step.img}
-                    alt={step.name}
-                    className="step-hero-img"
-                    style={{ float: 'right', width: '38%', margin: '0 0 16px 24px', borderRadius: '6px', objectFit: 'cover', display: 'block' }}
-                  />
-                  <span className="step-num">{stepNum}</span>
-                  <h2 className="step-name">{step.name}</h2>
-                  <p className="step-subhead">{step.subhead}</p>
-                  <div style={{ clear: 'both' }} />
-                </div>
+              <div className="step-head-text reveal">
+                <img className="step-hero-img" src={step.img} alt={step.name} />
+                <span className="step-num">{stepNum}</span>
+                <h2 className="step-name">{step.name}</h2>
+                <p className="step-subhead">{step.subhead}</p>
+                {(step.num === 1 || step.num === 2) && stat /* below subheader */}
+                {step.num === 5 && (
+                  /* yellow fact tile — sits beneath the subhead in the text
+                     column, beside the floated image (overflow:hidden keeps it
+                     from sliding under the image). */
+                  <p className="step-fact-tile reveal">
+                    Most jobs in this industry are skilled positions offering $50K&ndash;$90K annually &mdash; stable, middle-class careers that don&rsquo;t require a four-year degree.
+                  </p>
+                )}
               </div>
+
+              {step.num === 4 && <WaterRecycledDonut /> /* below subhead, above tiles */}
 
               <div className="step-tiles">
                 {step.points.map((p, i) => (

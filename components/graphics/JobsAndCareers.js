@@ -21,19 +21,20 @@ function SkillsIcon() {
 export default function JobsAndCareers({ accentColor = '#3B82F6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
+      {/* 6a now spans the full row width (matching the trio below) with the
+          salary fact as a bottom overlay instead of a floated portrait. */}
       <div className="gfx-jobs-intro">
-        <div className="gfx-fimg" style={{ width: '38%' }}>
-          <div className="gfx-img gfx-1x1">
-            <img
-              src="/images/stock/6a.jpg"
-              alt="A friendly Texas aggregate industry worker in a hard hat and safety vest"
-              loading="lazy"
-            />
+        <div className="gfx-img gfx-jobs-hero">
+          <img
+            src="/images/stock/6a.jpg"
+            alt="A friendly Texas aggregate industry worker in a hard hat and safety vest"
+            loading="lazy"
+          />
+          <div className="gfx-jobs-overlay">
+            <span className="gfx-jobs-salary">$50K&ndash;$90K</span>
+            <span className="gfx-jobs-salary-sub">annually &mdash; skilled careers that don&rsquo;t require a four-year degree</span>
           </div>
         </div>
-        <span className="gfx-stat">$50,000&ndash;$90,000</span>
-        <p className="gfx-label" style={{ marginTop: '8px' }}>With advancement leading to six-figure earnings</p>
-        <div className="gfx-clear" />
       </div>
 
       <div className="gfx-grid gfx-trio">
