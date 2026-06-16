@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CommunityBenefits from '@/components/graphics/CommunityBenefits';
 
 export const metadata = { title: 'Quality of Life — How Texas Is Built' };
 
@@ -29,7 +30,7 @@ export default function QualityPage() {
 
         <div style={{ clear: 'both' }} />
         <h2>The benefits Texans feel every day</h2>
-        <img src="/images/quality-of-life/1-the-benefits-texans-feel-every-day.png" alt="The benefits Texans feel every day: shorter commutes and more time at home, more affordable housing, faster access to healthcare, safe and reliable water, better schools and education, economic opportunity close to home, more recreation and community spaces, and lower costs for taxpayers" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />
+        <CommunityBenefits accentColor={ACCENT} />
         <p>Start with the road in front of your house. Reliable roads, bridges, and transportation infrastructure cut congestion and connect Texans to jobs, schools, healthcare, and recreation &mdash; which means more time with family and less time stuck in traffic. Those same materials make housing more affordable: every new neighborhood needs roads, utilities, drainage, sidewalks, and public infrastructure, and locally sourced materials help build it while keeping costs in check. And when minutes matter, durable infrastructure and strong transportation networks get patients and first responders to modern hospitals, ERs, and clinics fast.</p>
         <p>Clean water depends on it too. Treatment plants, reservoirs, drainage systems, and pipelines deliver safe drinking water and protect communities from flooding, day in and day out. Growing communities need new schools, expanded campuses, and athletic facilities &mdash; modern learning environments that help prepare the next generation for success. And the quality of that infrastructure decides where businesses put down roots: good roads, utilities, and transportation access attract employers, create jobs, and help Texas communities compete for investment.</p>
         <p>It shows up in the places people gather, too &mdash; parks, trails, sidewalks, sports complexes, and public plazas that make communities healthier and more connected, where families can spend time together. And it stretches every public dollar. Local construction materials lower transportation costs and deliver projects more efficiently, freeing up budget for roads, schools, and public safety.</p>

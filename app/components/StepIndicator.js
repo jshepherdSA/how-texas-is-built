@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 
 /* Fixed left-side scroll indicator for the homepage journey.
    Tracks which [data-step] section is most in view via IntersectionObserver
-   and highlights it. Desktop only (hidden < 1024px via CSS). */
-export default function StepIndicator({ count = 5 }) {
+   and highlights it. Desktop only (hidden < 1024px via CSS).
+
+   `steps` is an array of { name, color }; the active step's title is shown in
+   its accent color. Falls back to numbered items if no steps are supplied. */
+export default function StepIndicator({ steps, count = 5 }) {
+  const items = steps && steps.length ? steps : Array.from({ length: count }, (_, i) => ({ name: String(i + 1), color: '#E63946' }));
   const [active, setActive] = useState(1);
   const [visible, setVisible] = useState(false);
 
@@ -62,19 +66,23 @@ export default function StepIndicator({ count = 5 }) {
 
   return (
     <nav className={`step-indicator${visible ? ' is-visible' : ''}`} aria-label="Journey progress">
-      {Array.from({ length: count }, (_, i) => i + 1).map((n) => (
-        <button
-          key={n}
-          type="button"
-          className={`step-indicator-item${active === n ? ' is-active' : ''}`}
-          onClick={() => goToStep(n)}
-          aria-current={active === n ? 'true' : undefined}
-          aria-label={`Go to step ${n}`}
-        >
-          <span className="step-indicator-line" />
-          <span className="step-indicator-num">{n}</span>
-        </button>
-      ))}
+      {items.map((item, i) => {
+        const n = i + 1;
+        return (
+          <button
+            key={n}
+            type="button"
+            className={`step-indicator-item${active === n ? ' is-active' : ''}`}
+            style={{ '--item-color': item.color }}
+            onClick={() => goToStep(n)}
+            aria-current={active === n ? 'true' : undefined}
+            aria-label={`Go to ${item.name}`}
+          >
+            <span className="step-indicator-line" />
+            <span className="step-indicator-title">{item.name}</span>
+          </button>
+        );
+      })}
     </nav>
   );
 }

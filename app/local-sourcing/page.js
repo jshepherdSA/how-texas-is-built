@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LocalSourcingFact from '@/components/graphics/LocalSourcingFact';
 
 export const metadata = { title: 'Why Local Sourcing Matters — How Texas Is Built' };
 
@@ -25,7 +26,7 @@ export default function CommunityPage() {
         <p className="article-kicker">Why Local Sourcing Matters</p>
         <p className="article-lead">Aggregates and concrete are among the only building materials that must be sourced close to where they&apos;re used. Distance is the whole story.</p>
 
-        <img src="/images/local-sourcing/1-materials-must-be-sourced-nearby.png" alt="A dump truck hauling material on a Texas Hill Country road, with the message that 70 percent of material costs are transportation related" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />
+        <LocalSourcingFact accentColor={ACCENT} />
         <p>Transportation alone can account for up to <strong>70% of the delivered cost</strong>. That&apos;s what makes local access critical to affordability. When materials are available closer to home, communities build and maintain infrastructure more efficiently &mdash; and for less.</p>
 
         <div style={{ clear: 'both' }} />

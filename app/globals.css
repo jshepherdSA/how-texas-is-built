@@ -664,7 +664,7 @@ footer{background:var(--night);padding:54px 5vw 36px}
 
 .article > .article-kicker{margin:0 0 16px;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,var(--red))}
 /* lead: slightly larger entry paragraph (size, not bold) */
-.article > .article-lead{margin:0 0 1.7rem;font-family:'Libre Baskerville',serif;font-weight:400;font-size:1.15rem;line-height:1.75;color:#2a2a2a}
+.article > .article-lead{margin:0 0 1.7rem;font-family:'Libre Baskerville',serif;font-weight:400;font-style:italic;font-size:1.4rem;line-height:1.6;color:#2a2a2a}
 /* body: editorial serif */
 .article > p{margin:0 0 1.4rem;font-family:'Libre Baskerville',serif;font-size:1.05rem;line-height:1.9;color:#3a3a3a}
 .article > p strong{color:#1f1f1f;font-weight:700}
@@ -700,15 +700,19 @@ footer{background:var(--night);padding:54px 5vw 36px}
 /* keep the centered hero content clear of the bottom overlay */
 .hero-content{padding-bottom:120px}
 
-/* ── CHANGE 1: hero journey overlay (flush at hero bottom) ── */
+/* ── CHANGE 1: hero journey overlay (flush at hero bottom) ──
+   A 5-column grid so every step box stretches to the tallest box's height
+   (e.g. "Responsible Operations" wraps to two lines without breaking the row).
+   Arrows between boxes render in the grid gaps as ::after pseudo-elements. */
 .hero-journey{
   position:absolute;left:0;right:0;bottom:0;z-index:4;
-  display:flex;align-items:center;justify-content:center;gap:10px;
+  display:grid;grid-template-columns:repeat(5,1fr);align-items:stretch;
+  gap:10px;
   background:rgba(0,0,0,.35);padding:20px 5vw;
 }
 .hero-journey-btn{
-  flex:1 1 0;max-width:200px;
-  display:flex;align-items:center;justify-content:center;text-align:center;
+  position:relative;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   padding:14px 20px;border-radius:10px;
   background:rgba(0,40,104,.45);
   border:2px solid var(--bc,rgba(255,255,255,.4));
@@ -725,8 +729,13 @@ footer{background:var(--night);padding:54px 5vw 36px}
   font-size:clamp(.95rem,1.4vw,1.4rem);letter-spacing:.04em;line-height:1.06;
   text-transform:uppercase;
 }
-.hero-journey-arrow{
-  flex:0 0 auto;color:rgba(255,255,255,.4);font-size:1.2rem;line-height:1;user-select:none;
+/* left-to-right flow arrows, centered in the 10px gap after each box (not the last) */
+.hero-journey-btn:not(:last-child)::after{
+  content:'→';
+  position:absolute;left:100%;top:50%;transform:translateY(-50%);
+  width:10px;text-align:center;
+  color:rgba(255,255,255,.4);font-size:1.2rem;line-height:1;
+  pointer-events:none;
 }
 
 /* ── CHANGE 2: fixed left parallax step indicator ── */
@@ -741,18 +750,21 @@ footer{background:var(--night);padding:54px 5vw 36px}
   background:none;border:0;padding:0;cursor:pointer;
 }
 .step-indicator-line{
-  width:26px;height:3px;border-radius:2px;
-  background:var(--mid-gray);opacity:.4;
-  transition:width .25s ease,background .25s ease,opacity .25s ease;
+  flex:0 0 auto;
+  width:22px;height:3px;border-radius:2px;
+  background:rgba(255,255,255,.35);
+  transition:width .25s ease,background .25s ease;
 }
-.step-indicator-num{
-  font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.08em;
-  color:var(--mid-gray);opacity:.5;transition:color .25s ease,opacity .25s ease;
+.step-indicator-title{
+  font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;
+  letter-spacing:.06em;line-height:1.2;text-transform:uppercase;
+  max-width:140px;
+  color:rgba(255,255,255,.35);
+  transition:color .25s ease;
 }
-.step-indicator-item:hover .step-indicator-line{opacity:.8}
-.step-indicator-item:hover .step-indicator-num{opacity:.85}
-.step-indicator-item.is-active .step-indicator-line{width:46px;background:var(--red);opacity:1}
-.step-indicator-item.is-active .step-indicator-num{color:var(--red);opacity:1}
+.step-indicator-item:hover .step-indicator-title{color:rgba(255,255,255,.6)}
+.step-indicator-item.is-active .step-indicator-line{width:34px;background:var(--item-color)}
+.step-indicator-item.is-active .step-indicator-title{color:var(--item-color)}
 @media(max-width:1023px){.step-indicator{display:none}}
 
 /* ── CHANGE 3: journey step components ── */
@@ -780,7 +792,7 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .step--dark .step-name{color:#fff}
 .step-subhead{
   font-family:'Libre Baskerville',serif;font-style:italic;
-  font-size:clamp(1.05rem,1.9vw,1.35rem);line-height:1.4;max-width:620px;
+  font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.4;max-width:620px;
   color:var(--step-color);
 }
 
@@ -817,13 +829,23 @@ footer{background:var(--night);padding:54px 5vw 36px}
   .step-img{flex-basis:auto;width:100%;height:170px}
   .step-tile{flex-basis:100%}
 }
-@media(max-width:767px){
-  /* mobile: hide arrows, wrap buttons into a 2-column grid, last button centered */
-  .hero-journey{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:16px 5vw}
-  .hero-journey-arrow{display:none}
-  .hero-journey-btn{max-width:none}
-  .hero-journey-btn:last-child{grid-column:1 / -1}
-  .hero-content{padding-bottom:210px}
+/* tablet: 3 boxes per row with the last two centered in their row; arrows hidden.
+   Uses a 6-track grid + span 2 so boxes 4 & 5 can be offset to the center. */
+@media(max-width:1024px){
+  .hero-journey{grid-template-columns:repeat(6,1fr);gap:10px;padding:16px 5vw}
+  .hero-journey-btn{grid-column:span 2}
+  .hero-journey-btn:nth-child(4){grid-column:2 / span 2}
+  .hero-journey-btn:nth-child(5){grid-column:4 / span 2}
+  .hero-journey-btn:not(:last-child)::after{display:none}
+  .hero-content{padding-bottom:190px}
+}
+/* mobile: single column, full-width boxes stacked */
+@media(max-width:640px){
+  .hero-journey{grid-template-columns:1fr}
+  .hero-journey-btn,
+  .hero-journey-btn:nth-child(4),
+  .hero-journey-btn:nth-child(5){grid-column:1 / -1}
+  .hero-content{padding-bottom:380px}
 }
 
 /* ── Step-page accents ────────────────────────────────────
@@ -839,3 +861,86 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .page--accent .article-kicker{color:var(--accent)}
 .page--accent .article a.inline{color:var(--accent);border-bottom-color:color-mix(in srgb,var(--accent) 38%,transparent)}
 .page--accent .article a.inline:hover{border-bottom-color:var(--accent)}
+
+/* ============================================================
+   GRAPHIC COMPONENTS — components/graphics/*
+   Dynamic infographics replacing the static AI-generated PNGs.
+   Each root <div.gfx> sets --accent inline (its page's step
+   color). Photos sit in aspect-ratio crop wrappers (overflow
+   hidden + object-fit:cover) so every photo in a component
+   shares one height. Article pages are light; no box-shadows;
+   6px radius on image containers.
+   ============================================================ */
+.gfx{--accent:var(--red);clear:both;margin:2.6rem 0}
+.article-body > .gfx{max-width:100%}
+
+/* crop wrappers — equal-width grid cells => equal photo heights */
+.gfx-img{position:relative;width:100%;overflow:hidden;border-radius:6px;background:var(--light-gray)}
+.gfx-img img{width:100%;height:100%;object-fit:cover}
+.gfx-16x9{aspect-ratio:16/9}
+.gfx-1x1{aspect-ratio:1/1}
+.gfx-3x4{aspect-ratio:3/4}
+
+/* typography */
+.gfx-stat{font-family:'Bebas Neue',sans-serif;color:var(--accent);line-height:.92;letter-spacing:.01em;font-size:clamp(2.5rem,4vw,4rem)}
+.gfx-label{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;font-weight:700;color:var(--charcoal)}
+.gfx-desc{font-family:'DM Sans',sans-serif;font-size:.88rem;line-height:1.75;color:var(--ink-soft)}
+.gfx-card-title{font-family:'Bebas Neue',sans-serif;color:var(--accent);font-size:1.3rem;letter-spacing:.02em;line-height:1.06}
+
+/* generic card: photo on top, accent top-edge, off-white body */
+.gfx-card{display:flex;flex-direction:column;background:var(--off-white);border-top:3px solid var(--accent);border-radius:6px;overflow:hidden}
+.gfx-card .gfx-img{border-radius:0}
+.gfx-card-body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px}
+
+/* grids */
+.gfx-grid{display:grid;gap:18px;align-items:stretch}
+.gfx-grid > *{height:100%}
+.gfx-2x2{grid-template-columns:repeat(2,1fr)}
+.gfx-quad{grid-template-columns:repeat(4,1fr)}
+.gfx-trio{grid-template-columns:repeat(3,1fr)}
+.gfx-five{grid-template-columns:repeat(5,1fr)}
+@media(max-width:1024px){
+  .gfx-quad{grid-template-columns:repeat(2,1fr)}
+  .gfx-five{grid-template-columns:repeat(6,1fr)}
+  .gfx-five > *{grid-column:span 2}
+  .gfx-five > *:nth-child(4){grid-column:2/span 2}
+  .gfx-five > *:nth-child(5){grid-column:4/span 2}
+}
+@media(max-width:640px){
+  .gfx-2x2,.gfx-quad,.gfx-trio,.gfx-five{grid-template-columns:1fr}
+  .gfx-five > *,.gfx-five > *:nth-child(4),.gfx-five > *:nth-child(5){grid-column:auto}
+}
+
+/* banner (LocalSourcingFact) — float photo right, text wraps */
+.gfx-banner{background:var(--off-white);border-left:3px solid var(--accent);border-radius:6px;padding:26px 28px;overflow:hidden}
+.gfx-fimg{float:right;width:42%;margin:0 0 14px 24px}
+.gfx-bigstat{font-family:'Bebas Neue',sans-serif;color:var(--accent);font-size:clamp(3.5rem,6vw,6rem);line-height:.88}
+.gfx-clear{clear:both}
+
+/* RegulationHero — image w/ overlay title + 4-card row */
+.gfx-hero{position:relative;border-radius:6px;overflow:hidden;border-top:3px solid var(--accent)}
+.gfx-hero .gfx-img{border-radius:0}
+.gfx-hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:26px;background:linear-gradient(180deg,rgba(10,16,32,.15) 0%,rgba(10,16,32,.78) 100%)}
+.gfx-hero-title{font-family:'Bebas Neue',sans-serif;color:#fff;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.04;letter-spacing:.02em;max-width:18ch}
+.gfx-hero-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.gfx-hero-card{background:var(--off-white);border-top:3px solid var(--accent);border-radius:6px;padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px}
+@media(max-width:760px){.gfx-hero-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.gfx-hero-row{grid-template-columns:1fr}}
+
+/* JobsAndCareers — intro float + trio (one icon card) */
+.gfx-jobs-intro{overflow:hidden;margin-bottom:22px}
+.gfx-iconbox{aspect-ratio:1/1;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--off-white));display:flex;align-items:center;justify-content:center}
+.gfx-iconbox svg{width:36%;height:36%;stroke:currentColor;fill:none}
+
+/* RippleEffect — two columns + pill badges */
+.gfx-ripple{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gfx-ripple-col{background:var(--off-white);border-top:3px solid var(--accent);border-radius:6px;padding:22px 22px 26px;display:flex;flex-direction:column;gap:12px}
+.gfx-huge{font-family:'Bebas Neue',sans-serif;color:var(--accent);font-size:clamp(3rem,7vw,5.5rem);line-height:.85}
+.gfx-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.gfx-badge{border:1.5px solid var(--accent);border-radius:999px;font-family:'DM Sans',sans-serif;font-size:.7rem;padding:4px 12px;color:var(--charcoal);white-space:nowrap}
+@media(max-width:760px){.gfx-ripple{grid-template-columns:1fr}}
+
+/* mobile: floated photos go full-width */
+@media(max-width:640px){
+  .gfx-fimg{float:none;width:100%;margin:0 0 16px 0}
+}

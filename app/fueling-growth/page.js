@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import BuildingBlocksStats from '@/components/graphics/BuildingBlocksStats';
+import FutureDemand from '@/components/graphics/FutureDemand';
 
 export const metadata = { title: "Fueling Texas' Growth — How Texas Is Built" };
 
@@ -40,12 +42,12 @@ export default function WhyPage() {
 
         <div style={{ clear: 'both' }} />
         <h2>The building blocks behind everyday Texas</h2>
-        <img src="/images/fueling-texas-growth/2-building-blocks-everyday-texas.png" alt="Building blocks behind everyday Texas: 400 tons of aggregates for the average home, 15,000 cubic yards of concrete per mile of six-lane highway, 30,000 cubic yards for a modern hospital, and 50 to 60 pounds of aggregates used per day by the average American" style={{ float: 'left', width: '40%', margin: '0 24px 16px 0', borderRadius: '6px' }} />
+        <BuildingBlocksStats accentColor={ACCENT} />
         <p>It&apos;s easy to forget how much material goes into the places Texans live, learn, heal, and gather. The average home takes 400 tons of aggregates. One mile of six-lane highway takes 15,000 cubic yards of concrete. A modern hospital takes 30,000. A high school football stadium takes 100,000. Even day to day, the average American uses the equivalent of 50 to 60 pounds of aggregates.</p>
 
         <div style={{ clear: 'both' }} />
         <h2>What it takes to build tomorrow</h2>
-        <img src="/images/fueling-texas-growth/3-what-it-takes-to-build-tomorrow.png" alt="What it will take to build tomorrow: 15 to 50 million additional tons of aggregates, 3 to 10 million additional cubic yards of ready-mix concrete, and 1 to 3 million additional tons of cement over the next decade alone" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />
+        <FutureDemand accentColor={ACCENT} />
         <p>Today&apos;s growth is only the start. To keep pace, experts estimate Texas could need 15 to 50 million additional tons of aggregates over the next decade alone &mdash; plus another 3 to 10 million cubic yards of ready-mix concrete and 1 to 3 million additional tons of cement. The demand is already here. The question is whether supply keeps up.</p>
         <div style={{ clear: 'both' }} />
       </article>

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import RegulationHero from '@/components/graphics/RegulationHero';
+import RegulationStats from '@/components/graphics/RegulationStats';
 
 export const metadata = { title: 'Responsible Operations — How Texas Is Built' };
 
@@ -22,14 +24,14 @@ export default function OperationsPage() {
 
       <article className="article article-body reveal">
         <Link href="/" className="article-back">← Back to home</Link>
-        <img src="/images/responsible-operations/1-protecting-texas-resources-hero.png" alt="Protecting Texas' resources while building its future: responsible operations, strong communities, a better Texas for generations to come" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />
+        <RegulationHero accentColor={ACCENT} />
         <p className="article-kicker">Why It Matters</p>
         <p className="article-lead">Texans depend on clean air, clean water, and healthy communities. So do the operations that build Texas.</p>
         <p>That&apos;s why aggregate and concrete operations are designed to meet <strong>strict environmental standards</strong> while producing the materials that build the roads, homes, schools, hospitals, and infrastructure Texans rely on. Responsible operations and responsible growth aren&apos;t at odds. They&apos;re the same job.</p>
 
         <div style={{ clear: 'both' }} />
         <h2>Strictly regulated. Continuously monitored.</h2>
-        <img src="/images/responsible-operations/3-the-big-picture-high-regulation.png" alt="The big picture on regulation: more than 15 local, state, and federal agencies regulate the industry; ongoing inspections, monitoring, reporting, and compliance requirements; and air quality, water management, emissions, stormwater, and environmental protection are all closely regulated" style={{ float: 'left', width: '40%', margin: '0 24px 16px 0', borderRadius: '6px' }} />
+        <RegulationStats accentColor={ACCENT} />
         <p>The aggregates and concrete industry is one of the most regulated in Texas. Operations answer to <strong>more than 15 local, state, and federal agencies</strong> and run under extensive environmental oversight. That means ongoing inspections, monitoring, reporting, and compliance requirements &mdash; not a one-time permit. Air quality, water management, emissions, and stormwater are all closely regulated. The bottom line: responsible environmental stewardship and responsible growth have to work together to protect the resources Texans value while improving quality of life.</p>
 
         <div style={{ clear: 'both' }} />

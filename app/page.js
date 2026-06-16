@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Fragment } from 'react';
 import StepIndicator from './components/StepIndicator';
 
 /* ------------------------------------------------------------------
@@ -33,7 +32,7 @@ const STEPS = [
     route: '/jobs',
     points: [
       { title: 'An Economic Engine', text: 'The Texas aggregates and concretes industry produces $10B+ of Annual Economic Activity.' },
-      { title: 'A Pillar of Employment', text: 'Each job in the aggregates industry supports 6 jobs in other industries. Each dollar of wages earned in the aggregates industry creates another $4.95 in other industries.' },
+      { title: 'A Pillar of Local Texas Economies', text: 'Each job in the aggregates industry supports 6 jobs in other industries. Each dollar of wages earned in the aggregates industry creates another $4.95 in other industries.' },
       { title: 'Keeping Costs Low', text: 'Transportation is the most important variable in keeping aggregate and concrete costs down for projects, making local plants essential to affordability.' },
     ],
   },
@@ -67,7 +66,7 @@ const STEPS = [
     route: '/quality',
     points: [
       { title: 'Keeping the Texas Miracle Possible', text: 'Businesses often choose locations based on infrastructure quality. Strong infrastructure helps communities compete for investment which fuels the Texas Miracle.' },
-      { title: 'How The Lone Star State is Built', text: 'When materials are locally accessible, transportation becomes affordable allowing communities to stretch public dollars further while delivering on infrastructure timely and efficiently.' },
+      { title: 'Affordability', text: 'When materials are locally accessible, transportation becomes affordable allowing communities to stretch public dollars further while delivering on infrastructure timely and efficiently.' },
       { title: 'Its As Simple As Your Commute', text: 'Reliable roads, bridges, and transportation infrastructure help reduce congestion, improve traffic flow, and connect Texans to jobs, schools, healthcare, and recreation.' },
     ],
   },
@@ -94,21 +93,22 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* CHANGE 1 — journey overlay: five step buttons with arrows showing the left-to-right flow */}
+        {/* CHANGE 1 — journey overlay: five equal-height step buttons in a responsive
+            grid. Arrows showing the left-to-right flow render in the grid gaps via CSS
+            (.hero-journey-btn::after), so every box is the same height regardless of
+            how many lines its name wraps to. */}
         <nav className="hero-journey" aria-label="The How Texas Is Built journey">
           {STEPS.map((s, i) => (
-            <Fragment key={s.num}>
-              <Link href={s.route} className="hero-journey-btn" style={{ '--bc': STEP_COLORS[i] }}>
-                <span className="hero-journey-name">{s.name}</span>
-              </Link>
-              {i < STEPS.length - 1 && <span className="hero-journey-arrow" aria-hidden="true">→</span>}
-            </Fragment>
+            <Link key={s.num} href={s.route} className="hero-journey-btn" style={{ '--bc': STEP_COLORS[i] }}>
+              <span className="hero-journey-name">{s.name}</span>
+            </Link>
           ))}
         </nav>
       </section>
 
-      {/* CHANGE 2 — fixed left-side parallax step indicator (desktop only) */}
-      <StepIndicator count={STEPS.length} />
+      {/* CHANGE 2 — fixed left-side parallax step indicator (desktop only).
+          Shows each step's full title, colored with its accent when active. */}
+      <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: STEP_COLORS[i] }))} />
 
       {/* CHANGE 3 — five journey step components */}
       {STEPS.map((step) => {
