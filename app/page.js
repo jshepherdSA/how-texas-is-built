@@ -94,7 +94,7 @@ function renderStat(num) {
   switch (num) {
     case 1:
       return (
-        <p className="step-stat step-stat--feature">
+        <p className="step-stat step-stat--feature step-2col-fact">
           <span className="step-stat-bignum">400 tons</span>
           <span className="step-stat-caption">of aggregates go into building the average home</span>
         </p>
@@ -168,25 +168,102 @@ export default function HomePage() {
           >
             <div className="step-inner">
               <div className="step-head-text reveal">
-                <img className="step-hero-img" src={step.img} alt={step.name} />
-                <span className="step-num">{stepNum}</span>
-                <h2 className="step-name">{step.name}</h2>
-                <p className="step-subhead">{step.subhead}</p>
-                {(step.num === 1 || step.num === 2) && stat /* below subheader */}
-                {step.num === 5 && (
-                  /* yellow fact tile — sits beneath the subhead in the text
-                     column, beside the floated image (overflow:hidden keeps it
-                     from sliding under the image). */
-                  <p className="step-fact-tile reveal">
-                    Most jobs in this industry are skilled positions offering $50K&ndash;$90K annually &mdash; stable, middle-class careers that don&rsquo;t require a four-year degree.
-                  </p>
+                {step.num === 3 ? (
+                  /* Local Sourcing: heading + "How Does It Affect Me?" form a
+                     text column beside the image. The aside is pinned to the
+                     column's bottom (CSS margin-top:auto) so its bottom edge
+                     lines up with the image's bottom edge. */
+                  <>
+                    <div className="step3-textcol">
+                      <span className="step-num">{stepNum}</span>
+                      <h2 className="step-name">{step.name}</h2>
+                      <p className="step-subhead">{step.subhead}</p>
+                      <article className="step-tile step-tile--aside reveal">
+                        <h3 className="step-tile-title">{step.points[1].title}</h3>
+                        <p className="step-tile-text">{step.points[1].text}</p>
+                      </article>
+                    </div>
+                    <div className="step3-imgcol">
+                      <img className="step-hero-img" src={step.img} alt={step.name} />
+                    </div>
+                  </>
+                ) : step.num === 4 ? (
+                  /* Responsible Operations: left column = image (top, full column
+                     width) → number+title on one line → subheader. Right column =
+                     donut, vertically centered in the matched (stretched) height. */
+                  <>
+                    <div className="step4-leftcol">
+                      <div className="step4-img">
+                        <img className="step-hero-img" src={step.img} alt={step.name} />
+                      </div>
+                      <div className="step4-numtitle">
+                        <span className="step-num">{stepNum}</span>
+                        <h2 className="step-name">{step.name}</h2>
+                      </div>
+                      <p className="step-subhead">{step.subhead}</p>
+                    </div>
+                    <div className="step4-donutcol">
+                      <WaterRecycledDonut />
+                    </div>
+                  </>
+                ) : step.num === 1 ? (
+                  /* Texas is Growing: heading + "400 tons" box form a text column
+                     (space-between → box pinned to the bottom) beside the image. */
+                  <>
+                    <div className="step-2col-text">
+                      <span className="step-num">{stepNum}</span>
+                      <h2 className="step-name">{step.name}</h2>
+                      <p className="step-subhead">{step.subhead}</p>
+                      {stat /* "400 tons" feature box */}
+                    </div>
+                    <div className="step-2col-img">
+                      <img className="step-hero-img" src={step.img} alt={step.name} />
+                    </div>
+                  </>
+                ) : step.num === 5 ? (
+                  /* Quality of Life: heading + editorial $50K–$90K stat form a
+                     text column (space-between → stat pinned to the bottom). */
+                  <>
+                    <div className="step-2col-text">
+                      <span className="step-num">{stepNum}</span>
+                      <h2 className="step-name">{step.name}</h2>
+                      <p className="step-subhead">{step.subhead}</p>
+                      <p className="step-qol-fact step-2col-fact reveal">
+                        <span className="step-qol-num">$50K&ndash;$90K</span>
+                        <span className="step-qol-text">Salary range for skilled positions in the aggregates industry &mdash; a career that doesn&rsquo;t require a degree.</span>
+                      </p>
+                    </div>
+                    <div className="step-2col-img">
+                      <img className="step-hero-img" src={step.img} alt={step.name} />
+                    </div>
+                  </>
+                ) : step.num === 2 ? (
+                  /* Economic Impact: image (left) + text column (right). The text
+                     column uses space-between so the subheader centers between the
+                     title and the full-width stat row. */
+                  <>
+                    <div className="step-2col-img">
+                      <img className="step-hero-img" src={step.img} alt={step.name} />
+                    </div>
+                    <div className="step-2col-text">
+                      <span className="step-num">{stepNum}</span>
+                      <h2 className="step-name">{step.name}</h2>
+                      <p className="step-subhead">{step.subhead}</p>
+                      {stat /* the two full-width stat numbers */}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <img className="step-hero-img" src={step.img} alt={step.name} />
+                    <span className="step-num">{stepNum}</span>
+                    <h2 className="step-name">{step.name}</h2>
+                    <p className="step-subhead">{step.subhead}</p>
+                  </>
                 )}
               </div>
 
-              {step.num === 4 && <WaterRecycledDonut /> /* below subhead, above tiles */}
-
               <div className="step-tiles">
-                {step.points.map((p, i) => (
+                {(step.num === 3 ? [step.points[0]] : step.points).map((p, i) => (
                   <article className="step-tile reveal" key={i}>
                     <h3 className="step-tile-title">{p.title}</h3>
                     <p className="step-tile-text">{p.text}</p>

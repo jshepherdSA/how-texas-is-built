@@ -745,26 +745,34 @@ footer{background:var(--night);padding:54px 5vw 36px}
   opacity:0;pointer-events:none;transition:opacity .4s ease;
 }
 .step-indicator.is-visible{opacity:1;pointer-events:auto}
+/* each item is a vertical stack: dash on top, step name directly beneath it */
 .step-indicator-item{
-  display:flex;align-items:center;gap:12px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:0;
   background:none;border:0;padding:0;cursor:pointer;
 }
 .step-indicator-line{
   flex:0 0 auto;
   width:22px;height:3px;border-radius:2px;
-  background:rgba(255,255,255,.35);
-  transition:width .25s ease,background .25s ease;
+  background:rgba(255,255,255,.9);
+  /* dark halo so the light dash stays legible over light section backgrounds.
+     (box-shadow, not text-shadow — the dash is a filled bar, not text.) */
+  box-shadow:0 0 6px rgba(0,0,0,.6),0 0 12px rgba(0,0,0,.4);
+  transition:width .25s ease,background .25s ease,box-shadow .3s ease;
 }
 .step-indicator-title{
-  font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;
+  font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:600;
   letter-spacing:.06em;line-height:1.2;text-transform:uppercase;
-  max-width:140px;
-  color:rgba(255,255,255,.35);
-  transition:color .25s ease;
+  white-space:nowrap;margin-top:3px;
+  color:rgba(255,255,255,.9);
+  /* dark halo → legible on both light and navy section backgrounds */
+  text-shadow:0 0 6px rgba(0,0,0,.6),0 0 12px rgba(0,0,0,.4);
+  transition:text-shadow .3s ease,color .3s ease;
 }
-.step-indicator-item:hover .step-indicator-title{color:rgba(255,255,255,.6)}
-.step-indicator-item.is-active .step-indicator-line{width:34px;background:var(--item-color)}
-.step-indicator-item.is-active .step-indicator-title{color:var(--item-color)}
+.step-indicator-item:hover .step-indicator-title{color:#fff}
+/* active item is lit in its accent color → drop the dark halo (the accent reads
+   clearly on its own); the transition fades it out, and back in when it deactivates */
+.step-indicator-item.is-active .step-indicator-line{width:34px;background:var(--item-color);box-shadow:none}
+.step-indicator-item.is-active .step-indicator-title{color:var(--item-color);text-shadow:none}
 @media(max-width:1023px){.step-indicator{display:none}}
 
 /* ── CHANGE 3: journey step components (conservative per-section arrangement) ── */
@@ -813,30 +821,109 @@ footer{background:var(--night);padding:54px 5vw 36px}
 
 /* stat callout — never boxed; flows with the content, no larger than body text */
 .step-stat{margin-top:18px}
-.step-head-text .step-stat{margin:16px 0 2px}
+/* stats live in the space-between text columns (sections 1 & 2) — no margin so
+   the flex distribution stays even */
+.step-head-text .step-stat{margin:0}
 .step-stat-num{font-family:'Bebas Neue',sans-serif;color:var(--step-color);font-size:1.15em;letter-spacing:.03em}
 /* step 1 — large feature number on its own line, sentence (current size) beneath */
 .step-stat--feature{display:flex;flex-direction:column;gap:6px;max-width:620px}
-/* step 1 — "400 tons" sits in a solid orange box (white text); same large size */
-.step-stat-bignum{align-self:flex-start;background:#F97316;color:#fff;padding:10px 18px;border-radius:6px;font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1;letter-spacing:.02em}
+/* step 1 — "400 tons": plain orange number, no box/background/padding */
+.step-stat-bignum{align-self:flex-start;color:#F97316;font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1;letter-spacing:.02em}
 .step-stat-caption{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.6;color:inherit}
-/* step 2 — 2×2 figure grid */
-.step-stat--grid{display:grid;grid-template-columns:repeat(2,max-content);gap:16px 36px;max-width:620px}
-.step-stat-cell{display:flex;flex-direction:column;gap:2px}
-.step-stat-cell .step-stat-num{font-size:1.4rem;line-height:1}
+/* step 2 — two big numbers spanning the full column width, each centered */
+.step-stat--grid{display:flex;justify-content:space-between;width:100%;gap:24px}
+.step-stat-cell{flex:1;text-align:center;display:flex;flex-direction:column;gap:2px}
+.step-stat-cell .step-stat-num{font-size:clamp(3rem,7vw,6rem);line-height:1}
 /* labels bumped to ≥.8rem / opacity ≥.75 for legibility on the dark section */
 .step-stat-celllabel{font-family:'DM Sans',sans-serif;font-size:.8rem;line-height:1.3;color:inherit;opacity:.8}
 
 .step-tiles{display:flex;flex-wrap:wrap;gap:22px}
-/* section 3 stacks its tiles vertically */
-.step[data-step="3"] .step-tiles{flex-direction:column}
+/* section 3 stacks its tiles vertically; flex-start so a tile keeps its own
+   content height and is never stretched to match a neighbor */
+.step[data-step="3"] .step-tiles{flex-direction:column;align-items:flex-start}
 .step-tile{
   flex:1 1 280px;border-radius:8px;padding:28px 26px;
   border:1px solid var(--step-color);border-left:4px solid var(--step-color);
   transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
 }
-/* section 3 (Local Sourcing) — tighter tile padding */
-.step[data-step="3"] .step-tile{padding:12px 16px}
+/* section 3 (Local Sourcing) — tiles shrink to fit their text: tight padding,
+   and flex:0 0 auto removes the 280px height basis that left space below text */
+.step[data-step="3"] .step-tile{padding:12px 16px;flex:0 0 auto}
+/* "How Does It Affect Me?" sits in the text column beside the image.
+   margin-top:16px applies on mobile (below); desktop pins it to the column bottom. */
+.step[data-step="3"] .step-tile--aside{overflow:hidden;margin-top:16px}
+
+/* Desktop only — two-column layout so the aside's bottom edge meets the image's
+   bottom edge, with one 24px gutter used for tile↔image (horizontal) AND
+   aside↔"Why Source From Home" (vertical). Mobile keeps the normal single column. */
+@media(min-width:769px){
+  .step[data-step="3"] .step-head-text{display:grid;grid-template-columns:minmax(0,1fr) 38%;column-gap:24px;align-items:stretch}
+  .step[data-step="3"] .step-head-text::after{display:none}
+  .step3-textcol{display:flex;flex-direction:column;min-width:0}
+  /* subheader directly below the title with the same small 8px gap */
+  .step3-textcol .step-name{margin-bottom:0}
+  .step3-textcol .step-subhead{margin-top:8px}
+  /* image column: the text column drives the row height; the image fills this
+     column (absolute, object-cover) so its bottom always meets the aside's bottom */
+  .step3-imgcol{position:relative;border-radius:6px;overflow:hidden}
+  .step[data-step="3"] .step3-imgcol .step-hero-img{
+    position:absolute;inset:0;width:100%;height:100%;
+    margin:0;float:none;border-radius:0;object-fit:cover;
+  }
+  /* same 24px gutter between the aside (head-text bottom) and "Why Source From Home" */
+  .step[data-step="3"] .step-inner{gap:24px}
+
+  /* Responsible Operations — left column (image → number+title → subheader) beside
+     the donut column. align-items:stretch makes the donut column match the left
+     column's natural height; the donut centers vertically in that matched height. */
+  .step[data-step="4"] .step-head-text{display:flex;align-items:stretch;gap:24px}
+  .step[data-step="4"] .step-head-text::after{display:none}
+  .step4-leftcol{flex:1 1 auto;min-width:0}
+  .step[data-step="4"] .step4-donutcol{flex:0 0 38%}
+
+  /* Economic Impact — image (left) + text column (right). The text column uses the
+     shared space-between rule so the subheader centers between title and stats. */
+  /* image column sized to the leftmost tile below it: the tiles row is 3 equal
+     columns with two 22px gaps, so each tile = (100% - 44px)/3. Both the grid and
+     the tiles row start at the same inner-padding edge, so the left edges align. */
+  .step[data-step="2"] .step-head-text{display:grid;grid-template-columns:calc((100% - 44px)/3) minmax(0,1fr);column-gap:24px;align-items:stretch}
+  .step[data-step="2"] .step-head-text::after{display:none}
+  /* keep the image's prior height (~260px at the old 38% width) now that it is
+     narrower: 1.26 ≈ tileWidth:oldHeight, so the height is unchanged while only the
+     width shrinks (object-cover just crops a touch more). The image also drives the
+     row height, so the stat row keeps its breathing room at the column bottom. */
+  .step[data-step="2"] .step-2col-img{aspect-ratio:1.26}
+  .step[data-step="2"] .step-inner{gap:24px}
+
+  /* Texas is Growing (1) & Quality of Life (5) — same two-column pattern. The
+     heading + fact form a flex column with justify-content:space-between, so the
+     number sits at the top and the fact is pinned to the bottom, flush with the
+     image bottom. The image (aspect-ratio set per section) defines the column
+     height; it grows only if the text column is taller. 24px gutter throughout. */
+  .step[data-step="1"] .step-head-text,
+  .step[data-step="5"] .step-head-text{display:grid;grid-template-columns:minmax(0,1fr) 38%;column-gap:24px;align-items:stretch}
+  .step[data-step="1"] .step-head-text::after,
+  .step[data-step="5"] .step-head-text::after{display:none}
+  .step-2col-text{display:flex;flex-direction:column;justify-content:flex-start;min-width:0}
+  /* subheader sits directly below the title with a small fixed 8px gap (not
+     distributed) — the title's bottom margin is zeroed so the 8px is exact in
+     the non-collapsing flex column. */
+  .step-2col-text .step-name{margin-bottom:0}
+  .step-2col-text .step-subhead{margin:8px 0 0}
+  /* the stat/fact at the bottom pushes itself to the column bottom on its own */
+  .step-2col-text > *:last-child{margin-top:auto}
+  /* width:100% locks the column to its 38% track so aspect-ratio drives only the
+     height (otherwise a taller stretch would widen it and overflow the content). */
+  .step-2col-img{position:relative;width:100%;border-radius:6px;overflow:hidden}
+  .step[data-step="1"] .step-2col-img{aspect-ratio:480/320}
+  .step[data-step="5"] .step-2col-img{aspect-ratio:480/254}
+  .step-2col-img .step-hero-img{
+    position:absolute;inset:0;width:100%;height:100%;
+    margin:0;float:none;border-radius:0;object-fit:cover;
+  }
+  .step[data-step="1"] .step-inner,
+  .step[data-step="5"] .step-inner{gap:24px}
+}
 .step--light .step-tile{background:#fff;box-shadow:0 4px 20px rgba(20,28,46,.07)}
 .step--dark .step-tile{background:rgba(255,255,255,.05)}
 .step-tile:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(20,28,46,.14);background:color-mix(in srgb,var(--step-color) 12%,transparent)}
@@ -847,30 +934,40 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .step--light .step-tile-text{color:#5a6577}
 .step--dark .step-tile-text{color:rgba(255,255,255,.74)}
 
-/* section 5 (Quality of Life) — yellow fact tile beneath the subhead. overflow:hidden
-   makes it a BFC so it sits beside the floated image at the text-column width
-   (max 620px) instead of sliding underneath it. Dark-but-lighter text on yellow. */
-.step-fact-tile{
-  background:#EAB308;color:#1e2a3a;
-  padding:18px 24px;border-radius:6px;border:0;
-  font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:500;line-height:1.6;
-  margin:16px 0 0;overflow:hidden;max-width:620px;
-}
+/* section 5 (Quality of Life) — editorial stat: large yellow number anchoring a
+   dark-navy sentence beneath it. No box/tile/border — plain stacked text. */
+.step-qol-fact{margin:0}
+.step-qol-num{display:block;font-family:'Bebas Neue',sans-serif;color:#EAB308;font-size:clamp(2rem,3vw,2.8rem);line-height:1;letter-spacing:.02em}
+.step-qol-text{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.85rem;line-height:1.5;color:var(--blue);margin-top:6px}
 
-/* section 4 (Responsible Operations) — water-recycled SVG donut + legend.
-   Sits below the subhead and above the tiles, left-aligned. */
-.water-donut{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.wd-chart{position:relative;width:120px;height:120px;flex:0 0 120px}
-.wd-svg{display:block;width:120px;height:120px}
-.wd-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.wd-pct{font-family:'Bebas Neue',sans-serif;font-weight:700;color:#22C55E;font-size:1.4rem;line-height:1;letter-spacing:.02em}
-.wd-cap{font-family:'DM Sans',sans-serif;font-size:.65rem;line-height:1.15;color:rgba(255,255,255,.7);margin-top:1px}
-.wd-legend{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.wd-legend li{display:flex;align-items:center;gap:9px;font-family:'DM Sans',sans-serif;font-size:.75rem;line-height:1.2;color:rgba(255,255,255,.85)}
-.wd-dot{width:11px;height:11px;border-radius:50%;flex:0 0 11px}
-.wd-dot--green{background:#22C55E}
-.wd-dot--grey{background:#9CA3AF}
-.wd-dot--empty{background:transparent;border:1.5px solid rgba(255,255,255,.45)}
+/* section 4 (Responsible Operations) — left column: image (top, full width) →
+   number+title on one line → subheader, stacked naturally */
+.step4-leftcol{display:flex;flex-direction:column}
+.step4-img{width:100%;height:200px;border-radius:6px;overflow:hidden;margin-bottom:16px}
+.step[data-step="4"] .step4-img .step-hero-img{width:100%;height:100%;margin:0;float:none;border-radius:0;object-fit:cover;display:block}
+.step4-numtitle{display:flex;align-items:flex-end;gap:10px}
+.step4-numtitle .step-num{margin:0}
+.step4-numtitle .step-name{margin:0}
+/* subheader directly below the number/title row with the same small 8px gap */
+.step4-leftcol .step-subhead{margin:8px 0 0}
+/* donut column — center the donut and let it fill the matched column height.
+   padding-left:24px gives the (now full-height) donut breathing room from the
+   left-column content. */
+.step4-donutcol{display:flex;align-items:center;justify-content:center;padding-left:24px}
+
+/* section 4 (Responsible Operations) — water-recycled SVG donut.
+   The donut chart itself; positioned by the section layout. */
+/* fill the donut column: the chart stretches to the full matched height and the
+   SVG (preserveAspectRatio meet) scales the circular donut to fit, centered. */
+.water-donut{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.wd-chart{position:relative;width:100%;height:100%}
+/* absolute so the 1:1 SVG never imposes its own (width-derived) height on the
+   column — the donut fills the height the LEFT column dictates and stays circular */
+.wd-svg{position:absolute;inset:0;display:block;width:100%;height:100%}
+/* center labels are SVG <text>: fill (not color) for the paint, font-size in
+   viewBox user units so they scale up proportionally with the donut */
+.wd-pct{fill:#22C55E;font-family:'Bebas Neue',sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em}
+.wd-cap{fill:rgba(255,255,255,.7);font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:.01em}
 
 /* ── mobile: one column, image full-width on top, stat always below the
    subheader and above the tiles regardless of its desktop position ── */
@@ -883,8 +980,22 @@ footer{background:var(--night);padding:54px 5vw 36px}
   .step-head-text::after{display:none}
   .step-head-text > *{margin:0}
   .step-hero-img,
-  .step[data-step="2"] .step-hero-img,
-  .step[data-step="4"] .step-hero-img{float:none;width:100%;margin:0;order:-1}
+  .step[data-step="2"] .step-hero-img{float:none;width:100%;margin:0;order:-1}
+  /* section 3's image is wrapped, so order the wrapper (not the img) to the top */
+  .step[data-step="3"] .step3-imgcol{order:-1}
+  /* section 4: leftcol (image → number+title → subheader) then the donut, centered.
+     The donut fills its column height on desktop; on mobile there is no stretched
+     column to size it against, so give it an explicit square and drop the left pad. */
+  .step[data-step="4"] .step4-donutcol{padding-left:0}
+  .step[data-step="4"] .water-donut{height:auto}
+  .step[data-step="4"] .wd-chart{width:180px;height:180px}
+  /* sections 1 & 5: flatten — number, title, subheader, image, fact */
+  .step-2col-text{display:contents}
+  .step-2col-text > *{margin:0}
+  .step-2col-img{order:1}
+  .step-2col-fact{order:2}
+  /* section 2: image on top, then number, title, subheader, stats */
+  .step[data-step="2"] .step-2col-img{order:-1}
   .step-tiles{flex-direction:column}
   .step-tile{flex-basis:100%}
 }
@@ -945,7 +1056,7 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .gfx-label{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;font-weight:700;color:var(--charcoal)}
 /* unit label split out from the big stat (BuildingBlocksStats, FutureDemand) so
    the figure never wraps — small uppercase line directly beneath the number */
-.gfx-unit{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--charcoal)}
+.gfx-unit{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;font-weight:600;letter-spacing:.08em;color:#F97316;margin-top:2px;margin-bottom:12px}
 .gfx-desc{font-family:'DM Sans',sans-serif;font-size:.88rem;line-height:1.45;color:var(--ink-soft)}
 .gfx-card-title{font-family:'Bebas Neue',sans-serif;color:var(--accent);font-size:1.3rem;letter-spacing:.02em;line-height:1.06}
 

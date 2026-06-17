@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const LINKS = [
-  { href: '/fueling-growth', label: "Fueling Texas' Growth" },
-  { href: '/jobs', label: 'Jobs & Economic Impact' },
+  { href: '/fueling-growth', label: 'Texas is Growing' },
+  { href: '/jobs', label: 'Economic Impact' },
   { href: '/responsible', label: 'Responsible Operations' },
   { href: '/local-sourcing', label: 'Local Sourcing' },
   { href: '/quality', label: 'Quality of Life' },
@@ -15,8 +15,8 @@ const LINKS = [
 ];
 
 const MENU_LINKS = [
-  { href: '/fueling-growth', label: "Fueling Texas' Growth" },
-  { href: '/jobs', label: 'Jobs & Economic Impact' },
+  { href: '/fueling-growth', label: 'Texas is Growing' },
+  { href: '/jobs', label: 'Economic Impact' },
   { href: '/responsible', label: 'Responsible Operations' },
   { href: '/local-sourcing', label: 'Why Local Sourcing Matters' },
   { href: '/quality', label: 'Quality of Life' },
