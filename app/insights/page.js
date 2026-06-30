@@ -28,7 +28,7 @@ export default function InsightsPage() {
               <div className="post-img"><Image src="/images/103257435-skyline-city-austin-texas.jpeg" alt="Texas skyline" fill style={{ objectFit: 'cover' }} sizes="(max-width:900px) 45vw, 380px" /><span className="post-cat">Growth</span></div>
               <div className="post-body">
                 <div className="post-meta">Coming Soon</div>
-                <h3 className="post-title">Fueling the Texas Miracle: Growth by the Numbers</h3>
+                <h3 className="post-title">Building the Texas Miracle: Growth by the Numbers</h3>
                 <p className="post-excerpt">A closer look at the 1,000–1,500 new Texans arriving every day — and what it will take to build the homes, roads, and schools they&apos;ll need.</p>
                 <span className="post-foot">Read the story →</span>
               </div>

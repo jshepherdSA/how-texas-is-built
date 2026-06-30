@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StepIndicator from './components/StepIndicator';
+import HeroVideo from './components/HeroVideo';
 import WaterRecycledDonut from '@/components/graphics/WaterRecycledDonut';
 
 /* ------------------------------------------------------------------
@@ -17,7 +18,7 @@ const STEPS = [
   {
     num: 1,
     name: 'Texas Is Growing',
-    subhead: 'Fueling the Texas Miracle',
+    subhead: 'Building the Texas Miracle',
     route: '/fueling-growth',
     img: '/images/home/H-%20texas%20is%20growing.jpg',
     points: [
@@ -124,6 +125,10 @@ export default function HomePage() {
       {/* Hero with journey overlay flush at the bottom */}
       <section className="hero">
         <div className="hero-bg"></div>
+        {/* Hero background video — muted autoplay loop, with a navy fade across each
+            loop boundary instead of a hard cut (see HeroVideo). Sits above the
+            .hero-bg poster fallback and below the overlay. */}
+        <HeroVideo />
         <div className="hero-overlay"></div>
         <div className="hero-content reveal">
           <p className="hero-eyebrow">From Quarry to Community</p>
@@ -146,6 +151,29 @@ export default function HomePage() {
             </Link>
           ))}
         </nav>
+      </section>
+
+      {/* Intro video — sits between the hero and the first step (Texas Is Growing).
+          Click-to-play: the poster shows on load and preload="metadata" keeps the
+          page light (the 70MB file only downloads when a visitor presses play). */}
+      <section className="intro-video">
+        <div className="intro-video-inner">
+          <h2 className="intro-video-title">What Are Aggregates and Why Are They Important?</h2>
+          <video
+            className="intro-video-el"
+            controls
+            playsInline
+            preload="metadata"
+            poster="/videos/taca-intro-poster.jpg"
+          >
+            <source src="/videos/taca-intro.mp4" type="video/mp4" />
+            Your browser doesn’t support embedded video.
+          </video>
+          <div className="intro-video-def">
+            <p className="intro-video-def-lead">Aggregates are the granular materials at the foundation of nearly everything we build &mdash; sand, gravel, crushed stone, and recycled concrete.</p>
+            <p>Combined with cement and water, they become the concrete in our homes, schools, and hospitals; bound with asphalt, they pave the roads that connect us. They&rsquo;re the most-used building material on Earth &mdash; and as Texas grows, a steady, locally sourced supply is what keeps that growth affordable and our communities strong.</p>
+          </div>
+        </div>
       </section>
 
       {/* CHANGE 2 — fixed left-side parallax step indicator (desktop only).
@@ -176,7 +204,7 @@ export default function HomePage() {
                   <>
                     <div className="step3-textcol">
                       <span className="step-num">{stepNum}</span>
-                      <h2 className="step-name">{step.name}</h2>
+                      <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
                       <article className="step-tile step-tile--aside reveal">
                         <h3 className="step-tile-title">{step.points[1].title}</h3>
@@ -198,7 +226,7 @@ export default function HomePage() {
                       </div>
                       <div className="step4-numtitle">
                         <span className="step-num">{stepNum}</span>
-                        <h2 className="step-name">{step.name}</h2>
+                        <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       </div>
                       <p className="step-subhead">{step.subhead}</p>
                     </div>
@@ -212,7 +240,7 @@ export default function HomePage() {
                   <>
                     <div className="step-2col-text">
                       <span className="step-num">{stepNum}</span>
-                      <h2 className="step-name">{step.name}</h2>
+                      <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
                       {stat /* "400 tons" feature box */}
                     </div>
@@ -226,7 +254,7 @@ export default function HomePage() {
                   <>
                     <div className="step-2col-text">
                       <span className="step-num">{stepNum}</span>
-                      <h2 className="step-name">{step.name}</h2>
+                      <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
                       <p className="step-qol-fact step-2col-fact reveal">
                         <span className="step-qol-num">$50K&ndash;$90K</span>
@@ -247,7 +275,7 @@ export default function HomePage() {
                     </div>
                     <div className="step-2col-text">
                       <span className="step-num">{stepNum}</span>
-                      <h2 className="step-name">{step.name}</h2>
+                      <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
                       {stat /* the two full-width stat numbers */}
                     </div>
@@ -256,7 +284,7 @@ export default function HomePage() {
                   <>
                     <img className="step-hero-img" src={step.img} alt={step.name} />
                     <span className="step-num">{stepNum}</span>
-                    <h2 className="step-name">{step.name}</h2>
+                    <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                     <p className="step-subhead">{step.subhead}</p>
                   </>
                 )}

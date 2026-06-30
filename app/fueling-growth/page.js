@@ -16,7 +16,7 @@ export default function WhyPage() {
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
             <p className="eyebrow light">Fueling Texas&apos; Growth</p>
-            <h1 className="page-hero-title">Fueling the<br /><span className="red">Texas Miracle</span></h1>
+            <h1 className="page-hero-title">Building the<br /><span className="red">Texas Miracle</span></h1>
             <p className="page-hero-sub">Texas&apos; favorable business climate continues to drive jobs, investment, and growth — and the materials that make that growth possible.</p>
             <div className="page-hero-tagline"><span><span className="dot"></span>1,000–1,500 new Texans every day</span></div>
           </div>
