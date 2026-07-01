@@ -27,7 +27,7 @@ export default function EconomicPage() {
       <article className="article article-body reveal">
         <Link href="/" className="article-back">← Back to home</Link>
         <p className="article-kicker">Jobs &amp; Economic Impact</p>
-        <p className="article-lead">Aggregates and concrete are more than construction materials. They&apos;re a $10-billion engine running under the Texas economy.</p>
+        <p className="article-lead">Aggregates and concrete are more than construction materials. They&apos;re a $10-billion engine underpinning the Texas economy.</p>
 
         <EconomicImpactStats accentColor={ACCENT} />
         <p>The industry supports more than <strong>100,000 Texas jobs</strong> and enables affordable infrastructure across the state. The scale is hard to overstate: more than <strong>$10 billion</strong> in annual economic activity, over <strong>300 million tons</strong> of aggregates produced every year, and more than <strong>16%</strong> of the entire U.S. ready-mix concrete supply. Texas leads the nation.</p>

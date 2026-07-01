@@ -28,7 +28,7 @@ export default function NewsletterCTA() {
       <div className="cta-inner reveal">
         <p className="eyebrow center" style={{ color: 'rgba(255,255,255,.6)' }}>Stay Informed. Stay Involved.</p>
         <h2 className="title light">Be Part of What&apos;s Built Next</h2>
-        <p className="prose light center">Texas is growing rapidly, and the decisions made today about infrastructure, housing, transportation, and local resources will shape communities across the state. Sign up for updates and alerts to stay informed about the issues impacting Texas growth, affordability, and the resources communities rely on every day. Join us in helping build a stronger, more connected future for Texas.</p>
+        <p className="prose light center">Texas is growing rapidly, and the decisions made today about infrastructure, housing, transportation, and local resources will shape communities across the state. Sign up for updates and alerts to stay informed about the issues impacting Texas growth, affordability, and the resources communities rely on every day. Join us in helping build a sustainable resilient future for Texas.</p>
         <form
           className="signup-form"
           name="newsletter"

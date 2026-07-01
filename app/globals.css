@@ -688,6 +688,25 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .article a.inline{color:var(--accent,var(--red));font-weight:600;text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent,var(--red)) 38%,transparent);transition:border-color .15s}
 .article a.inline:hover{border-bottom-color:var(--accent,var(--red))}
 
+/* ── growth facts: 3-up proof-point band inside an article. Big accent Bebas
+   number over a short supporting line; faint accent-tinted card with dividers. ── */
+.growth-facts{
+  clear:both;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  margin:2.2rem 0;border-radius:10px;overflow:hidden;
+  border:1px solid color-mix(in srgb,var(--accent,var(--red)) 30%,transparent);
+  background:color-mix(in srgb,var(--accent,var(--red)) 4%,#fff);
+}
+.growth-fact{padding:22px 24px;border-left:1px solid color-mix(in srgb,var(--accent,var(--red)) 16%,transparent)}
+.growth-fact:first-child{border-left:0}
+.growth-fact-num{display:block;font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4vw,2.9rem);line-height:1;letter-spacing:.02em;color:var(--accent,var(--red));margin-bottom:8px}
+.growth-fact p{margin:0;font-family:'DM Sans',sans-serif;font-size:.9rem;line-height:1.5;color:#3a3a3a}
+.growth-fact p strong{color:#1f1f1f;font-weight:700}
+@media(max-width:768px){
+  .growth-facts{grid-template-columns:1fr}
+  .growth-fact{border-left:0;border-top:1px solid color-mix(in srgb,var(--accent,var(--red)) 16%,transparent)}
+  .growth-fact:first-child{border-top:0}
+}
+
 /* ── article images: plain <img> floated right (float/size set inline on each
    <img>). .article-body is a plain block container (NO flex/grid) so the img
    and its adjacent paragraph are siblings and the text wraps. ── */

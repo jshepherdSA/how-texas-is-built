@@ -30,6 +30,21 @@ export default function WhyPage() {
 
         <p>Texas attracts more people, more businesses, and more investment than any other state. A favorable business climate keeps it coming &mdash; and that growth creates demand for housing, transportation, schools, hospitals, water systems, and energy infrastructure.</p>
 
+        <aside className="growth-facts" aria-label="Texas growth at a glance">
+          <div className="growth-fact">
+            <span className="growth-fact-num">2025</span>
+            <p>The year the Texas economy grew <strong>faster than the U.S.</strong></p>
+          </div>
+          <div className="growth-fact">
+            <span className="growth-fact-num">14</span>
+            <p><strong>Years in a row</strong> winning the Governor&rsquo;s Cup for the most business location and expansion projects.</p>
+          </div>
+          <div className="growth-fact">
+            <span className="growth-fact-num">346+</span>
+            <p><strong>Corporate headquarters</strong> relocated to Texas since 2015.</p>
+          </div>
+        </aside>
+
         <div style={{ clear: 'both' }} />
         <h2>By the numbers</h2>
         <img src="/images/texas-is-growing/1-by-the-numbers.png" alt="Aerial view of a growing Texas residential neighborhood" style={{ float: 'right', width: '40%', margin: '0 0 16px 24px', borderRadius: '6px' }} />

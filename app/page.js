@@ -25,7 +25,7 @@ const STEPS = [
       { title: 'The Texas Miracle', text: 'Favorable business and tax environment leads to the highest population growth rate in the nation.' },
       // NOTE: the aggregate figure is left blank ("__") in journey-outline.pdf.
       { title: 'What it Takes', text: 'Texas will need to produce __ million lbs of aggregates every year to keep up with growth.' },
-      { title: 'Benefitting the Communities', text: 'A strong local supply of materials will be essential to keeping Texas affordable.' },
+      { title: 'Benefitting the Communities', text: 'A strong local supply of materials is essential to keeping Texas affordable. Providing materials close to the areas they serve ultimately reduces traffic and keeps the positive economic impact local.' },
     ],
   },
   {
@@ -37,7 +37,7 @@ const STEPS = [
     points: [
       { title: 'An Economic Engine', text: 'The Texas aggregates and concretes industry produces $10B+ of Annual Economic Activity.' },
       { title: 'A Pillar of Local Texas Economies', text: 'Each job in the aggregates industry supports 6 jobs in other industries. Each dollar of wages earned in the aggregates industry creates another $4.95 in other industries.' },
-      { title: 'Keeping Costs Low', text: 'Transportation is the most important variable in keeping aggregate and concrete costs down for projects, making local plants essential to affordability.' },
+      { title: 'Keeping Costs Low', text: 'Transportation is the most important variable in keeping aggregate and concrete costs down for projects, making access to local plants and materials essential to affordability.' },
     ],
   },
   {
@@ -61,7 +61,7 @@ const STEPS = [
     img: '/images/home/H-%20responsible%20operations.jpg',
     points: [
       { title: 'Strictly Regulated, Monitored, and Accountable', text: 'Aggregates and concrete operations are regulated heavily with strict oversight from multiple agencies at every level of government.' },
-      { title: 'Proactive Air Quality Controls at Every Facility', text: 'All facilities are required to control dust and emissions, with emission projections being modeled before any permits are issued.' },
+      { title: 'Proactive Air Quality Controls at Every Facility', text: 'All facilities are required to control dust and emissions, with emission projections scientifically modeled before any permits are issued.' },
       { title: 'Protecting Texas’ Most Critical Resource: Water', text: 'Water is responsibly managed and frequently recycled on-site, with certain processes—such as aggregates washing—using closed-loop systems that can recycle approximately 92%–98% of water.' },
     ],
   },
@@ -72,9 +72,9 @@ const STEPS = [
     route: '/quality',
     img: '/images/home/H-%20quality%20of%20life.jpg',
     points: [
-      { title: 'Keeping the Texas Miracle Possible', text: 'Businesses often choose locations based on infrastructure quality. Strong infrastructure helps communities compete for investment which fuels the Texas Miracle.' },
-      { title: 'Affordability', text: 'When materials are locally accessible, transportation becomes affordable allowing communities to stretch public dollars further while delivering on infrastructure timely and efficiently.' },
-      { title: 'Its As Simple As Your Commute', text: 'Reliable roads, bridges, and transportation infrastructure help reduce congestion, improve traffic flow, and connect Texans to jobs, schools, healthcare, and recreation.' },
+      { title: 'Making the Texas Miracle Possible', text: 'Businesses often choose locations based on infrastructure quality. Strong infrastructure helps communities compete for investment, which fuels the Texas Miracle.' },
+      { title: 'Affordability', text: 'When materials are locally accessible, transportation becomes affordable allowing communities to stretch public dollars further while delivering on infrastructure projects in a timely and efficient manner.' },
+      { title: 'It’s As Simple As Your Commute', text: 'Reliable roads, bridges, and transportation infrastructure help reduce congestion, improve traffic flow, and connect Texans to jobs, schools, healthcare, and recreation.' },
     ],
   },
 ];

@@ -16,7 +16,7 @@ export default function QualityPage() {
           <div className="page-hero-content reveal">
             <p className="eyebrow light">Quality of Life</p>
             <h1 className="page-hero-title">Quality of Life<br /><span className="red">Starts with Infrastructure</span></h1>
-            <p className="page-hero-sub">Shorter commutes, safer roads, affordable homes, reliable water — the everyday benefits Texans feel, made possible by the materials beneath them.</p>
+            <p className="page-hero-sub">Shorter commutes, safer roads, affordable homes, reliable water — the everyday benefits Texans rely on, supported by the materials that make them possible.</p>
           </div>
         </div>
       </header>
