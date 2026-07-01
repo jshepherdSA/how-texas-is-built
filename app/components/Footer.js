@@ -11,7 +11,7 @@ export default function Footer() {
             <span className="footer-logo-text">How <em>Texas</em> Is Built</span>
           </Link>
           <p className="footer-tag">From Quarry to Community: The Foundation of Your Texas Life.</p>
-          <p className="footer-org">An advocacy initiative of The Texas Aggregates and Concrete Association</p>
+          <p className="footer-org"><a href="https://www.tx-taca.org/" target="_blank" rel="noopener noreferrer">An advocacy initiative of The Texas Aggregates and Concrete Association</a></p>
         </div>
         <div className="footer-col">
           <h5>Explore</h5>

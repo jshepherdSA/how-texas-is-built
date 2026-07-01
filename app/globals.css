@@ -450,6 +450,8 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .footer-tag{font-family:'Libre Baskerville',serif;font-style:italic;font-size:.86rem;color:rgba(255,255,255,.5);line-height:1.6;max-width:300px}
 /* org attribution — small upright sans line beneath the italic tagline */
 .footer-org{margin:0;font-family:'DM Sans',sans-serif;font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.5;max-width:300px}
+.footer-org a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:rgba(255,255,255,.28);transition:color .2s,text-decoration-color .2s}
+.footer-org a:hover{color:#fff;text-decoration-color:rgba(255,255,255,.7)}
 .footer-col h5{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
 .footer-col a{display:block;font-size:.86rem;color:rgba(255,255,255,.62);text-decoration:none;margin-bottom:11px;transition:color .2s}
 .footer-col a:hover{color:#fff}
@@ -707,6 +709,20 @@ footer{background:var(--night);padding:54px 5vw 36px}
   .growth-fact:first-child{border-top:0}
 }
 
+/* ── one-pager download button: accent CTA at the bottom of a step article.
+   Inherits the page --accent; `clear:both` keeps it below any floated image. ── */
+.onepager-cta{
+  clear:both;display:inline-flex;align-items:center;gap:11px;
+  margin-top:2.6rem;padding:14px 24px;border-radius:8px;
+  background:var(--accent,var(--red));color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;letter-spacing:.01em;line-height:1.3;
+  text-decoration:none;box-shadow:0 6px 18px color-mix(in srgb,var(--accent,var(--red)) 24%,transparent);
+  transition:transform .15s ease,box-shadow .2s ease,filter .2s ease;
+}
+.onepager-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px color-mix(in srgb,var(--accent,var(--red)) 34%,transparent);filter:brightness(1.05)}
+.onepager-cta-icon{width:19px;height:19px;flex:0 0 auto}
+.onepager-cta-ext{font-weight:600;opacity:.82;font-size:.85em}
+
 /* ── article images: plain <img> floated right (float/size set inline on each
    <img>). .article-body is a plain block container (NO flex/grid) so the img
    and its adjacent paragraph are siblings and the text wraps. ── */
@@ -871,11 +887,10 @@ footer{background:var(--night);padding:54px 5vw 36px}
   font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.4;max-width:620px;
   color:var(--step-color);
 }
-/* sections 2 & 4: force the subhead onto a single line on desktop. The clamp
-   scales the size down at narrower desktop/tablet widths so it always fits;
-   mobile (<768px) reverts to normal wrapping below. */
-.step[data-step="2"] .step-subhead,
-.step[data-step="4"] .step-subhead{
+/* section 2: force the subhead onto a single line on desktop. The clamp scales
+   the size down at narrower desktop/tablet widths so it always fits; mobile
+   (<768px) reverts to normal wrapping below. */
+.step[data-step="2"] .step-subhead{
   white-space:nowrap;max-width:none;
   font-size:clamp(1.02rem,1.7vw,1.3rem);
 }
@@ -934,14 +949,6 @@ footer{background:var(--night);padding:54px 5vw 36px}
   /* same 24px gutter between the aside (head-text bottom) and "Why Source From Home" */
   .step[data-step="3"] .step-inner{gap:24px}
 
-  /* Responsible Operations — left column (image → number+title → subheader) beside
-     the donut column. align-items:stretch makes the donut column match the left
-     column's natural height; the donut centers vertically in that matched height. */
-  .step[data-step="4"] .step-head-text{display:flex;align-items:stretch;gap:24px}
-  .step[data-step="4"] .step-head-text::after{display:none}
-  .step4-leftcol{flex:1 1 auto;min-width:0}
-  .step[data-step="4"] .step4-donutcol{flex:0 0 38%}
-
   /* Economic Impact — image (left) + text column (right). The text column uses the
      shared space-between rule so the subheader centers between title and stats. */
   /* image column sized to the leftmost tile below it: the tiles row is 3 equal
@@ -962,8 +969,10 @@ footer{background:var(--night);padding:54px 5vw 36px}
      image bottom. The image (aspect-ratio set per section) defines the column
      height; it grows only if the text column is taller. 24px gutter throughout. */
   .step[data-step="1"] .step-head-text,
+  .step[data-step="4"] .step-head-text,
   .step[data-step="5"] .step-head-text{display:grid;grid-template-columns:minmax(0,1fr) 38%;column-gap:24px;align-items:stretch}
   .step[data-step="1"] .step-head-text::after,
+  .step[data-step="4"] .step-head-text::after,
   .step[data-step="5"] .step-head-text::after{display:none}
   .step-2col-text{display:flex;flex-direction:column;justify-content:flex-start;min-width:0}
   /* subheader sits directly below the title with a small fixed 8px gap (not
@@ -973,16 +982,21 @@ footer{background:var(--night);padding:54px 5vw 36px}
   .step-2col-text .step-subhead{margin:8px 0 0}
   /* the stat/fact at the bottom pushes itself to the column bottom on its own */
   .step-2col-text > *:last-child{margin-top:auto}
+  /* step 4 has no bottom stat — keep the heading top-aligned (don't push the
+     subheader down to the image bottom) */
+  .step[data-step="4"] .step-2col-text > *:last-child{margin-top:0}
   /* width:100% locks the column to its 38% track so aspect-ratio drives only the
      height (otherwise a taller stretch would widen it and overflow the content). */
   .step-2col-img{position:relative;width:100%;border-radius:6px;overflow:hidden}
   .step[data-step="1"] .step-2col-img{aspect-ratio:480/320}
+  .step[data-step="4"] .step-2col-img{aspect-ratio:480/320}
   .step[data-step="5"] .step-2col-img{aspect-ratio:480/254}
   .step-2col-img .step-hero-img{
     position:absolute;inset:0;width:100%;height:100%;
     margin:0;float:none;border-radius:0;object-fit:cover;
   }
   .step[data-step="1"] .step-inner,
+  .step[data-step="4"] .step-inner,
   .step[data-step="5"] .step-inner{gap:24px}
 }
 .step--light .step-tile{background:#fff;box-shadow:0 4px 20px rgba(20,28,46,.07)}
@@ -1001,34 +1015,6 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .step-qol-num{display:block;font-family:'Bebas Neue',sans-serif;color:#EAB308;font-size:clamp(2rem,3vw,2.8rem);line-height:1;letter-spacing:.02em}
 .step-qol-text{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.85rem;line-height:1.5;color:var(--blue);margin-top:6px}
 
-/* section 4 (Responsible Operations) — left column: image (top, full width) →
-   number+title on one line → subheader, stacked naturally */
-.step4-leftcol{display:flex;flex-direction:column}
-.step4-img{width:100%;height:200px;border-radius:6px;overflow:hidden;margin-bottom:16px}
-.step[data-step="4"] .step4-img .step-hero-img{width:100%;height:100%;margin:0;float:none;border-radius:0;object-fit:cover;display:block}
-.step4-numtitle{display:flex;align-items:flex-end;gap:10px}
-.step4-numtitle .step-num{margin:0}
-.step4-numtitle .step-name{margin:0}
-/* subheader directly below the number/title row with the same small 8px gap */
-.step4-leftcol .step-subhead{margin:8px 0 0}
-/* donut column — center the donut and let it fill the matched column height.
-   padding-left:24px gives the (now full-height) donut breathing room from the
-   left-column content. */
-.step4-donutcol{display:flex;align-items:center;justify-content:center;padding-left:24px}
-
-/* section 4 (Responsible Operations) — water-recycled SVG donut.
-   The donut chart itself; positioned by the section layout. */
-/* fill the donut column: the chart stretches to the full matched height and the
-   SVG (preserveAspectRatio meet) scales the circular donut to fit, centered. */
-.water-donut{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.wd-chart{position:relative;width:100%;height:100%}
-/* absolute so the 1:1 SVG never imposes its own (width-derived) height on the
-   column — the donut fills the height the LEFT column dictates and stays circular */
-.wd-svg{position:absolute;inset:0;display:block;width:100%;height:100%}
-/* center labels are SVG <text>: fill (not color) for the paint, font-size in
-   viewBox user units so they scale up proportionally with the donut */
-.wd-pct{fill:#22C55E;font-family:'Bebas Neue',sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em}
-.wd-cap{fill:rgba(255,255,255,.7);font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:.01em}
 
 /* ── mobile: one column, image full-width on top, stat always below the
    subheader and above the tiles regardless of its desktop position ── */
@@ -1044,12 +1030,6 @@ footer{background:var(--night);padding:54px 5vw 36px}
   .step[data-step="2"] .step-hero-img{float:none;width:100%;margin:0;order:-1}
   /* section 3's image is wrapped, so order the wrapper (not the img) to the top */
   .step[data-step="3"] .step3-imgcol{order:-1}
-  /* section 4: leftcol (image → number+title → subheader) then the donut, centered.
-     The donut fills its column height on desktop; on mobile there is no stretched
-     column to size it against, so give it an explicit square and drop the left pad. */
-  .step[data-step="4"] .step4-donutcol{padding-left:0}
-  .step[data-step="4"] .water-donut{height:auto}
-  .step[data-step="4"] .wd-chart{width:180px;height:180px}
   /* sections 1 & 5: flatten — number, title, subheader, image, fact */
   .step-2col-text{display:contents}
   .step-2col-text > *{margin:0}

@@ -1,0 +1,16 @@
+// Accent-colored download button for a step page's one-pager PDF. Rendered at the
+// bottom of the article and inherits the page's --accent. `download` prompts a
+// file download rather than navigating.
+export default function OnePagerDownload({ href, label }) {
+  return (
+    <a className="onepager-cta" href={href} download>
+      <svg className="onepager-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 3v12" />
+        <path d="m7 10 5 5 5-5" />
+        <path d="M5 21h14" />
+      </svg>
+      <span>{label} <span className="onepager-cta-ext">(PDF)</span></span>
+    </a>
+  );
+}

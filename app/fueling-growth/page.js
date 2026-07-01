@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import BuildingBlocksStats from '@/components/graphics/BuildingBlocksStats';
 import FutureDemand from '@/components/graphics/FutureDemand';
+import OnePagerDownload from '../components/OnePagerDownload';
 
 export const metadata = { title: "Fueling Texas' Growth — How Texas Is Built" };
 
@@ -65,6 +66,7 @@ export default function WhyPage() {
         <FutureDemand accentColor={ACCENT} />
         <p>Today&apos;s growth is only the start. To keep pace, experts estimate Texas could need 15 to 50 million additional tons of aggregates over the next decade alone &mdash; plus another 3 to 10 million cubic yards of ready-mix concrete and 1 to 3 million additional tons of cement. The demand is already here. The question is whether supply keeps up.</p>
         <div style={{ clear: 'both' }} />
+        <OnePagerDownload href="/one-pagers/fueling-the-texas-miracle.pdf" label="Download the Fueling the Texas Miracle one-pager" />
       </article>
     </div>
   );

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import RegulationHero from '@/components/graphics/RegulationHero';
 import RegulationStats from '@/components/graphics/RegulationStats';
+import OnePagerDownload from '../components/OnePagerDownload';
 
 export const metadata = { title: 'Responsible Operations — How Texas Is Built' };
 
@@ -53,6 +54,7 @@ export default function OperationsPage() {
         <p>Water is one of Texas&apos; most valuable natural resources &mdash; essential to the health, growth, and quality of life of every community. As the state grows, responsible water stewardship protects rivers, lakes, aquifers, and groundwater, and makes sure future generations have the water they need to thrive.</p>
         <p>Operations are built to protect it. Water is responsibly managed and frequently recycled on-site, with processes like aggregates washing running on closed-loop systems that can recycle roughly <strong>92% to 98%</strong> of the water they use. Local groundwater conservation districts and aquifer authorities oversee water use to protect long-term regional supply. Stormwater, sediment, and erosion are managed with retention ponds, berms, and drainage controls that protect nearby waterways. Operations protect groundwater under strict permits with ongoing monitoring and reporting. And Best Management Practices are in place throughout to prevent contamination and protect surrounding ecosystems.</p>
         <div style={{ clear: 'both' }} />
+        <OnePagerDownload href="/one-pagers/protecting-texas-resources.pdf" label="Download the Protecting Texas one-pager" />
       </article>
     </div>
   );

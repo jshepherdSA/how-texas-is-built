@@ -3,6 +3,7 @@ import EconomicImpactStats from '@/components/graphics/EconomicImpactStats';
 import JobsAndCareers from '@/components/graphics/JobsAndCareers';
 import CareersGrid from '@/components/graphics/CareersGrid';
 import RippleEffect from '@/components/graphics/RippleEffect';
+import OnePagerDownload from '../components/OnePagerDownload';
 
 export const metadata = { title: 'Jobs & Economic Impact — How Texas Is Built' };
 
@@ -51,6 +52,8 @@ export default function EconomicPage() {
         <div style={{ clear: 'both' }} />
         <h2>Affordability starts with local access</h2>
         <p>There&apos;s a reason all of this stays close to home. Transportation can drive up to <strong>70%</strong> of the total cost of materials. Aggregate deposits are limited and fixed in place, so local access is what keeps roads, homes, schools, and hospitals affordable for Texas families and taxpayers. It works like a chain. Affordable, locally sourced materials lower construction costs. Lower costs keep projects on budget and on schedule. That makes homes, schools, roads, and services more affordable for families. And that builds stronger communities &mdash; more investment, more jobs, a higher quality of life. Affordable materials. Affordable communities. That&apos;s how Texas thrives.</p>
+        <div style={{ clear: 'both' }} />
+        <OnePagerDownload href="/one-pagers/affordable-materials.pdf" label="Download the Affordable Materials one-pager" />
       </article>
     </div>
   );

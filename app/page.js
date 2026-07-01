@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import StepIndicator from './components/StepIndicator';
 import HeroVideo from './components/HeroVideo';
-import WaterRecycledDonut from '@/components/graphics/WaterRecycledDonut';
 
 /* ------------------------------------------------------------------
    Journey content — extracted from journey-outline.pdf.
@@ -89,7 +88,7 @@ const STEP_COLORS = ['#F97316', '#3B82F6', '#8B5CF6', '#22C55E', '#EAB308'];
 //   · Step 1 — large "400 tons" feature number on its own line above the sentence.
 //   · Step 2 — 2×2 grid of figures.
 //   · Step 3 — stat removed (transportation footnote deleted per brief).
-//   · Step 4 — replaced by the <WaterRecycledDonut/> SVG, rendered below the subhead.
+//   · Step 4 — no stat callout (water-recycled donut removed).
 //   · Step 5 — replaced by the full-width yellow fact tile, rendered below the tiles.
 function renderStat(num) {
   switch (num) {
@@ -216,22 +215,16 @@ export default function HomePage() {
                     </div>
                   </>
                 ) : step.num === 4 ? (
-                  /* Responsible Operations: left column = image (top, full column
-                     width) → number+title on one line → subheader. Right column =
-                     donut, vertically centered in the matched (stretched) height. */
+                  /* Responsible Operations: heading lines on the left, image on the
+                     right — same two-column pattern as steps 1 & 5 (no stat/fact). */
                   <>
-                    <div className="step4-leftcol">
-                      <div className="step4-img">
-                        <img className="step-hero-img" src={step.img} alt={step.name} />
-                      </div>
-                      <div className="step4-numtitle">
-                        <span className="step-num">{stepNum}</span>
-                        <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
-                      </div>
+                    <div className="step-2col-text">
+                      <span className="step-num">{stepNum}</span>
+                      <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
                     </div>
-                    <div className="step4-donutcol">
-                      <WaterRecycledDonut />
+                    <div className="step-2col-img">
+                      <img className="step-hero-img" src={step.img} alt={step.name} />
                     </div>
                   </>
                 ) : step.num === 1 ? (
