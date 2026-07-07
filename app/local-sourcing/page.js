@@ -3,17 +3,20 @@ import LocalSourcingFact from '@/components/graphics/LocalSourcingFact';
 
 export const metadata = { title: 'Why Local Sourcing Matters — How Texas Is Built' };
 
-// Step 3 accent — Local Sourcing
-const ACCENT = '#8B5CF6';
+// Body + graphics use brand navy; the hero keeps step 3's icon color
+// (tire teal).
+const ACCENT = '#002868';
+const HERO_ACCENT = '#00BACD';
 
 export default function CommunityPage() {
   return (
-    <div className="page--accent" style={{ '--accent': ACCENT }}>
+    <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
       <header className="page-hero" style={{ '--hero-img': 'url(/images/111137539-top-down-shot-highway-passing-.jpeg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
+            <span className="page-hero-icon"><img src="/images/icons/tire.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Why Local Sourcing Matters</p>
             <h1 className="page-hero-title">Building Texas Affordably<br /><span className="red">Starts Close to Home</span></h1>
             <p className="page-hero-sub">Transportation can account for up to 70% of the delivered cost — which makes local access critical to affordability.</p>

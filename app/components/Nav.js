@@ -11,7 +11,13 @@ const LINKS = [
   { href: '/responsible', label: 'Responsible Operations' },
   { href: '/local-sourcing', label: 'Local Sourcing' },
   { href: '/quality', label: 'Quality of Life' },
+];
+
+// Items grouped under the red "Learn More" dropdown (desktop).
+const LEARN_MORE_LINKS = [
+  { href: '/take-action', label: 'Take Action' },
   { href: '/insights', label: 'News & Insights' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 const MENU_LINKS = [
@@ -21,6 +27,7 @@ const MENU_LINKS = [
   { href: '/local-sourcing', label: 'Why Local Sourcing Matters' },
   { href: '/quality', label: 'Quality of Life' },
   { href: '/insights', label: 'News & Insights' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Nav() {
@@ -55,7 +62,16 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <Link href="/take-action" className="nav-cta">Take Action</Link>
+        <div className="nav-cta-wrap">
+          <button type="button" className="nav-cta" aria-haspopup="true">
+            Learn More<span className="nav-cta-caret" aria-hidden="true">▾</span>
+          </button>
+          <div className="nav-cta-menu" role="menu">
+            {LEARN_MORE_LINKS.map((l) => (
+              <Link key={l.href} href={l.href} role="menuitem" className={pathname === l.href ? 'active' : ''}>{l.label}</Link>
+            ))}
+          </div>
+        </div>
         <button
           className={'nav-btn' + (open ? ' open' : '')}
           id="nav-btn"

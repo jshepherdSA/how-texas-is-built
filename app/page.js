@@ -19,6 +19,7 @@ const STEPS = [
     name: 'Texas Is Growing',
     subhead: 'Building the Texas Miracle',
     route: '/fueling-growth',
+    icon: '/images/icons/statesilhouette.png',
     img: '/images/home/H-%20texas%20is%20growing.jpg',
     points: [
       { title: 'The Texas Miracle', text: 'Favorable business and tax environment leads to the highest population growth rate in the nation.' },
@@ -32,6 +33,7 @@ const STEPS = [
     name: 'Economic Impact',
     subhead: 'Affordable Materials. Local Jobs. A Stronger Texas.',
     route: '/jobs',
+    icon: '/images/icons/penny.png',
     img: '/images/home/H-%20economic%20impact.jpg',
     points: [
       { title: 'An Economic Engine', text: 'The Texas aggregates and concretes industry produces $10B+ of Annual Economic Activity.' },
@@ -44,6 +46,7 @@ const STEPS = [
     name: 'Local Sourcing',
     subhead: 'Building Texas Affordably Starts Close to Home',
     route: '/local-sourcing',
+    icon: '/images/icons/tire.png',
     img: '/images/home/H-%20local%20sourcing.jpg',
     // NOTE: the outline lists only two supporting points for Local Sourcing
     // (no "d."). The first point combines its two sentences (i. + ii.).
@@ -57,6 +60,7 @@ const STEPS = [
     name: 'Responsible Operations',
     subhead: 'Protecting Texas Resources While Building Its Future',
     route: '/responsible',
+    icon: '/images/icons/bluebonnet.png',
     img: '/images/home/H-%20responsible%20operations.jpg',
     points: [
       { title: 'Strictly Regulated, Monitored, and Accountable', text: 'Aggregates and concrete operations are regulated heavily with strict oversight from multiple agencies at every level of government.' },
@@ -69,6 +73,7 @@ const STEPS = [
     name: 'Quality of Life',
     subhead: 'Supporting Growth Starts with Infrastructure',
     route: '/quality',
+    icon: '/images/icons/star.png',
     img: '/images/home/H-%20quality%20of%20life.jpg',
     points: [
       { title: 'Making the Texas Miracle Possible', text: 'Businesses often choose locations based on infrastructure quality. Strong infrastructure helps communities compete for investment, which fuels the Texas Miracle.' },
@@ -78,9 +83,13 @@ const STEPS = [
   },
 ];
 
-// Per-step accent color (left → right). Drives both the hero journey button
-// borders and each step component's accents — defined once, referenced throughout.
-const STEP_COLORS = ['#F97316', '#3B82F6', '#8B5CF6', '#22C55E', '#EAB308'];
+// Per-step ICON color (left → right), sampled from each step's badge icon. Used
+// only where the design keeps a per-step identity: the step numbers (01–05) and
+// the left scroll indicator. Everything else uses the brand red (--step-color).
+//   1 Texas Is Growing (statesilhouette) · 2 Economic Impact (penny) ·
+//   3 Local Sourcing (tire) · 4 Responsible Operations (bluebonnet) ·
+//   5 Quality of Life (star)
+const ICON_COLORS = ['#F75200', '#007D02', '#00BACD', '#5F00F4', '#FFD400'];
 
 // One stat callout per section. Never boxed; the number sits inline in Bebas Neue
 // accent color. Position within each section is handled by where this is slotted
@@ -144,8 +153,8 @@ export default function HomePage() {
             (.hero-journey-btn::after), so every box is the same height regardless of
             how many lines its name wraps to. */}
         <nav className="hero-journey" aria-label="The How Texas Is Built journey">
-          {STEPS.map((s, i) => (
-            <Link key={s.num} href={s.route} className="hero-journey-btn" style={{ '--bc': STEP_COLORS[i] }}>
+          {STEPS.map((s) => (
+            <Link key={s.num} href={s.route} className="hero-journey-btn">
               <span className="hero-journey-name">{s.name}</span>
             </Link>
           ))}
@@ -177,12 +186,12 @@ export default function HomePage() {
 
       {/* CHANGE 2 — fixed left-side parallax step indicator (desktop only).
           Shows each step's full title, colored with its accent when active. */}
-      <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: STEP_COLORS[i] }))} />
+      <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: ICON_COLORS[i] }))} />
 
       {/* Five journey step components — same room, rearranged per section: image
           side, tile orientation, and one stat callout vary by data-step. */}
       {STEPS.map((step) => {
-        const dark = step.num % 2 === 0; // alternate navy / off-white
+        const gray = step.num % 2 === 0; // steps 2 & 4 alternate to a light-gray bg
         const stepNum = String(step.num).padStart(2, '0');
         const stat = renderStat(step.num);
         return (
@@ -190,8 +199,8 @@ export default function HomePage() {
             key={step.num}
             data-step={step.num}
             id={`step-${step.num}`}
-            className={`step ${dark ? 'step--dark' : 'step--light'}`}
-            style={{ '--step-color': STEP_COLORS[step.num - 1] }}
+            className={`step step--light${gray ? ' step--gray' : ''}`}
+            style={{ '--step-icon': ICON_COLORS[step.num - 1] }}
           >
             <div className="step-inner">
               <div className="step-head-text reveal">
@@ -202,6 +211,7 @@ export default function HomePage() {
                      lines up with the image's bottom edge. */
                   <>
                     <div className="step3-textcol">
+                      <img className="step-icon" src={step.icon} alt="" aria-hidden="true" />
                       <span className="step-num">{stepNum}</span>
                       <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
@@ -219,6 +229,7 @@ export default function HomePage() {
                      right — same two-column pattern as steps 1 & 5 (no stat/fact). */
                   <>
                     <div className="step-2col-text">
+                      <img className="step-icon" src={step.icon} alt="" aria-hidden="true" />
                       <span className="step-num">{stepNum}</span>
                       <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
@@ -232,6 +243,7 @@ export default function HomePage() {
                      (space-between → box pinned to the bottom) beside the image. */
                   <>
                     <div className="step-2col-text">
+                      <img className="step-icon" src={step.icon} alt="" aria-hidden="true" />
                       <span className="step-num">{stepNum}</span>
                       <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
@@ -246,6 +258,7 @@ export default function HomePage() {
                      text column (space-between → stat pinned to the bottom). */
                   <>
                     <div className="step-2col-text">
+                      <img className="step-icon" src={step.icon} alt="" aria-hidden="true" />
                       <span className="step-num">{stepNum}</span>
                       <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>
@@ -267,6 +280,7 @@ export default function HomePage() {
                       <img className="step-hero-img" src={step.img} alt={step.name} />
                     </div>
                     <div className="step-2col-text">
+                      <img className="step-icon" src={step.icon} alt="" aria-hidden="true" />
                       <span className="step-num">{stepNum}</span>
                       <h2 className="step-name"><Link href={step.route} className="step-name-link">{step.name}</Link></h2>
                       <p className="step-subhead">{step.subhead}</p>

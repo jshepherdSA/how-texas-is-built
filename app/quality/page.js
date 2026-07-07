@@ -3,17 +3,20 @@ import CommunityBenefits from '@/components/graphics/CommunityBenefits';
 
 export const metadata = { title: 'Quality of Life — How Texas Is Built' };
 
-// Step 5 accent — Quality of Life
-const ACCENT = '#EAB308';
+// Body + graphics use brand navy; the hero keeps step 5's icon color
+// (star gold).
+const ACCENT = '#002868';
+const HERO_ACCENT = '#FFD400';
 
 export default function QualityPage() {
   return (
-    <div className="page--accent" style={{ '--accent': ACCENT }}>
+    <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
       <header className="page-hero" style={{ '--hero-img': 'url(/images/038808855-beautiful-city-buildings-green.jpg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
+            <span className="page-hero-icon"><img src="/images/icons/star.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Quality of Life</p>
             <h1 className="page-hero-title">Quality of Life<br /><span className="red">Starts with Infrastructure</span></h1>
             <p className="page-hero-sub">Shorter commutes, safer roads, affordable homes, reliable water — the everyday benefits Texans rely on, supported by the materials that make them possible.</p>

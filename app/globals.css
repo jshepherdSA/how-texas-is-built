@@ -142,14 +142,43 @@ a{color:inherit}
 }
 .nav-links a:hover{color:#fff;border-bottom-color:var(--red)}
 .nav-links a.active{color:#fff;border-bottom-color:var(--red)}
+/* "Learn More" dropdown trigger (red pill). Wrapper anchors the menu and holds
+   the left margin so the pill itself can be a bare <button>. */
+.nav-cta-wrap{position:relative;margin-left:14px}
 .nav-cta{
-  margin-left:14px;padding:11px 22px;background:var(--red);color:#fff !important;
+  padding:11px 22px;background:var(--red);color:#fff !important;
+  border:none;cursor:pointer;font-family:inherit;
   border-radius:999px;display:flex;align-items:center;justify-content:center;text-align:center;
   min-width:140px;white-space:nowrap;
   font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   text-decoration:none;border-bottom:none !important;transition:background .2s,transform .15s;
 }
 .nav-cta:hover{background:var(--red-dark);transform:translateY(-1px)}
+.nav-cta-caret{margin-left:7px;font-size:.62rem;line-height:1;transition:transform .2s}
+.nav-cta-wrap:hover .nav-cta-caret,
+.nav-cta-wrap:focus-within .nav-cta-caret{transform:rotate(180deg)}
+/* dropdown panel — opens on hover or keyboard focus (desktop only; the mobile
+   layout uses the hamburger menu, which lists these same destinations). */
+.nav-cta-menu{
+  position:absolute;top:calc(100% + 10px);right:0;min-width:210px;z-index:101;
+  background:#0d1525;border:1px solid rgba(255,255,255,.1);border-radius:10px;
+  box-shadow:0 14px 34px rgba(0,0,0,.5);padding:6px;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s;
+}
+/* transparent bridge across the 10px gap so hover doesn't drop between the
+   button and the panel */
+.nav-cta-menu::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+.nav-cta-wrap:hover .nav-cta-menu,
+.nav-cta-wrap:focus-within .nav-cta-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-cta-menu a{
+  display:block;padding:11px 14px;border-radius:6px;
+  color:rgba(255,255,255,.82);text-decoration:none;white-space:nowrap;
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:color .15s,background .15s;
+}
+.nav-cta-menu a:hover,.nav-cta-menu a:focus-visible,.nav-cta-menu a.active{color:#fff;background:rgba(255,255,255,.08)}
 
 /* hamburger (mobile) */
 .nav-btn{
@@ -180,7 +209,7 @@ a{color:inherit}
 #scrim.open{display:block}
 
 @media(max-width:1080px){
-  .nav-links,.nav-cta{display:none}
+  .nav-links,.nav-cta-wrap{display:none}
   .nav-btn{display:flex}
 }
 
@@ -190,6 +219,8 @@ a{color:inherit}
   padding:0 0 64px;overflow:hidden;
 }
 .page-hero--tall{min-height:86vh;align-items:center}
+/* shorter hero for utility pages (e.g. Contact) so the content below sits higher */
+.page-hero--compact{min-height:52vh}
 .page-hero-bg{
   position:absolute;inset:0;
   background-image:var(--hero-img);background-size:cover;background-position:center;
@@ -205,6 +236,14 @@ a{color:inherit}
 }
 .page-hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 5vw;width:100%}
 .page-hero-content{max-width:840px;padding-top:90px}
+/* step-page hero badge — the step's icon on a white coin so it reads on any hero
+   photo (the icon's own color already matches the hero accent below it) */
+.page-hero-icon{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:88px;height:88px;border-radius:50%;background:#fff;
+  box-shadow:0 10px 26px rgba(0,0,0,.3);margin-bottom:24px;
+}
+.page-hero-icon img{width:60px;height:60px;object-fit:contain;display:block}
 .page-hero-title{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(2.8rem,7.5vw,6.5rem);line-height:.96;letter-spacing:.02em;color:#fff;margin-bottom:22px;
@@ -222,6 +261,14 @@ a{color:inherit}
 }
 .page-hero-tagline span{display:inline-flex;align-items:center;gap:8px}
 .page-hero-tagline .dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ── Contact page ───────────────────────────────────── */
+.contact-form-section{background:var(--off-white);padding:52px 0 84px}
+.contact-form-wrap{max-width:760px;margin:0 auto;padding:0 5vw}
+/* reserve height so the section doesn't jump while the JotForm iframe loads;
+   the embedded iframe reports its own height and self-resizes after load */
+.jotform-embed{min-height:600px}
+.jotform-embed iframe{width:100%;border:none}
 
 /* ── STAT components ────────────────────────────────── */
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -848,11 +895,15 @@ footer{background:var(--night);padding:54px 5vw 36px}
 }
 
 /* ── CHANGE 3: journey step components (conservative per-section arrangement) ── */
-/* each <section.step> sets --step-color inline; defaults to brand red. Same room
-   across all five — only the image side, tile orientation, and stat position vary. */
-.step{padding:104px 0;border-top:4px solid var(--step-color);--step-color:var(--red)}
+/* Each section sets --step-icon (its badge color) inline. --step-color is the
+   structural/neutral accent (top border, tile hover) and defaults to brand navy;
+   the per-step icon color is reserved for identity elements (number, name, stat).
+   Same room across all five — only image side, tile orientation, stat position vary. */
+.step{padding:104px 0;border-top:4px solid var(--step-color);--step-color:var(--blue)}
 .step--light{background:var(--off-white);color:var(--ink)}
-.step--dark{background:linear-gradient(170deg,var(--charcoal) 0%,var(--night) 100%);color:#fff}
+/* steps 2 & 4 alternate with a slightly darker light-gray background (they keep
+   the light-section dark text + white tiles). */
+.step--gray{background:#E7EBF1}
 /* vertical flow so the stat callout can be ordered before or after the tiles */
 .step-inner{max-width:var(--maxw);margin:0 auto;padding:0 6vw;display:flex;flex-direction:column;gap:48px}
 
@@ -869,23 +920,29 @@ footer{background:var(--night);padding:54px 5vw 36px}
      on the dark sections (matches the .gfx-label infographic convention) */
   display:block;font-family:'Bebas Neue',sans-serif;font-weight:600;
   font-size:.8rem;letter-spacing:.32em;margin-bottom:10px;
-  color:var(--step-color);
+  /* the step number (01–05) carries its per-step icon color */
+  color:var(--step-icon,var(--step-color));
 }
+/* per-step badge — a colored circular emblem that sits above the step number.
+   Square source art, so a fixed box + object-contain keeps every icon the same
+   visual size regardless of its native pixel dimensions. */
+.step-icon{display:block;width:64px;height:64px;object-fit:contain;margin-bottom:12px}
 .step-name{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(2.4rem,5vw,4rem);line-height:.98;letter-spacing:.02em;margin-bottom:14px;
+  /* the title carries the step's icon color (same as the number) */
+  color:var(--step-icon,var(--step-color));
 }
-.step--light .step-name{color:var(--charcoal)}
-.step--dark .step-name{color:#fff}
-/* the title links to that step's dedicated page — inherit the heading's color so
-   the look is unchanged, then shift to the section accent on hover/focus as the
-   clickable affordance */
-.step-name-link{color:inherit;text-decoration:none;transition:color .2s ease}
-.step-name-link:hover,.step-name-link:focus-visible{color:var(--step-color)}
+/* the title links to that step's dedicated page — inherit the heading's icon
+   color, then fade slightly on hover/focus as the clickable affordance (an
+   opacity shift reads on both the light and dark sections) */
+.step-name-link{color:inherit;text-decoration:none;transition:opacity .2s ease}
+.step-name-link:hover,.step-name-link:focus-visible{opacity:.72}
 .step-subhead{
   font-family:'Libre Baskerville',serif;font-style:italic;
   font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.4;max-width:620px;
-  color:var(--step-color);
+  /* neutral tagline — steps away from the accent so the section reads calmer */
+  color:#5a6577;
 }
 /* section 2: force the subhead onto a single line on desktop. The clamp scales
    the size down at narrower desktop/tablet widths so it always fits; mobile
@@ -900,11 +957,11 @@ footer{background:var(--night);padding:54px 5vw 36px}
 /* stats live in the space-between text columns (sections 1 & 2) — no margin so
    the flex distribution stays even */
 .step-head-text .step-stat{margin:0}
-.step-stat-num{font-family:'Bebas Neue',sans-serif;color:var(--step-color);font-size:1.15em;letter-spacing:.03em}
+.step-stat-num{font-family:'Bebas Neue',sans-serif;color:var(--step-icon,var(--step-color));font-size:1.15em;letter-spacing:.03em}
 /* step 1 — large feature number on its own line, sentence (current size) beneath */
 .step-stat--feature{display:flex;flex-direction:column;gap:6px;max-width:620px}
 /* step 1 — "400 tons": plain orange number, no box/background/padding */
-.step-stat-bignum{align-self:flex-start;color:#F97316;font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1;letter-spacing:.02em}
+.step-stat-bignum{align-self:flex-start;color:var(--step-icon,var(--step-color));font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1;letter-spacing:.02em}
 .step-stat-caption{font-family:'DM Sans',sans-serif;font-size:.95rem;line-height:1.6;color:inherit}
 /* step 2 — two big numbers spanning the full column width, each centered */
 .step-stat--grid{display:flex;justify-content:space-between;width:100%;gap:24px}
@@ -1000,19 +1057,16 @@ footer{background:var(--night);padding:54px 5vw 36px}
   .step[data-step="5"] .step-inner{gap:24px}
 }
 .step--light .step-tile{background:#fff;box-shadow:0 4px 20px rgba(20,28,46,.07)}
-.step--dark .step-tile{background:rgba(255,255,255,.05)}
 .step-tile:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(20,28,46,.14);background:color-mix(in srgb,var(--step-color) 12%,transparent)}
 .step-tile-title{font-family:'Libre Baskerville',serif;font-size:1.12rem;line-height:1.3;margin-bottom:12px}
 .step--light .step-tile-title{color:var(--charcoal)}
-.step--dark .step-tile-title{color:#fff}
 .step-tile-text{font-size:.92rem;line-height:1.65}
 .step--light .step-tile-text{color:#5a6577}
-.step--dark .step-tile-text{color:rgba(255,255,255,.74)}
 
 /* section 5 (Quality of Life) — editorial stat: large yellow number anchoring a
    dark-navy sentence beneath it. No box/tile/border — plain stacked text. */
 .step-qol-fact{margin:0}
-.step-qol-num{display:block;font-family:'Bebas Neue',sans-serif;color:#EAB308;font-size:clamp(2rem,3vw,2.8rem);line-height:1;letter-spacing:.02em}
+.step-qol-num{display:block;font-family:'Bebas Neue',sans-serif;color:var(--step-icon,var(--step-color));font-size:clamp(2rem,3vw,2.8rem);line-height:1;letter-spacing:.02em}
 .step-qol-text{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.85rem;line-height:1.5;color:var(--blue);margin-top:6px}
 
 
@@ -1060,15 +1114,15 @@ footer{background:var(--night);padding:54px 5vw 36px}
 }
 
 /* ── Step-page accents ────────────────────────────────────
-   Each step page wraps its content in .page--accent and sets
-   --accent inline. These rules recolor the shared red accents to
-   that step's color, scoped so the nav, footer, and other pages
-   (e.g. /insights) keep the brand red. */
-.page--accent .page-hero{border-top:5px solid var(--accent)}
-.page--accent .eyebrow{color:var(--accent)}
-.page--accent .eyebrow::before{background:var(--accent)}
-.page--accent .page-hero-title .red{color:var(--accent)}
-.page--accent .page-hero-tagline .dot{background:var(--accent)}
+   Each step page wraps its content in .page--accent. Body + graphics use the
+   brand red (--accent), while the HERO text keeps that step's icon color via
+   --hero-accent (falls back to --accent if a page doesn't set one). Scoped so
+   the nav, footer, and other pages (e.g. /insights) stay brand red. */
+.page--accent .page-hero{border-top:5px solid var(--hero-accent,var(--accent))}
+.page--accent .eyebrow{color:var(--hero-accent,var(--accent))}
+.page--accent .eyebrow::before{background:var(--hero-accent,var(--accent))}
+.page--accent .page-hero-title .red{color:var(--hero-accent,var(--accent))}
+.page--accent .page-hero-tagline .dot{background:var(--hero-accent,var(--accent))}
 .page--accent .article-kicker{color:var(--accent)}
 .page--accent .article a.inline{color:var(--accent);border-bottom-color:color-mix(in srgb,var(--accent) 38%,transparent)}
 .page--accent .article a.inline:hover{border-bottom-color:var(--accent)}
@@ -1097,7 +1151,7 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .gfx-label{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;font-weight:700;color:var(--charcoal)}
 /* unit label split out from the big stat (BuildingBlocksStats, FutureDemand) so
    the figure never wraps — small uppercase line directly beneath the number */
-.gfx-unit{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;font-weight:600;letter-spacing:.08em;color:#F97316;margin-top:2px;margin-bottom:12px}
+.gfx-unit{font-family:'DM Sans',sans-serif;text-transform:uppercase;font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--accent,var(--red));margin-top:2px;margin-bottom:12px}
 .gfx-desc{font-family:'DM Sans',sans-serif;font-size:.88rem;line-height:1.45;color:var(--ink-soft)}
 .gfx-card-title{font-family:'Bebas Neue',sans-serif;color:var(--accent);font-size:1.3rem;letter-spacing:.02em;line-height:1.06}
 

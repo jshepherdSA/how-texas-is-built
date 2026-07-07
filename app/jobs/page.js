@@ -7,17 +7,20 @@ import OnePagerDownload from '../components/OnePagerDownload';
 
 export const metadata = { title: 'Jobs & Economic Impact — How Texas Is Built' };
 
-// Step 2 accent — Economic Impact
-const ACCENT = '#3B82F6';
+// Body + graphics use brand navy; the hero keeps step 2's icon color
+// (penny green).
+const ACCENT = '#002868';
+const HERO_ACCENT = '#007D02';
 
 export default function EconomicPage() {
   return (
-    <div className="page--accent" style={{ '--accent': ACCENT }}>
+    <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
       <header className="page-hero" style={{ '--hero-img': 'url(/images/038808855-beautiful-city-buildings-green.jpg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
+            <span className="page-hero-icon"><img src="/images/icons/penny.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Jobs &amp; Economic Impact</p>
             <h1 className="page-hero-title">Affordable Materials.<br /><span className="red">Local Jobs.</span> A Stronger Texas.</h1>
             <p className="page-hero-sub">A $10+ billion economic engine supporting more than 100,000 Texas jobs and enabling affordable infrastructure across the state.</p>

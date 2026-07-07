@@ -5,17 +5,20 @@ import OnePagerDownload from '../components/OnePagerDownload';
 
 export const metadata = { title: 'Responsible Operations — How Texas Is Built' };
 
-// Step 4 accent — Responsible Operations
-const ACCENT = '#22C55E';
+// Body + graphics use brand navy; the hero keeps step 4's icon color
+// (bluebonnet violet).
+const ACCENT = '#002868';
+const HERO_ACCENT = '#5F00F4';
 
 export default function OperationsPage() {
   return (
-    <div className="page--accent" style={{ '--accent': ACCENT }}>
+    <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
       <header className="page-hero page-hero--green" style={{ '--hero-img': 'url(/images/081545197-november-evening-pennybacker-b.jpeg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
+            <span className="page-hero-icon"><img src="/images/icons/bluebonnet.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow green">Responsible Operations</p>
             <h1 className="page-hero-title">Protecting Texas&apos; Resources<br /><span className="light">While Building Its Future</span></h1>
             <p className="page-hero-sub">Responsible operations. Strong communities. A better Texas for generations to come.</p>
