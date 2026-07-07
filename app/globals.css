@@ -155,8 +155,7 @@ a{color:inherit}
 }
 .nav-cta:hover{background:var(--red-dark);transform:translateY(-1px)}
 .nav-cta-caret{margin-left:7px;font-size:.62rem;line-height:1;transition:transform .2s}
-.nav-cta-wrap:hover .nav-cta-caret,
-.nav-cta-wrap:focus-within .nav-cta-caret{transform:rotate(180deg)}
+.nav-cta-wrap.open .nav-cta-caret{transform:rotate(180deg)}
 /* dropdown panel — opens on hover or keyboard focus (desktop only; the mobile
    layout uses the hamburger menu, which lists these same destinations). */
 .nav-cta-menu{
@@ -170,8 +169,7 @@ a{color:inherit}
 /* transparent bridge across the 10px gap so hover doesn't drop between the
    button and the panel */
 .nav-cta-menu::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
-.nav-cta-wrap:hover .nav-cta-menu,
-.nav-cta-wrap:focus-within .nav-cta-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-cta-wrap.open .nav-cta-menu{opacity:1;visibility:visible;transform:translateY(0)}
 .nav-cta-menu a{
   display:block;padding:11px 14px;border-radius:6px;
   color:rgba(255,255,255,.82);text-decoration:none;white-space:nowrap;
@@ -234,16 +232,35 @@ a{color:inherit}
 .page-hero--green .page-hero-overlay{
   background:linear-gradient(165deg,rgba(8,28,18,.82) 0%,rgba(12,51,31,.55) 50%,rgba(10,16,32,.8) 100%);
 }
+/* Light hero (Economic Impact, Responsible Operations): wash the photo to a light
+   ground so the accent color — green / violet, which was low-contrast on the dark
+   photo — reads clearly, and switch the hero copy from white to dark. */
+.page-hero--light .page-hero-bg{filter:brightness(1.24) saturate(.96)}
+.page-hero--light .page-hero-overlay{
+  background:linear-gradient(180deg,rgba(246,247,249,.12) 0%,rgba(246,247,249,.28) 46%,rgba(247,248,250,.54) 100%);
+}
+.page-hero--light .page-hero-title{color:var(--charcoal)}
+/* the secondary title line takes the step's icon color (e.g. Responsible
+   Operations' violet) so it reads as an accent on the light hero */
+.page-hero--light .page-hero-title .light{color:var(--hero-accent,var(--charcoal))}
+.page-hero--light .page-hero-sub{color:var(--ink)}
+/* right-aligned hero (Quality of Life) — the content block hugs the right edge so
+   the left of the photo (the Capitol dome) stays clear */
+.page-hero--right .page-hero-content{margin-left:auto;text-align:right}
+.page-hero--right .eyebrow{justify-content:flex-end}
+.page-hero--right .page-hero-sub{margin-left:auto}
 .page-hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 5vw;width:100%}
 .page-hero-content{max-width:840px;padding-top:90px}
-/* step-page hero badge — the step's icon on a white coin so it reads on any hero
-   photo (the icon's own color already matches the hero accent below it) */
+/* step-page hero badge — the icon with a thin white ring hugging its circle so it
+   reads on any hero photo. The icon fills the disc; the ~4px of white showing
+   around it matches the icon's own ring thickness (≈4.8% of the diameter), so it
+   looks like a second, white outline rather than a coin. */
 .page-hero-icon{
   display:inline-flex;align-items:center;justify-content:center;
-  width:88px;height:88px;border-radius:50%;background:#fff;
-  box-shadow:0 10px 26px rgba(0,0,0,.3);margin-bottom:24px;
+  width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.5);
+  box-shadow:0 6px 16px rgba(0,0,0,.18);margin-bottom:24px;
 }
-.page-hero-icon img{width:60px;height:60px;object-fit:contain;display:block}
+.page-hero-icon img{width:80px;height:80px;object-fit:contain;display:block}
 .page-hero-title{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(2.8rem,7.5vw,6.5rem);line-height:.96;letter-spacing:.02em;color:#fff;margin-bottom:22px;

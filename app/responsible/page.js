@@ -13,7 +13,7 @@ const HERO_ACCENT = '#5F00F4';
 export default function OperationsPage() {
   return (
     <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
-      <header className="page-hero page-hero--green" style={{ '--hero-img': 'url(/images/081545197-november-evening-pennybacker-b.jpeg)' }}>
+      <header className="page-hero page-hero--light" style={{ '--hero-img': 'url(/images/081545197-november-evening-pennybacker-b.jpeg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">

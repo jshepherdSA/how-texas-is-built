@@ -30,10 +30,16 @@ const MENU_LINKS = [
   { href: '/contact', label: 'Contact' },
 ];
 
+// Pages whose hero is a light wash — force the nav to its solid dark background
+// from the top so the white nav text stays legible (rather than transparent).
+const SOLID_NAV_ROUTES = new Set(['/jobs', '/responsible']);
+
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const solid = scrolled || SOLID_NAV_ROUTES.has(pathname);
 
   // nav background on scroll
   useEffect(() => {
@@ -43,14 +49,15 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // close the mobile menu whenever the route changes
+  // close the mobile menu and the "Learn More" dropdown whenever the route changes
   useEffect(() => {
     setOpen(false);
+    setMenuOpen(false);
   }, [pathname]);
 
   return (
     <>
-      <nav id="main-nav" className={scrolled ? 'scrolled' : ''}>
+      <nav id="main-nav" className={solid ? 'scrolled' : ''}>
         <Link href="/" className="nav-logo">
           <Image className="nav-logo-img" src="/images/htib-logo.png" alt="How Texas Is Built" width={46} height={46} />
           <span className="nav-logo-text">How <em>Texas</em> Is Built</span>
@@ -62,13 +69,19 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <div className="nav-cta-wrap">
-          <button type="button" className="nav-cta" aria-haspopup="true">
+        <div
+          className={'nav-cta-wrap' + (menuOpen ? ' open' : '')}
+          onMouseEnter={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
+          onFocus={() => setMenuOpen(true)}
+          onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setMenuOpen(false); }}
+        >
+          <button type="button" className="nav-cta" aria-haspopup="true" aria-expanded={menuOpen}>
             Learn More<span className="nav-cta-caret" aria-hidden="true">▾</span>
           </button>
           <div className="nav-cta-menu" role="menu">
             {LEARN_MORE_LINKS.map((l) => (
-              <Link key={l.href} href={l.href} role="menuitem" className={pathname === l.href ? 'active' : ''}>{l.label}</Link>
+              <Link key={l.href} href={l.href} role="menuitem" className={pathname === l.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>{l.label}</Link>
             ))}
           </div>
         </div>

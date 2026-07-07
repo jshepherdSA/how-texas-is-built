@@ -11,7 +11,7 @@ const HERO_ACCENT = '#FFD400';
 export default function QualityPage() {
   return (
     <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
-      <header className="page-hero" style={{ '--hero-img': 'url(/images/038808855-beautiful-city-buildings-green.jpg)' }}>
+      <header className="page-hero page-hero--right" style={{ '--hero-img': 'url(/images/083961983-capital-building-austin-texas-.jpeg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
