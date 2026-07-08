@@ -162,24 +162,27 @@ export default function HomePage() {
       </section>
 
       {/* Intro video — sits between the hero and the first step (Texas Is Growing).
-          Click-to-play: the poster shows on load and preload="metadata" keeps the
-          page light (the 70MB file only downloads when a visitor presses play). */}
+          Two columns: copy + CTA on the left, the click-to-play video on the right.
+          preload="metadata" keeps the page light (the 70MB file only downloads when
+          a visitor presses play). */}
       <section className="intro-video">
         <div className="intro-video-inner">
-          <h2 className="intro-video-title">What Are Aggregates and Why Are They Important?</h2>
-          <video
-            className="intro-video-el"
-            controls
-            playsInline
-            preload="metadata"
-            poster="/videos/taca-intro-poster.jpg"
-          >
-            <source src="/videos/taca-intro.mp4" type="video/mp4" />
-            Your browser doesn’t support embedded video.
-          </video>
-          <div className="intro-video-def">
-            <p className="intro-video-def-lead">Aggregates are the granular materials at the foundation of nearly everything we build &mdash; sand, gravel, crushed stone, and recycled concrete.</p>
-            <p>Combined with cement and water, they become the concrete in our homes, schools, and hospitals; bound with asphalt, they pave the roads that connect us. They&rsquo;re the most-used building material on Earth &mdash; and as Texas grows, a steady, locally sourced supply is what keeps that growth affordable and our communities strong.</p>
+          <div className="intro-video-text reveal">
+            <h2 className="intro-video-title">Aggregates &amp; Concrete: The Foundation of Texas</h2>
+            <p className="intro-video-def-lead">What begins as limestone, sand, and gravel becomes the roads we drive, the schools our children attend, the homes we live in, and the infrastructure that powers Texas. Explore the simple process that transforms natural resources into the building blocks of our communities.</p>
+            <Link href="/how-its-made" className="intro-video-btn">Learn how aggregates &amp; concrete are made</Link>
+          </div>
+          <div className="intro-video-media reveal">
+            <video
+              className="intro-video-el"
+              controls
+              playsInline
+              preload="metadata"
+              poster="/videos/taca-intro-poster.jpg"
+            >
+              <source src="/videos/taca-intro.mp4" type="video/mp4" />
+              Your browser doesn’t support embedded video.
+            </video>
           </div>
         </div>
       </section>

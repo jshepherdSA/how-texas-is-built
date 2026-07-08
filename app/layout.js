@@ -2,7 +2,7 @@ import './globals.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Reveal from './components/Reveal';
-import NewsletterCTA from './components/NewsletterCTA';
+import TakeActionCTA from './components/TakeActionCTA';
 
 export const metadata = {
   title: 'How Texas Is Built',
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         <Nav />
         <main>{children}</main>
-        <NewsletterCTA />
+        <TakeActionCTA />
         <Footer />
         <Reveal />
       </body>

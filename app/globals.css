@@ -251,16 +251,18 @@ a{color:inherit}
 .page-hero--right .page-hero-sub{margin-left:auto}
 .page-hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 5vw;width:100%}
 .page-hero-content{max-width:840px;padding-top:90px}
-/* step-page hero badge — the icon with a thin white ring hugging its circle so it
-   reads on any hero photo. The icon fills the disc; the ~4px of white showing
-   around it matches the icon's own ring thickness (≈4.8% of the diameter), so it
-   looks like a second, white outline rather than a coin. */
+/* step-page hero badge — the step's icon at the top of the hero content. */
 .page-hero-icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.5);
-  box-shadow:0 6px 16px rgba(0,0,0,.18);margin-bottom:24px;
+  display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;
 }
 .page-hero-icon img{width:80px;height:80px;object-fit:contain;display:block}
+/* Only Responsible Operations keeps a translucent white ring behind its icon; the
+   ~4px of white showing around it matches the icon's own ring thickness so it reads
+   as a second, white outline. */
+.page-hero-icon--ring{
+  width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.5);
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
 .page-hero-title{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(2.8rem,7.5vw,6.5rem);line-height:.96;letter-spacing:.02em;color:#fff;margin-bottom:22px;
@@ -502,6 +504,7 @@ a{color:inherit}
 .signup-form button{padding:14px 30px;background:var(--red);color:#fff;border:2px solid var(--red);border-radius:3px;font-weight:700;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,transform .15s}
 .signup-form button:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-2px)}
 .signup-fine{margin-top:14px;font-size:.74rem;color:rgba(255,255,255,.45)}
+.cta-actions{margin-top:34px}
 
 /* ── FOOTER ─────────────────────────────────────────── */
 footer{background:var(--night);padding:54px 5vw 36px}
@@ -793,6 +796,15 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .article-body{display:block;width:100%}
 .article-body img{display:block;box-shadow:var(--shadow-sm)}
 
+/* how-its-made: the YouTube embed floats top-left of the intro paragraph, which
+   wraps around it. The article's h2 rule already clears floats, so the numbered
+   sections start full-width below the video. */
+.howmade-video{
+  float:left;width:min(44%,440px);aspect-ratio:16/9;
+  margin:6px 26px 14px 0;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-sm);
+}
+.howmade-video iframe{display:block;width:100%;height:100%;border:0}
+
 /* ── responsive: stack images full-width on phones ──── */
 @media (max-width: 640px) {
   .article-body img {
@@ -800,6 +812,7 @@ footer{background:var(--night);padding:54px 5vw 36px}
     width: 100% !important;
     margin: 0 0 1.25rem 0 !important;
   }
+  .howmade-video{float:none;width:100%;margin:0 0 20px}
 }
 
 /* ============================================================
@@ -884,31 +897,36 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .step-indicator-item.is-active .step-indicator-title{color:var(--item-color);text-shadow:none}
 @media(max-width:1023px){.step-indicator{display:none}}
 
-/* ── intro video: full-width 16:9 player between the hero and step 1. Dark band
-   bridges the dark hero into the light first section; capped to the content width. */
-.intro-video{background:var(--charcoal);padding:64px 0}
-.intro-video-inner{max-width:var(--maxw);margin:0 auto;padding:0 6vw}
-/* section title above the video */
+/* ── intro video: two columns between the hero and step 1 — copy + CTA on the
+   left, the 16:9 player on the right. Dark band bridges the dark hero into the
+   light first section; capped to the content width. */
+.intro-video{background:var(--charcoal);padding:80px 0}
+.intro-video-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 6vw;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:52px;align-items:center;
+}
 .intro-video-title{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.04;letter-spacing:.02em;
-  color:#fff;text-align:center;max-width:900px;margin:0 auto 30px;
+  font-size:clamp(2rem,3.4vw,3.1rem);line-height:1.04;letter-spacing:.02em;
+  color:#fff;margin:0 0 20px;
 }
+.intro-video-def-lead{font-family:'DM Sans',sans-serif;font-size:1.12rem;line-height:1.7;color:rgba(255,255,255,.82);margin:0}
+.intro-video-btn{
+  display:inline-block;margin-top:28px;padding:14px 30px;
+  background:var(--red);color:#fff;border:2px solid var(--red);border-radius:3px;
+  font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  transition:background .2s,border-color .2s,transform .15s;
+}
+.intro-video-btn:hover{background:var(--red-dark);border-color:var(--red-dark);transform:translateY(-2px)}
 .intro-video-el{
   display:block;width:100%;aspect-ratio:16/9;
   border-radius:10px;overflow:hidden;background:#000;object-fit:cover;
   box-shadow:0 20px 60px rgba(0,0,0,.45);
 }
-/* definition block beneath the video */
-.intro-video-def{max-width:720px;margin:30px auto 0;text-align:center}
-.intro-video-def p{font-family:'DM Sans',sans-serif;font-size:1rem;line-height:1.7;color:rgba(255,255,255,.72);margin:0}
-.intro-video-def p + p{margin-top:14px}
-.intro-video-def-lead{font-size:1.12rem;color:rgba(255,255,255,.9)}
-@media(max-width:768px){
-  .intro-video{padding:40px 0}
+@media(max-width:860px){
+  .intro-video{padding:48px 0}
+  .intro-video-inner{grid-template-columns:1fr;gap:30px}
   .intro-video-el{border-radius:8px}
-  .intro-video-title{margin-bottom:22px}
-  .intro-video-def{margin-top:22px}
 }
 
 /* ── CHANGE 3: journey step components (conservative per-section arrangement) ── */
