@@ -20,7 +20,7 @@ export default function ContactPage() {
           </div>
           <div className="contact-hero-social reveal">
             <p className="contact-hero-social-label">Follow Us</p>
-            <SocialLinks />
+            <SocialLinks className="social-links--red" />
           </div>
         </div>
       </header>

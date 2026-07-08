@@ -84,7 +84,7 @@ export default function Nav() {
             {LEARN_MORE_LINKS.map((l) => (
               <Link key={l.href} href={l.href} role="menuitem" className={pathname === l.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>{l.label}</Link>
             ))}
-            <SocialLinks />
+            <SocialLinks className="social-links--red" />
           </div>
         </div>
         <button
