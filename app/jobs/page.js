@@ -10,19 +10,19 @@ export const metadata = { title: 'Jobs & Economic Impact — How Texas Is Built'
 // Body + graphics use brand navy; the hero keeps step 2's icon color
 // (penny green).
 const ACCENT = '#002868';
-const HERO_ACCENT = '#007D02';
+const HERO_ACCENT = '#2EBC2E';
 
 export default function EconomicPage() {
   return (
     <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
-      <header className="page-hero page-hero--light page-hero--right" style={{ '--hero-img': 'url(/images/103257435-skyline-city-austin-texas.jpeg)' }}>
+      <header className="page-hero page-hero--right" style={{ '--hero-img': 'url(/images/038808855-beautiful-city-buildings-green.jpg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
             <span className="page-hero-icon"><img src="/images/icons/penny.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Jobs &amp; Economic Impact</p>
-            <h1 className="page-hero-title">Affordable Materials.<br /><span className="red">Local Jobs.</span> A Stronger Texas.</h1>
+            <h1 className="page-hero-title">Affordable Materials.<br />Local Jobs.<br /><span className="red">A Stronger Texas.</span></h1>
             <p className="page-hero-sub">A $10+ billion economic engine supporting more than 100,000 Texas jobs and enabling affordable infrastructure across the state.</p>
           </div>
         </div>

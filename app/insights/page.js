@@ -20,41 +20,20 @@ export default function InsightsPage() {
 
       <section className="section">
         <div className="container">
-          <div className="center reveal" style={{ marginBottom: '40px' }}>
-            <span className="soon-badge"><span className="pulse"></span>New stories publishing soon</span>
-          </div>
-          <div className="posts reveal">
-            <article className="post">
-              <div className="post-img"><Image src="/images/103257435-skyline-city-austin-texas.jpeg" alt="Texas skyline" fill style={{ objectFit: 'cover' }} sizes="(max-width:900px) 45vw, 380px" /><span className="post-cat">Growth</span></div>
+          <div className="posts posts--single reveal">
+            <Link href="/insights/taca-72nd-annual-meeting" className="post post--featured">
+              <div className="post-img"><Image src="/images/038808855-beautiful-city-buildings-green.jpg" alt="Texas city skyline" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
               <div className="post-body">
-                <div className="post-meta">Coming Soon</div>
-                <h3 className="post-title">Building the Texas Miracle: Growth by the Numbers</h3>
-                <p className="post-excerpt">A closer look at the 1,000–1,500 new Texans arriving every day — and what it will take to build the homes, roads, and schools they&apos;ll need.</p>
+                <div className="post-meta">June 18, 2026</div>
+                <h3 className="post-title">Record Attendance Marks TACA&apos;s 72nd Annual Meeting</h3>
+                <p className="post-excerpt">More than 600 industry leaders gathered in San Antonio for TACA&apos;s largest-ever Annual Meeting, themed &ldquo;Building the Community&rdquo; &mdash; with economic forecasts, leadership keynotes, a new chairman, and 2,000 backpacks assembled for students in need.</p>
                 <span className="post-foot">Read the story →</span>
               </div>
-            </article>
-            <article className="post">
-              <div className="post-img"><Image src="/images/081545197-november-evening-pennybacker-b.jpeg" alt="Texas Hill Country river" fill style={{ objectFit: 'cover' }} sizes="(max-width:900px) 45vw, 380px" /><span className="post-cat">Stewardship</span></div>
-              <div className="post-body">
-                <div className="post-meta">Coming Soon</div>
-                <h3 className="post-title">Inside Responsible Operations: How Water Gets Recycled</h3>
-                <p className="post-excerpt">Closed-loop systems recycle 92–98% of water on-site. Here&apos;s how modern facilities protect Texas&apos; most valuable natural resource.</p>
-                <span className="post-foot">Read the story →</span>
-              </div>
-            </article>
-            <article className="post">
-              <div className="post-img"><Image src="/images/113804924-aerial-view-modern-highway-roa.jpeg" alt="Texas highway interchange" fill style={{ objectFit: 'cover' }} sizes="(max-width:900px) 45vw, 380px" /><span className="post-cat">Affordability</span></div>
-              <div className="post-body">
-                <div className="post-meta">Coming Soon</div>
-                <h3 className="post-title">Why a Few Miles Can Make Housing More Affordable</h3>
-                <p className="post-excerpt">Transportation can drive up to 70% of material costs. We break down how local sourcing keeps construction — and communities — affordable.</p>
-                <span className="post-foot">Read the story →</span>
-              </div>
-            </article>
+            </Link>
           </div>
 
           <div className="center reveal" style={{ marginTop: '48px' }}>
-            <p className="prose center">We&apos;re building out our newsroom. Sign up below and we&apos;ll send new stories, data, and updates straight to your inbox as they publish.</p>
+            <p className="prose center">More stories are on the way. Follow How Texas Is Built for new perspectives, data, and updates on the people and communities building Texas.</p>
             <div className="btn-row center"><Link href="/take-action" className="btn btn--red">Get Updates</Link></div>
           </div>
         </div>

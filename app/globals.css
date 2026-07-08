@@ -225,6 +225,8 @@ a{color:inherit}
   transform:scale(1.05);animation:heroZoom 20s ease-in-out infinite alternate;
 }
 @keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1.12)}}
+/* mirrored variant so a flipped hero still gets the same subtle zoom */
+@keyframes heroZoomFlip{from{transform:scaleX(-1) scale(1.05)}to{transform:scaleX(-1) scale(1.12)}}
 .page-hero-overlay{
   position:absolute;inset:0;
   background:linear-gradient(165deg,rgba(10,16,32,.85) 0%,rgba(0,40,104,.5) 55%,rgba(10,16,32,.78) 100%);
@@ -232,18 +234,21 @@ a{color:inherit}
 .page-hero--green .page-hero-overlay{
   background:linear-gradient(165deg,rgba(8,28,18,.82) 0%,rgba(12,51,31,.55) 50%,rgba(10,16,32,.8) 100%);
 }
-/* Light hero (Economic Impact, Responsible Operations): wash the photo to a light
-   ground so the accent color — green / violet, which was low-contrast on the dark
-   photo — reads clearly, and switch the hero copy from white to dark. */
-.page-hero--light .page-hero-bg{filter:brightness(1.24) saturate(.96)}
+/* Light hero (Responsible Operations): the bluebonnet violet is a dark, saturated
+   color, so it only reads with real contrast on a LIGHT ground — no dark overlay
+   can fix that (it's a luminance limit). The ground is a cool lavender-tinted
+   neutral biased toward the accent (deliberately NOT a warm cream), the photo is
+   desaturated so its warm sunset stops fighting the violet, and the copy is a
+   violet-black. Diagonal: lightest bottom-left where the copy sits (violet ≈6:1),
+   fading to reveal the bridge top-right. */
+.page-hero--light .page-hero-bg{filter:brightness(1.14) saturate(.72);transform:scaleX(-1) scale(1.05);animation-name:heroZoomFlip}
 .page-hero--light .page-hero-overlay{
-  background:linear-gradient(180deg,rgba(246,247,249,.12) 0%,rgba(246,247,249,.28) 46%,rgba(247,248,250,.54) 100%);
+  background:linear-gradient(to top right,rgba(238,237,247,.83) 0%,rgba(236,235,246,.5) 46%,rgba(236,235,246,.07) 100%);
 }
-.page-hero--light .page-hero-title{color:var(--charcoal)}
-/* the secondary title line takes the step's icon color (e.g. Responsible
-   Operations' violet) so it reads as an accent on the light hero */
-.page-hero--light .page-hero-title .light{color:var(--hero-accent,var(--charcoal))}
-.page-hero--light .page-hero-sub{color:var(--ink)}
+.page-hero--light .page-hero-title{color:#1c1730}
+/* the secondary title line takes the bluebonnet violet — the single bold accent */
+.page-hero--light .page-hero-title .light{color:var(--hero-accent,#1c1730)}
+.page-hero--light .page-hero-sub{color:#3d3652}
 /* right-aligned hero (Quality of Life) — the content block hugs the right edge so
    the left of the photo (the Capitol dome) stays clear */
 .page-hero--right .page-hero-content{margin-left:auto;text-align:right}
@@ -284,6 +289,19 @@ a{color:inherit}
 /* ── Contact page ───────────────────────────────────── */
 .contact-form-section{background:var(--off-white);padding:52px 0 84px}
 .contact-form-wrap{max-width:760px;margin:0 auto;padding:0 5vw}
+.contact-form-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.05;letter-spacing:.03em;
+  color:var(--charcoal);margin:0 0 20px;
+}
+/* contact hero: copy on the left, social links pinned to the bottom-right */
+.contact-hero-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:28px}
+.contact-hero-social{display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-bottom:4px;flex-shrink:0}
+.contact-hero-social-label{margin:0;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+@media(max-width:720px){
+  .contact-hero-inner{flex-direction:column;align-items:flex-start}
+  .contact-hero-social{align-items:flex-start;padding-bottom:0;margin-top:4px}
+}
 /* reserve height so the section doesn't jump while the JotForm iframe loads;
    the embedded iframe reports its own height and self-resizes after load */
 .jotform-embed{min-height:600px}
@@ -524,6 +542,24 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .footer-col a:hover{color:#fff}
 .footer-copy{max-width:var(--maxw);margin:40px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.74rem;color:rgba(255,255,255,.32);text-align:center;line-height:1.6}
 
+/* ── social links (footer, contact page, Learn More dropdown) ── */
+.social-links{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.social-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;
+  color:rgba(255,255,255,.72);background:rgba(255,255,255,.08);
+  transition:color .2s,background .2s,transform .15s;
+}
+.social-link svg{width:18px;height:18px;display:block}
+.social-link:hover{color:#fff;background:var(--red);transform:translateY(-2px)}
+/* on light surfaces (contact page) */
+.social-links--onlight .social-link{color:var(--charcoal);background:rgba(20,28,46,.07)}
+.social-links--onlight .social-link:hover{color:#fff;background:var(--red)}
+/* compact centered row inside the Learn More dropdown */
+.nav-cta-menu .social-links{margin-top:4px;padding:12px 8px 4px;border-top:1px solid rgba(255,255,255,.1);justify-content:center;gap:8px}
+.nav-cta-menu .social-link{width:34px;height:34px}
+.nav-cta-menu .social-link svg{width:16px;height:16px}
+
 /* ── REVEAL ANIMATION ───────────────────────────────── */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -722,6 +758,17 @@ footer{background:var(--night);padding:54px 5vw 36px}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,125,79,.5)}70%{box-shadow:0 0 0 8px rgba(46,125,79,0)}100%{box-shadow:0 0 0 0 rgba(46,125,79,0)}}
 @media(max-width:900px){.posts{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.posts{grid-template-columns:1fr}}
+/* single featured article: one wide horizontal card, centered. .post is a <Link>
+   now, so reset link styling. */
+.post{text-decoration:none;color:inherit}
+.posts--single{grid-template-columns:1fr;max-width:860px;margin:0 auto}
+@media(min-width:720px){
+  .post--featured{flex-direction:row}
+  .post--featured .post-img{width:46%;height:auto;min-height:320px}
+  .post--featured .post-body{width:54%;padding:38px 42px;justify-content:center}
+  .post--featured .post-title{font-size:1.55rem;margin-bottom:14px}
+  .post--featured .post-excerpt{font-size:.96rem}
+}
 
 /* ════════════════════════════════════════════════════
    EDITORIAL ARTICLE — step pages (Smart Brevity)

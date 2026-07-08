@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import SocialLinks from './SocialLinks';
 
 export default function Footer() {
   return (
@@ -12,6 +13,7 @@ export default function Footer() {
           </Link>
           <p className="footer-tag">From Quarry to Community: The Foundation of Your Texas Life.</p>
           <p className="footer-org"><a href="https://www.tx-taca.org/" target="_blank" rel="noopener noreferrer">An advocacy initiative of The Texas Aggregates and Concrete Association</a></p>
+          <SocialLinks className="footer-social" />
         </div>
         <div className="footer-col">
           <h5>Explore</h5>

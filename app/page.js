@@ -89,7 +89,7 @@ const STEPS = [
 //   1 Texas Is Growing (statesilhouette) · 2 Economic Impact (penny) ·
 //   3 Local Sourcing (tire) · 4 Responsible Operations (bluebonnet) ·
 //   5 Quality of Life (star)
-const ICON_COLORS = ['#F75200', '#007D02', '#00BACD', '#5F00F4', '#FFD400'];
+const ICON_COLORS = ['#F75200', '#2EBC2E', '#00BACD', '#5F00F4', '#FFD400'];
 
 // One stat callout per section. Never boxed; the number sits inline in Bebas Neue
 // accent color. Position within each section is handled by where this is slotted

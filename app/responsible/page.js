@@ -18,7 +18,7 @@ export default function OperationsPage() {
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
-            <span className="page-hero-icon page-hero-icon--ring"><img src="/images/icons/bluebonnet.png" alt="" aria-hidden="true" /></span>
+            <span className="page-hero-icon"><img src="/images/icons/bluebonnet.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow green">Responsible Operations</p>
             <h1 className="page-hero-title">Protecting Texas&apos; Resources<br /><span className="light">While Building Its Future</span></h1>
             <p className="page-hero-sub">Responsible operations. Strong communities. A better Texas for generations to come.</p>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import SocialLinks from './SocialLinks';
 
 const LINKS = [
   { href: '/fueling-growth', label: 'Texas is Growing' },
@@ -30,9 +31,9 @@ const MENU_LINKS = [
   { href: '/contact', label: 'Contact' },
 ];
 
-// Pages whose hero is a light wash — force the nav to its solid dark background
-// from the top so the white nav text stays legible (rather than transparent).
-const SOLID_NAV_ROUTES = new Set(['/jobs', '/responsible']);
+// Pages with a light-wash hero — force the nav to its solid dark background from
+// the top so the white nav text stays legible over the light hero.
+const SOLID_NAV_ROUTES = new Set(['/responsible']);
 
 export default function Nav() {
   const pathname = usePathname();
@@ -83,6 +84,7 @@ export default function Nav() {
             {LEARN_MORE_LINKS.map((l) => (
               <Link key={l.href} href={l.href} role="menuitem" className={pathname === l.href ? 'active' : ''} onClick={() => setMenuOpen(false)}>{l.label}</Link>
             ))}
+            <SocialLinks />
           </div>
         </div>
         <button
