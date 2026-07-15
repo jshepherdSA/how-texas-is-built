@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
    `steps` is an array of { name, color }; the active step's title is shown in
    its accent color. Falls back to numbered items if no steps are supplied. */
 export default function StepIndicator({ steps, count = 5 }) {
-  const items = steps && steps.length ? steps : Array.from({ length: count }, (_, i) => ({ name: String(i + 1), color: '#E63946' }));
+  const items = steps && steps.length ? steps : Array.from({ length: count }, (_, i) => ({ name: String(i + 1), color: '#BF0A30' }));
   const [active, setActive] = useState(1);
   const [visible, setVisible] = useState(false);
 

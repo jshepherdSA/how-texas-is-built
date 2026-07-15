@@ -8,17 +8,17 @@ export const metadata = { title: "Fueling Texas' Growth — How Texas Is Built" 
 // Body + graphics use brand navy; the hero keeps step 1's icon color
 // (statesilhouette orange).
 const ACCENT = '#002868';
-const HERO_ACCENT = '#F75200';
+const HERO_ACCENT = '#BF0A30';
 
 export default function WhyPage() {
   return (
     <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
-      <header className="page-hero page-hero--tall" style={{ '--hero-img': 'url(/images/103257435-skyline-city-austin-texas.jpeg)' }}>
+      <header className="page-hero page-hero--tall page-hero--soft-overlay" style={{ '--hero-img': 'url(/images/103257435-skyline-city-austin-texas.jpeg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
-            <span className="page-hero-icon"><img src="/images/icons/statesilhouette.png" alt="" aria-hidden="true" /></span>
+            <span className="page-hero-icon"><img src="/images/icons/state_red.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Fueling Texas&apos; Growth</p>
             <h1 className="page-hero-title">Building the<br /><span className="red">Texas Miracle</span></h1>
             <p className="page-hero-sub">Texas&apos; favorable business climate continues to drive jobs, investment, and growth — and the materials that make that growth possible.</p>

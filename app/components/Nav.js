@@ -16,6 +16,7 @@ const LINKS = [
 
 // Items grouped under the red "Learn More" dropdown (desktop).
 const LEARN_MORE_LINKS = [
+  { href: '/how-its-made', label: "How It's Made" },
   { href: '/take-action', label: 'Take Action' },
   { href: '/insights', label: 'News & Insights' },
   { href: '/contact', label: 'Contact' },
@@ -27,13 +28,14 @@ const MENU_LINKS = [
   { href: '/responsible', label: 'Responsible Operations' },
   { href: '/local-sourcing', label: 'Why Local Sourcing Matters' },
   { href: '/quality', label: 'Quality of Life' },
+  { href: '/how-its-made', label: "How It's Made" },
   { href: '/insights', label: 'News & Insights' },
   { href: '/contact', label: 'Contact' },
 ];
 
 // Pages with a light-wash hero — force the nav to its solid dark background from
 // the top so the white nav text stays legible over the light hero.
-const SOLID_NAV_ROUTES = new Set(['/responsible']);
+const SOLID_NAV_ROUTES = new Set(['/responsible', '/take-action']);
 
 export default function Nav() {
   const pathname = usePathname();

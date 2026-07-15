@@ -6,17 +6,17 @@ export const metadata = { title: 'Quality of Life — How Texas Is Built' };
 // Body + graphics use brand navy; the hero keeps step 5's icon color
 // (star gold).
 const ACCENT = '#002868';
-const HERO_ACCENT = '#FFD400';
+const HERO_ACCENT = '#BF0A30';
 
 export default function QualityPage() {
   return (
     <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
-      <header className="page-hero page-hero--right" style={{ '--hero-img': 'url(/images/083961983-capital-building-austin-texas-.jpeg)' }}>
+      <header className="page-hero page-hero--right page-hero--soft-overlay" style={{ '--hero-img': 'url(/images/083961983-capital-building-austin-texas-.jpeg)' }}>
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
         <div className="page-hero-inner">
           <div className="page-hero-content reveal">
-            <span className="page-hero-icon"><img src="/images/icons/star.png" alt="" aria-hidden="true" /></span>
+            <span className="page-hero-icon"><img src="/images/icons/star_red.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Quality of Life</p>
             <h1 className="page-hero-title">Quality of Life<br /><span className="red">Starts with Infrastructure</span></h1>
             <p className="page-hero-sub">Shorter commutes, safer roads, affordable homes, reliable water — the everyday benefits Texans rely on, supported by the materials that make them possible.</p>
@@ -27,7 +27,7 @@ export default function QualityPage() {
       <article className="article article-body reveal">
         <Link href="/" className="article-back">← Back to home</Link>
         <p className="article-kicker">Quality of Life</p>
-        <p className="article-lead">Quality of life isn&apos;t an abstraction. It&apos;s the commute home, the hospital across town, the water from the tap. Aggregates and concrete are underneath all of it.</p>
+        <p className="article-lead">Quality of life isn&apos;t an abstraction. It&apos;s the commute home, the hospital across town, the water from the tap. Aggregates and concrete make up all of it.</p>
 
         <p>From shorter commutes and safer roads to modern hospitals, affordable housing, and clean water, these materials help make everyday life in Texas possible &mdash; keeping communities connected, affordable, and ready for what&apos;s next.</p>
 

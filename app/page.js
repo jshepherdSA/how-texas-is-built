@@ -19,13 +19,13 @@ const STEPS = [
     name: 'Texas Is Growing',
     subhead: 'Building the Texas Miracle',
     route: '/fueling-growth',
-    icon: '/images/icons/statesilhouette.png',
+    icon: '/images/icons/state_red.png',
     img: '/images/home/H-%20texas%20is%20growing.jpg',
     points: [
       { title: 'The Texas Miracle', text: 'Favorable business and tax environment leads to the highest population growth rate in the nation.' },
       // NOTE: the aggregate figure is left blank ("__") in journey-outline.pdf.
       { title: 'What it Takes', text: 'Texas will need to produce __ million lbs of aggregates every year to keep up with growth.' },
-      { title: 'Benefitting the Communities', text: 'A strong local supply of materials is essential to keeping Texas affordable. Providing materials close to the areas they serve ultimately reduces traffic and keeps the positive economic impact local.' },
+      { title: 'Benefitting the Communities', text: 'A strong local supply of materials is essential to keeping Texas affordable. Providing materials close to the areas they serve reduces traffic and keeps the positive economic impact local.' },
     ],
   },
   {
@@ -33,7 +33,7 @@ const STEPS = [
     name: 'Economic Impact',
     subhead: 'Affordable Materials. Local Jobs. A Stronger Texas.',
     route: '/jobs',
-    icon: '/images/icons/penny.png',
+    icon: '/images/icons/penny_red.png',
     img: '/images/home/H-%20economic%20impact.jpg',
     points: [
       { title: 'An Economic Engine', text: 'The Texas aggregates and concretes industry produces $10B+ of Annual Economic Activity.' },
@@ -46,7 +46,7 @@ const STEPS = [
     name: 'Local Sourcing',
     subhead: 'Building Texas Affordably Starts Close to Home',
     route: '/local-sourcing',
-    icon: '/images/icons/tire.png',
+    icon: '/images/icons/tire_red.png',
     img: '/images/home/H-%20local%20sourcing.jpg',
     // NOTE: the outline lists only two supporting points for Local Sourcing
     // (no "d."). The first point combines its two sentences (i. + ii.).
@@ -60,7 +60,7 @@ const STEPS = [
     name: 'Responsible Operations',
     subhead: 'Protecting Texas Resources While Building Its Future',
     route: '/responsible',
-    icon: '/images/icons/bluebonnet.png',
+    icon: '/images/icons/bonnet_red.png',
     img: '/images/home/H-%20responsible%20operations.jpg',
     points: [
       { title: 'Strictly Regulated, Monitored, and Accountable', text: 'Aggregates and concrete operations are regulated heavily with strict oversight from multiple agencies at every level of government.' },
@@ -73,7 +73,7 @@ const STEPS = [
     name: 'Quality of Life',
     subhead: 'Supporting Growth Starts with Infrastructure',
     route: '/quality',
-    icon: '/images/icons/star.png',
+    icon: '/images/icons/star_red.png',
     img: '/images/home/H-%20quality%20of%20life.jpg',
     points: [
       { title: 'Making the Texas Miracle Possible', text: 'Businesses often choose locations based on infrastructure quality. Strong infrastructure helps communities compete for investment, which fuels the Texas Miracle.' },
@@ -83,13 +83,11 @@ const STEPS = [
   },
 ];
 
-// Per-step ICON color (left → right), sampled from each step's badge icon. Used
-// only where the design keeps a per-step identity: the step numbers (01–05) and
-// the left scroll indicator. Everything else uses the brand red (--step-color).
-//   1 Texas Is Growing (statesilhouette) · 2 Economic Impact (penny) ·
-//   3 Local Sourcing (tire) · 4 Responsible Operations (bluebonnet) ·
-//   5 Quality of Life (star)
-const ICON_COLORS = ['#F75200', '#2EBC2E', '#00BACD', '#5F00F4', '#FFD400'];
+// Step identity accent — the brand red across all five steps (the former
+// per-step rainbow coding was removed). Colors the step numbers, titles, stats,
+// and the left scroll indicator; structural elements (the section top border and
+// tiles) keep the brand navy via --step-color.
+const STEP_ACCENT = '#BF0A30';
 
 // One stat callout per section. Never boxed; the number sits inline in Bebas Neue
 // accent color. Position within each section is handled by where this is slotted
@@ -189,7 +187,7 @@ export default function HomePage() {
 
       {/* CHANGE 2 — fixed left-side parallax step indicator (desktop only).
           Shows each step's full title, colored with its accent when active. */}
-      <StepIndicator steps={STEPS.map((s, i) => ({ name: s.name, color: ICON_COLORS[i] }))} />
+      <StepIndicator steps={STEPS.map((s) => ({ name: s.name, color: STEP_ACCENT }))} />
 
       {/* Five journey step components — same room, rearranged per section: image
           side, tile orientation, and one stat callout vary by data-step. */}
@@ -203,7 +201,7 @@ export default function HomePage() {
             data-step={step.num}
             id={`step-${step.num}`}
             className={`step step--light${gray ? ' step--gray' : ''}`}
-            style={{ '--step-icon': ICON_COLORS[step.num - 1] }}
+            style={{ '--step-icon': STEP_ACCENT }}
           >
             <div className="step-inner">
               <div className="step-head-text reveal">

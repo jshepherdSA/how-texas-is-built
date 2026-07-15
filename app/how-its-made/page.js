@@ -23,16 +23,18 @@ export default function HowItsMadePage() {
       <article className="article article-body reveal">
         <Link href="/" className="article-back">← Back to home</Link>
 
-        <div className="howmade-video">
-          <iframe
-            src="https://www.youtube.com/embed/wJ7RyXQaEgM?si=9cbrOzPEsH9knNHV"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+        <div className="howmade-intro">
+          <div className="howmade-video">
+            <iframe
+              src="https://www.youtube.com/embed/wJ7RyXQaEgM?si=9cbrOzPEsH9knNHV"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <p className="article-lead">Every road, bridge, home, school, hospital, water system, and energy project in Texas begins with three essential materials: aggregates, cement, and concrete. Together, they form the foundation of modern life and keep Texas growing.</p>
         </div>
-        <p className="article-lead">Every road, bridge, home, school, hospital, water system, and energy project in Texas begins with three essential materials: aggregates, cement, and concrete. Together, they form the foundation of modern life and keep Texas growing.</p>
 
         <h2>1. Aggregates: The Starting Point</h2>
         <p>The process begins at a quarry, where natural rock, limestone, sand, and gravel are carefully extracted. These materials are then crushed, screened, and washed into different sizes for specific uses. Aggregates are used in road bases, drainage systems, asphalt, and as the main ingredient in concrete.</p>

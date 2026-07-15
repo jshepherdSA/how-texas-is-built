@@ -12,7 +12,7 @@ export default function Footer() {
             <span className="footer-logo-text">How <em>Texas</em> Is Built</span>
           </Link>
           <p className="footer-tag">From Quarry to Community: The Foundation of Your Texas Life.</p>
-          <p className="footer-org"><a href="https://www.tx-taca.org/" target="_blank" rel="noopener noreferrer">An advocacy initiative of The Texas Aggregates and Concrete Association</a></p>
+          <p className="footer-org"><a href="https://www.tx-taca.org/" target="_blank" rel="noopener noreferrer">An advocacy initiative of Texas Aggregates &amp; Concrete Association</a></p>
           <SocialLinks className="footer-social" />
         </div>
         <div className="footer-col">
@@ -26,7 +26,7 @@ export default function Footer() {
           <h5>More</h5>
           <Link href="/quality">Quality of Life</Link>
           <Link href="/insights">News &amp; Insights</Link>
-          <Link href="/take-action">Take Action</Link>
+          <Link href="/take-action">Sign Up for Updates</Link>
           <Link href="/">Home</Link>
         </div>
       </div>

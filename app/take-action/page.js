@@ -1,8 +1,17 @@
-export const metadata = { title: 'Take Action — How Texas Is Built' };
+import JotformEmbed from '../components/JotformEmbed';
 
-// The newsletter / "Be Part of What's Built Next" CTA now renders globally from
-// the root layout (it appears at the bottom of every page). The Take Action route
-// lands the visitor directly on that signup band.
+export const metadata = { title: 'Sign Up for Updates — How Texas Is Built' };
+
+// The Take Action page IS the newsletter signup: it renders only the JotForm
+// newsletter form. The global "Be Part of What's Built Next" CTA band is hidden
+// on this route (see TakeActionCTA) so the page shows just the form, and the
+// footer + that band both link here.
 export default function TakeActionPage() {
-  return null;
+  return (
+    <section className="newsletter-page">
+      <div className="contact-form-wrap">
+        <JotformEmbed formId="261943961240054" title="Newsletter signup form" />
+      </div>
+    </section>
+  );
 }

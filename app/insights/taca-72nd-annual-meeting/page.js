@@ -11,7 +11,7 @@ export default function TacaAnnualMeetingArticle() {
     <div>
       <header
         className="page-hero page-hero--compact"
-        style={{ '--hero-img': 'url(/images/038808855-beautiful-city-buildings-green.jpg)' }}
+        style={{ '--hero-img': 'url(/images/taca-72nd-annual-meeting-gov-abbott.jpg)' }}
       >
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
@@ -28,14 +28,24 @@ export default function TacaAnnualMeetingArticle() {
         <Link href="/insights" className="article-back">← Back to News &amp; Insights</Link>
         <p className="article-kicker">Industry News &middot; June 18, 2026</p>
 
-        <p className="article-lead">The Texas Aggregates &amp; Concrete Association (TACA) welcomed more than 600 industry leaders, producers, allied members and business partners to its 72nd Annual Meeting, held June 10&ndash;12 at the JW Marriott San Antonio Hill Country Resort &amp; Spa. Themed &ldquo;Building the Community,&rdquo; it was the largest Annual Meeting in the association&rsquo;s history.</p>
+        <p className="article-lead">Texas Aggregates &amp; Concrete Association (TACA) welcomed more than 600 industry leaders, producers, allied members and business partners to its 72nd Annual Meeting, held June 10&ndash;12 at the JW Marriott San Antonio Hill Country Resort &amp; Spa. Themed &ldquo;Building the Community,&rdquo; it was the largest Annual Meeting in the association&rsquo;s history.</p>
 
+        <img
+          src="/images/taca-annual-meeting-anirban-basu.jpg"
+          alt="Economist Dr. Anirban Basu, Chairman and CEO of Sage Policy Group, speaks at TACA's 72nd Annual Meeting"
+          style={{ display: 'block', width: '100%', margin: '10px 0 24px', borderRadius: '10px' }}
+        />
         <p>The gathering featured economic and legislative updates, leadership development, industry recognition programs, charitable initiatives and networking opportunities focused on supporting the continued growth of Texas&rsquo; construction materials industry.</p>
 
         <p>The meeting opened with a community service project led by TACA&rsquo;s Emerging Leaders Academy participants. More than 100 volunteers assembled <strong>2,000 backpacks</strong> for students in need, benefiting charitable organizations serving communities in Austin, Dallas, Houston and San Antonio.</p>
 
         <h2>An industry built for Texas&rsquo; growth</h2>
         <p>TACA President and CEO Andrew S. Pinkerton highlighted the industry&rsquo;s increasingly important role in supporting the state&rsquo;s rapid growth.</p>
+        <img
+          src="/images/taca-annual-meeting-pinkerton-address.jpg"
+          alt="Andrew S. Pinkerton, TACA President and CEO, addresses members at the association's 72nd Annual Meeting"
+          style={{ display: 'block', width: '100%', margin: '10px 0 24px', borderRadius: '10px' }}
+        />
         <blockquote>&ldquo;Every road, school, hospital, home and business begins with the materials our members produce. As Texas continues to grow, our industry remains committed to providing the essential building materials that support strong communities, create jobs and improve quality of life for Texans. The TACA Annual Meeting is a reminder that what we build goes far beyond infrastructure &mdash; our member companies help build the communities where families live, work and thrive, not just today, but for generations to come.&rdquo;</blockquote>
 
         <p>The general session featured updates on association initiatives, legislative and regulatory developments, and presentations from nationally recognized speakers addressing the economic, technological and leadership challenges shaping the future of the industry.</p>
@@ -49,8 +59,13 @@ export default function TacaAnnualMeetingArticle() {
         <p>Beyond the educational programming, attendees took part in networking events, recreational tournaments, exhibits and fundraising activities supporting TACPAC. The annual TACPAC fundraiser featured legendary Texas musician and Texan of the Year Robert Earl Keen, with opening entertainment from Mary Clare Foley.</p>
 
         <h2>Built by generations, strengthened for generations</h2>
+        <img
+          src="/images/taca-annual-meeting-student-gov-abbott.jpg"
+          alt="A student greets Texas Gov. Greg Abbott at the CIM Scholarship Gala during TACA's 72nd Annual Meeting"
+          style={{ float: 'right', width: 'min(40%, 360px)', margin: '6px 0 16px 28px', borderRadius: '10px' }}
+        />
         <p>During the meeting, Matt Arnold of Knife River Corporation was elected chairman of the association and will help guide TACA&rsquo;s strategic priorities in the coming year. Arnold introduced the theme for his term &mdash; &ldquo;Built by Generations. Strengthened for Generations.&rdquo; &mdash; reflecting the industry&rsquo;s long-standing commitment to serving Texas communities while preparing for the infrastructure, workforce and economic needs of future generations.</p>
-        <blockquote>&ldquo;Everything we build is intended to serve communities for decades to come. Our industry has been built by generations of hardworking Texans, and it is our responsibility to ensure the materials, infrastructure and relationships we build today continue to strengthen Texas for generations to come.&rdquo;</blockquote>
+        <blockquote style={{ clear: 'none' }}>&ldquo;Everything we build is intended to serve communities for decades to come. Our industry has been built by generations of hardworking Texans, and it is our responsibility to ensure the materials, infrastructure and relationships we build today continue to strengthen Texas for generations to come.&rdquo;</blockquote>
       </article>
     </div>
   );

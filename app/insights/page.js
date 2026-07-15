@@ -22,7 +22,7 @@ export default function InsightsPage() {
         <div className="container">
           <div className="posts posts--single reveal">
             <Link href="/insights/taca-72nd-annual-meeting" className="post post--featured">
-              <div className="post-img"><Image src="/images/038808855-beautiful-city-buildings-green.jpg" alt="Texas city skyline" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
+              <div className="post-img"><Image src="/images/taca-72nd-annual-meeting-gov-abbott.jpg" alt="Gov. Greg Abbott with TACA President Andrew Pinkerton and TACA members at the CIM Scholarship Gala" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
               <div className="post-body">
                 <div className="post-meta">June 18, 2026</div>
                 <h3 className="post-title">Record Attendance Marks TACA&apos;s 72nd Annual Meeting</h3>
