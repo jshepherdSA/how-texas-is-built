@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Reveal from './components/Reveal';
 import TakeActionCTA from './components/TakeActionCTA';
+import CookieConsent from './components/CookieConsent';
 
 export const metadata = {
   title: 'How Texas Is Built',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         <TakeActionCTA />
         <Footer />
         <Reveal />
+        <CookieConsent />
       </body>
     </html>
   );
