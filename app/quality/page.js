@@ -18,7 +18,7 @@ export default function QualityPage() {
           <div className="page-hero-content reveal">
             <span className="page-hero-icon"><img src="/images/icons/star_red.png" alt="" aria-hidden="true" /></span>
             <p className="eyebrow light">Quality of Life</p>
-            <h1 className="page-hero-title">Quality of Life<br /><span className="red">Starts with Infrastructure</span></h1>
+            <h1 className="page-hero-title"><span className="red">Quality of Life</span><br />Starts with Infrastructure</h1>
             <p className="page-hero-sub">Shorter commutes, safer roads, affordable homes, reliable water — the everyday benefits Texans rely on, supported by the materials that make them possible.</p>
           </div>
         </div>
