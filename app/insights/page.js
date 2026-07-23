@@ -22,11 +22,20 @@ export default function InsightsPage() {
         <div className="container">
           <div className="posts posts--single reveal">
             <Link href="/insights/taca-72nd-annual-meeting" className="post post--featured">
-              <div className="post-img"><Image src="/images/taca-72nd-annual-meeting-gov-abbott.jpg" alt="Gov. Greg Abbott with TACA President Andrew Pinkerton and TACA members at the CIM Scholarship Gala" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
+              <div className="post-img"><Image src="/images/taca-annual-meeting-zach-fuller.jpg" alt="Cybersecurity leader Zach Fuller of Silent Sector speaks at TACA's 72nd Annual Meeting" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
               <div className="post-body">
                 <div className="post-meta">June 18, 2026</div>
                 <h3 className="post-title">Record Attendance Marks TACA&apos;s 72nd Annual Meeting</h3>
                 <p className="post-excerpt">More than 600 industry leaders gathered in San Antonio for TACA&apos;s largest-ever Annual Meeting, themed &ldquo;Building the Community&rdquo; &mdash; with economic forecasts, leadership keynotes, a new chairman, and 2,000 backpacks assembled for students in need.</p>
+                <span className="post-foot">Read the story →</span>
+              </div>
+            </Link>
+            <Link href="/insights/cim-gala-workforce-development" className="post post--featured">
+              <div className="post-img"><Image src="/images/cim-gala-gov-abbott.jpg" alt="Gov. Greg Abbott with TACA President Andrew Pinkerton and TACA members at the CIM Scholarship Gala" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
+              <div className="post-body">
+                <div className="post-meta">April 27, 2026</div>
+                <h3 className="post-title">Celebrating Workforce Development at the CIM Gala</h3>
+                <p className="post-excerpt">Texas leaders &mdash; including Gov. Greg Abbott, Sen. Pete Flores and TACA President Andrew Pinkerton &mdash; gathered at Texas State University&apos;s CIM Scholarship Gala to celebrate a program providing $100,000+ in annual scholarships and 100% job placement for students entering construction materials.</p>
                 <span className="post-foot">Read the story →</span>
               </div>
             </Link>

@@ -11,7 +11,7 @@ export default function TacaAnnualMeetingArticle() {
     <div>
       <header
         className="page-hero page-hero--compact"
-        style={{ '--hero-img': 'url(/images/taca-72nd-annual-meeting-gov-abbott.jpg)' }}
+        style={{ '--hero-img': 'url(/images/taca-annual-meeting-zach-fuller.jpg)' }}
       >
         <div className="page-hero-bg"></div>
         <div className="page-hero-overlay"></div>
@@ -59,13 +59,8 @@ export default function TacaAnnualMeetingArticle() {
         <p>Beyond the educational programming, attendees took part in networking events, recreational tournaments, exhibits and fundraising activities supporting TACPAC. The annual TACPAC fundraiser featured legendary Texas musician and Texan of the Year Robert Earl Keen, with opening entertainment from Mary Clare Foley.</p>
 
         <h2>Built by generations, strengthened for generations</h2>
-        <img
-          src="/images/taca-annual-meeting-student-gov-abbott.jpg"
-          alt="A student greets Texas Gov. Greg Abbott at the CIM Scholarship Gala during TACA's 72nd Annual Meeting"
-          style={{ float: 'right', width: 'min(40%, 360px)', margin: '6px 0 16px 28px', borderRadius: '10px' }}
-        />
         <p>During the meeting, Matt Arnold of Knife River Corporation was elected chairman of the association and will help guide TACA&rsquo;s strategic priorities in the coming year. Arnold introduced the theme for his term &mdash; &ldquo;Built by Generations. Strengthened for Generations.&rdquo; &mdash; reflecting the industry&rsquo;s long-standing commitment to serving Texas communities while preparing for the infrastructure, workforce and economic needs of future generations.</p>
-        <blockquote style={{ clear: 'none' }}>&ldquo;Everything we build is intended to serve communities for decades to come. Our industry has been built by generations of hardworking Texans, and it is our responsibility to ensure the materials, infrastructure and relationships we build today continue to strengthen Texas for generations to come.&rdquo;</blockquote>
+        <blockquote>&ldquo;Everything we build is intended to serve communities for decades to come. Our industry has been built by generations of hardworking Texans, and it is our responsibility to ensure the materials, infrastructure and relationships we build today continue to strengthen Texas for generations to come.&rdquo;</blockquote>
       </article>
     </div>
   );

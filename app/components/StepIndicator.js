@@ -20,16 +20,18 @@ export default function StepIndicator({ steps, count = 5 }) {
     const ratios = new Map();
     const obs = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => ratios.set(e.target.dataset.step, e.intersectionRatio));
+        // Key by DOM order (position), not data-step, so the highlight follows the
+        // journey order even when a step's identity number differs from its position.
+        entries.forEach((e) => ratios.set(sections.indexOf(e.target), e.intersectionRatio));
         let best = null;
         let bestRatio = 0;
-        ratios.forEach((r, step) => {
+        ratios.forEach((r, idx) => {
           if (r > bestRatio) {
             bestRatio = r;
-            best = step;
+            best = idx;
           }
         });
-        if (best) setActive(Number(best));
+        if (best !== null) setActive(best + 1);
       },
       { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-15% 0px -15% 0px' }
     );
@@ -60,7 +62,8 @@ export default function StepIndicator({ steps, count = 5 }) {
   }, []);
 
   function goToStep(n) {
-    const el = document.querySelector(`[data-step="${n}"]`);
+    // n is the journey position; scroll to the nth section in DOM order.
+    const el = document.querySelectorAll('[data-step]')[n - 1];
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 

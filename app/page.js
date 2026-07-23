@@ -42,6 +42,23 @@ const STEPS = [
     ],
   },
   {
+    // Journey order places Responsible Operations before Local Sourcing (matching
+    // the nav and footer). `num` is each step's stable layout/identity key — it
+    // drives the per-step markup branch, `data-step` CSS, and renderStat — NOT the
+    // displayed position, which is derived from array order below.
+    num: 4,
+    name: 'Responsible Operations',
+    subhead: 'Protecting Texas Resources While Building Its Future',
+    route: '/responsible',
+    icon: '/images/icons/bonnet_red.png',
+    img: '/images/home/H-%20responsible%20operations.jpg',
+    points: [
+      { title: 'Strictly Regulated, Monitored, and Accountable', text: 'Aggregates and concrete operations are regulated heavily with strict oversight from multiple agencies at every level of government.' },
+      { title: 'Proactive Air Quality Controls at Every Facility', text: 'All facilities are required to control dust and emissions, with emission projections scientifically modeled before any permits are issued.' },
+      { title: 'Protecting Texas’ Most Critical Resource: Water', text: 'Water is responsibly managed and frequently recycled on-site, with certain processes—such as aggregates washing—using closed-loop systems that can recycle approximately 92%–98% of water.' },
+    ],
+  },
+  {
     num: 3,
     name: 'Local Sourcing',
     subhead: 'Building Texas Affordably Starts Close to Home',
@@ -53,19 +70,6 @@ const STEPS = [
     points: [
       { title: 'Why Source from Home?', text: 'Transportation can account for up to 70% of the delivered cost, making local access critical to affordability. Building plants closer to communities allows infrastructure projects that directly help the community to be completed faster, decreasing the cost and inconvenience to Texas taxpayers.' },
       { title: 'How Does It Affect Me?', text: 'The speed and affordability of both infrastructure and real estate projects is critical to the quality of life of Texans into the future.' },
-    ],
-  },
-  {
-    num: 4,
-    name: 'Responsible Operations',
-    subhead: 'Protecting Texas Resources While Building Its Future',
-    route: '/responsible',
-    icon: '/images/icons/bonnet_red.png',
-    img: '/images/home/H-%20responsible%20operations.jpg',
-    points: [
-      { title: 'Strictly Regulated, Monitored, and Accountable', text: 'Aggregates and concrete operations are regulated heavily with strict oversight from multiple agencies at every level of government.' },
-      { title: 'Proactive Air Quality Controls at Every Facility', text: 'All facilities are required to control dust and emissions, with emission projections scientifically modeled before any permits are issued.' },
-      { title: 'Protecting Texas’ Most Critical Resource: Water', text: 'Water is responsibly managed and frequently recycled on-site, with certain processes—such as aggregates washing—using closed-loop systems that can recycle approximately 92%–98% of water.' },
     ],
   },
   {
@@ -191,9 +195,10 @@ export default function HomePage() {
 
       {/* Five journey step components — same room, rearranged per section: image
           side, tile orientation, and one stat callout vary by data-step. */}
-      {STEPS.map((step) => {
-        const gray = step.num % 2 === 0; // steps 2 & 4 alternate to a light-gray bg
-        const stepNum = String(step.num).padStart(2, '0');
+      {STEPS.map((step, i) => {
+        const pos = i + 1; // position in the journey (drives the displayed 01–05)
+        const gray = pos % 2 === 0; // alternating bg (both render white today)
+        const stepNum = String(pos).padStart(2, '0');
         const stat = renderStat(step.num);
         return (
           <section
