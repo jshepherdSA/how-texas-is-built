@@ -1,33 +1,45 @@
 // EconomicImpactStats — replaces "1-economic-impact-stats.png" on /jobs
-// Crop: 16:9 across all four cells — the photos are wide industry/economy
-// scenes that read best in landscape, and a uniform 16:9 keeps the 2x2 grid
-// rows perfectly level. Only two stock photos exist for this set (2a, 2b),
-// so they alternate across the four stat cells.
+// Crop: 16:9 — wide industry/economy scenes read best in landscape. This set has
+// two stock photos (2a workers, 2b truck), so rather than repeat each photo
+// across the grid, the four stats are merged into two cards — one per photo —
+// pairing the output stats with the workers and the jobs/supply stats with the
+// ready-mix truck. No photo appears twice.
 
-const PHOTOS = {
-  workers: { src: '/images/stock/2a.jpg', alt: 'Texas aggregates industry workers on site' },
-  truck: { src: '/images/stock/2b.jpg', alt: 'A ready-mix concrete mixer truck in Texas' },
-};
-
-const CELLS = [
-  { photo: PHOTOS.workers, stat: '$10+ Billion', label: 'Annual economic activity' },
-  { photo: PHOTOS.truck, stat: '100,000+', label: 'High-earning Texas jobs' },
-  { photo: PHOTOS.workers, stat: '300 Million Tons', label: 'Aggregates produced annually' },
-  { photo: PHOTOS.truck, stat: '16%+', label: 'Of total U.S. ready-mix concrete supply' },
+const CARDS = [
+  {
+    src: '/images/stock/2a.jpg',
+    alt: 'Texas aggregates industry workers on site',
+    stats: [
+      { stat: '$10+ Billion', label: 'Annual economic activity' },
+      { stat: '300 Million Tons', label: 'Aggregates produced annually' },
+    ],
+  },
+  {
+    src: '/images/stock/2b.jpg',
+    alt: 'A ready-mix concrete mixer truck in Texas',
+    stats: [
+      { stat: '100,000+', label: 'High-earning Texas jobs' },
+      { stat: '16%+', label: 'Of total U.S. ready-mix concrete supply' },
+    ],
+  },
 ];
 
 export default function EconomicImpactStats({ accentColor = '#3B82F6' }) {
   return (
     <div className="gfx" style={{ '--accent': accentColor }}>
       <div className="gfx-grid gfx-2x2">
-        {CELLS.map((c, i) => (
+        {CARDS.map((c, i) => (
           <div className="gfx-card" key={i}>
             <div className="gfx-img gfx-16x9">
-              <img src={c.photo.src} alt={c.photo.alt} loading="lazy" />
+              <img src={c.src} alt={c.alt} loading="lazy" />
             </div>
             <div className="gfx-card-body">
-              <span className="gfx-stat">{c.stat}</span>
-              <span className="gfx-label">{c.label}</span>
+              {c.stats.map((s, j) => (
+                <div className="gfx-block" key={j}>
+                  <span className="gfx-stat">{s.stat}</span>
+                  <span className="gfx-label">{s.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         ))}

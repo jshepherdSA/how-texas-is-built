@@ -1313,6 +1313,10 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .gfx-card{display:flex;flex-direction:column;background:var(--off-white);border-top:3px solid var(--accent);border-radius:var(--radius-md);overflow:hidden}
 .gfx-card .gfx-img{border-radius:0}
 .gfx-card-body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px}
+/* merged cards: two stat/point blocks stacked in one card body, separated by a
+   thin accent-tinted rule so each unique photo carries two facts without repeating */
+.gfx-block{display:flex;flex-direction:column;gap:2px}
+.gfx-block+.gfx-block{margin-top:12px;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--accent,var(--red)) 22%,var(--light-gray))}
 
 /* grids */
 .gfx-grid{display:grid;gap:18px;align-items:stretch}
