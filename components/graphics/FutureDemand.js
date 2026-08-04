@@ -6,7 +6,7 @@
 // stat = the large number (size unchanged); unit pulled out into a small label
 // so the big figure stays on one line.
 const CARDS = [
-  { src: '/images/stock/8a.jpg', alt: 'An aerial view of a Texas aggregate quarry', stat: '15–50M', unit: 'Tons', label: 'Additional aggregates needed over the next decade' },
+  { src: '/images/stock/8a.jpg', alt: 'A close-up of gray crushed stone aggregates', stat: '15–50M', unit: 'Tons', label: 'Additional aggregates needed over the next decade' },
   { src: '/images/stock/8b.jpg', alt: 'A fleet of ready-mix concrete trucks at a Texas facility', stat: '3–10M', unit: 'Cubic Yards', label: 'Additional ready-mix concrete needed' },
   { src: '/images/stock/8c.jpg', alt: 'A Texas cement plant with large silos', stat: '1–3M', unit: 'Tons', label: 'Additional cement needed' },
 ];

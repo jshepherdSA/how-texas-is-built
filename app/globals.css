@@ -1346,7 +1346,9 @@ footer{background:var(--night);padding:54px 5vw 36px}
 /* RegulationHero — image w/ overlay title + 4-card row */
 .gfx-hero{position:relative;border-radius:var(--radius-md);overflow:hidden;border-top:3px solid var(--accent)}
 .gfx-hero .gfx-img{border-radius:0}
-.gfx-hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:26px;background:linear-gradient(180deg,rgba(10,16,32,.15) 0%,rgba(10,16,32,.78) 100%)}
+/* bottom-anchored scrim: the top ~55% of the image stays clear (brighter overall)
+   and the gradient only darkens behind the title at the bottom for legibility */
+.gfx-hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:26px;background:linear-gradient(to top,rgba(10,16,32,.85) 0%,rgba(10,16,32,.2) 45%,rgba(10,16,32,0) 78%)}
 .gfx-hero-title{font-family:'Bebas Neue',sans-serif;color:#fff;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.04;letter-spacing:.02em;max-width:18ch}
 .gfx-hero-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
 .gfx-hero-card{background:var(--off-white);border-top:3px solid var(--accent);border-radius:var(--radius-md);padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px}
