@@ -8,7 +8,7 @@
 const CARDS = [
   {
     src: '/images/stock/7a.jpg',
-    alt: 'A clean, well-maintained Texas aggregate facility',
+    alt: 'A Texas aggregate and cement facility illuminated at dusk',
     points: [
       { title: 'Most Regulated', desc: 'One of the most regulated industries in Texas.' },
       { title: 'Continuous Compliance', desc: 'Ongoing inspections, monitoring, and reporting.' },
