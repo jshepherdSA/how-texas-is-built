@@ -15,6 +15,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager — placed as high in <head> as possible */}
+        <script
+          id="gtm-init"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NTV7LWZM');`,
+          }}
+        />
+        {/* Google tag (gtag.js) — site-wide via the root layout's shared <head> */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1N0KCGPXK"></script>
+        <script
+          id="gtag-init"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-N1N0KCGPXK');`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -26,6 +48,15 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
       <body>
+        {/* Google Tag Manager (noscript) — immediately after opening <body> */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NTV7LWZM"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
         <Nav />
         <main>{children}</main>
         <TakeActionCTA />
