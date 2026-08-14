@@ -605,6 +605,8 @@ footer{background:var(--night);padding:54px 5vw 36px}
 .footer-copy{max-width:var(--maxw);margin:40px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.74rem;color:rgba(255,255,255,.32);text-align:center;line-height:1.6}
 .footer-copy a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
 .footer-copy a:hover{color:#fff}
+.footer-cookie-settings{background:none;border:0;padding:0;margin:0;font:inherit;color:rgba(255,255,255,.55);cursor:pointer;transition:color .2s}
+.footer-cookie-settings:hover{color:#fff}
 
 /* ── social links (footer, contact page, Learn More dropdown) ── */
 .social-links{display:flex;align-items:center;gap:11px;flex-wrap:wrap}

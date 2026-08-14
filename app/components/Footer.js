@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import SocialLinks from './SocialLinks';
+import CookieSettingsButton from './CookieSettingsButton';
 
 export default function Footer() {
   return (
@@ -30,7 +31,7 @@ export default function Footer() {
           <Link href="/">Home</Link>
         </div>
       </div>
-      <p className="footer-copy">&copy; 2025 How Texas Is Built. All rights reserved. &nbsp;&middot;&nbsp; From Quarry to Community: The Foundation of Your Texas Life. &nbsp;&middot;&nbsp; <Link href="/privacy-policy">Privacy Policy</Link> &nbsp;&middot;&nbsp; <Link href="/cookie-policy">Cookie Policy</Link> &nbsp;&middot;&nbsp; <Link href="/accessibility">Accessibility</Link></p>
+      <p className="footer-copy">&copy; 2025 How Texas Is Built. All rights reserved. &nbsp;&middot;&nbsp; From Quarry to Community: The Foundation of Your Texas Life. &nbsp;&middot;&nbsp; <Link href="/privacy-policy">Privacy Policy</Link> &nbsp;&middot;&nbsp; <Link href="/cookie-policy">Cookie Policy</Link> &nbsp;&middot;&nbsp; <Link href="/accessibility">Accessibility</Link> &nbsp;&middot;&nbsp; <CookieSettingsButton /></p>
     </footer>
   );
 }

@@ -32,3 +32,9 @@
 ## About
 
 How Texas Is Built is an advocacy initiative of the Texas Aggregates & Concrete Association (TACA), the leading advocate for the aggregates, concrete, cement, and other associated industries in Texas. Learn more at [tx-taca.org](https://www.tx-taca.org/).
+
+## Policies
+
+- [Privacy Policy](https://www.howtexasisbuilt.com/privacy-policy): How the site collects, uses, and protects visitor information.
+- [Cookie Policy](https://www.howtexasisbuilt.com/cookie-policy): How the site uses cookies and similar technologies, and how to manage them.
+- [Accessibility](https://www.howtexasisbuilt.com/accessibility): The site's commitment to accessible design and how to request assistance.
