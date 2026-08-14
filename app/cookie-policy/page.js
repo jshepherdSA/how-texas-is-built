@@ -1,7 +1,8 @@
 export const metadata = {
-  title: 'Cookie Policy — How Texas Is Built',
+  title: 'Cookie Policy',
   description:
-    'How How Texas Is Built uses cookies and similar technologies when you visit howtexasisbuilt.com.',
+    'How the How Texas Is Built website uses cookies and similar technologies, and how you can manage your preferences, when you visit howtexasisbuilt.com.',
+  alternates: { canonical: '/cookie-policy' },
 };
 
 export default function CookiePolicyPage() {

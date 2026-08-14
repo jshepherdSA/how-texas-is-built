@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import CommunityBenefits from '@/components/graphics/CommunityBenefits';
 
-export const metadata = { title: 'Quality of Life — How Texas Is Built' };
+export const metadata = {
+  title: 'Quality of Life',
+  description:
+    'Shorter commutes, safer roads, affordable homes, and reliable water — see how Texas aggregates and concrete support the everyday quality of life Texans enjoy.',
+  alternates: { canonical: '/quality' },
+};
 
 // Body + graphics use brand navy; the hero keeps step 5's icon color
 // (star gold).

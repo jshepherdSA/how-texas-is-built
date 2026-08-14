@@ -3,7 +3,12 @@ import BuildingBlocksStats from '@/components/graphics/BuildingBlocksStats';
 import FutureDemand from '@/components/graphics/FutureDemand';
 import OnePagerDownload from '../components/OnePagerDownload';
 
-export const metadata = { title: "Fueling Texas' Growth — How Texas Is Built" };
+export const metadata = {
+  title: "Fueling Texas' Growth",
+  description:
+    "Texas' rapid growth runs on aggregates and concrete. See how the state's favorable business climate drives the jobs, investment, and infrastructure behind it.",
+  alternates: { canonical: '/fueling-growth' },
+};
 
 // Body + graphics use brand navy; the hero keeps step 1's icon color
 // (statesilhouette orange).

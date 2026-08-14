@@ -5,12 +5,63 @@ import Reveal from './components/Reveal';
 import TakeActionCTA from './components/TakeActionCTA';
 import CookieConsent from './components/CookieConsent';
 import Analytics from './components/Analytics';
+import JsonLd from './components/JsonLd';
 
 export const metadata = {
-  title: 'How Texas Is Built',
+  metadataBase: new URL('https://www.howtexasisbuilt.com'),
+  title: {
+    default: 'How Texas Is Built: Aggregates & Concrete Build Texas',
+    template: '%s — How Texas Is Built',
+  },
   description:
-    'From Quarry to Community: The Foundation of Your Texas Life. How aggregates and concrete build the roads, homes, schools, hospitals, and infrastructure Texans rely on every day.',
+    'See how aggregates and concrete build the roads, homes, schools, hospitals, and water systems Texans rely on every day — the foundation of modern Texas life.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: 'How Texas Is Built',
+    locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'How Texas Is Built — aggregates and concrete build Texas',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.jpg'],
+  },
 };
+
+// Site-wide structured data: the organization behind the campaign and the site
+// itself. Per-page Article/Breadcrumb schema is added on the article pages.
+const ORG_URL = 'https://www.howtexasisbuilt.com';
+const siteJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'How Texas Is Built',
+    alternateName: 'HTIB',
+    url: ORG_URL,
+    logo: `${ORG_URL}/images/htib-logo.png`,
+    description:
+      'How Texas Is Built is a public education campaign, an advocacy initiative of the Texas Aggregates & Concrete Association (TACA), explaining how aggregates and concrete build the infrastructure Texans rely on.',
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61591396037957',
+      'https://www.youtube.com/@HowTexasIsBuilt',
+      'https://x.com/HowTexasIsBuilt',
+      'https://www.linkedin.com/company/how-texas-is-built',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'How Texas Is Built',
+    url: ORG_URL,
+  },
+];
 
 export default function RootLayout({ children }) {
   return (
@@ -30,6 +81,7 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
       <body>
+        <JsonLd data={siteJsonLd} />
         <Nav />
         <main>{children}</main>
         <TakeActionCTA />

@@ -1,14 +1,68 @@
 import Link from 'next/link';
+import JsonLd from '../../components/JsonLd';
 
 export const metadata = {
-  title: 'Record Attendance Marks TACA’s 72nd Annual Meeting — How Texas Is Built',
+  title: 'Record Attendance at TACA’s 72nd Annual Meeting',
   description:
     'More than 600 industry leaders gathered in San Antonio for TACA’s largest-ever Annual Meeting, themed “Building the Community,” as Texas’ construction-materials industry looks to meet the state’s growing infrastructure demands.',
+  alternates: { canonical: '/insights/taca-72nd-annual-meeting' },
+  openGraph: {
+    type: 'article',
+    siteName: 'How Texas Is Built',
+    publishedTime: '2026-06-18',
+    authors: ['Texas Aggregates & Concrete Association'],
+    images: [
+      {
+        url: '/images/taca-annual-meeting-zach-fuller.jpg',
+        alt: 'TACA’s 72nd Annual Meeting in San Antonio',
+      },
+    ],
+  },
 };
+
+const BASE = 'https://www.howtexasisbuilt.com';
+const articleJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: 'Record Attendance Marks TACA’s 72nd Annual Meeting',
+    description:
+      'More than 600 industry leaders gathered in San Antonio for TACA’s largest-ever Annual Meeting, themed “Building the Community.”',
+    image: [`${BASE}/images/taca-annual-meeting-zach-fuller.jpg`],
+    datePublished: '2026-06-18',
+    dateModified: '2026-06-18',
+    author: {
+      '@type': 'Organization',
+      name: 'Texas Aggregates & Concrete Association',
+      url: 'https://www.tx-taca.org/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'How Texas Is Built',
+      logo: { '@type': 'ImageObject', url: `${BASE}/images/htib-logo.png` },
+    },
+    mainEntityOfPage: `${BASE}/insights/taca-72nd-annual-meeting`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'News & Insights', item: `${BASE}/insights` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Record Attendance Marks TACA’s 72nd Annual Meeting',
+        item: `${BASE}/insights/taca-72nd-annual-meeting`,
+      },
+    ],
+  },
+];
 
 export default function TacaAnnualMeetingArticle() {
   return (
     <div>
+      <JsonLd data={articleJsonLd} />
       <header
         className="page-hero page-hero--compact"
         style={{ '--hero-img': 'url(/images/taca-annual-meeting-zach-fuller.jpg)' }}

@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const metadata = { title: 'News & Insights — How Texas Is Built' };
+export const metadata = {
+  title: 'News & Insights',
+  description:
+    "News, data, and perspectives on how Texas is built — and the people, communities, and industry supplying the aggregates and concrete behind the state's growth.",
+  alternates: { canonical: '/insights' },
+};
 
 export default function InsightsPage() {
   return (

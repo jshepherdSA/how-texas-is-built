@@ -1,14 +1,68 @@
 import Link from 'next/link';
+import JsonLd from '../../components/JsonLd';
 
 export const metadata = {
-  title: 'TACA Celebrates Workforce Development at the CIM Gala — How Texas Is Built',
+  title: 'TACA Celebrates Workforce Development at the CIM Gala',
   description:
     'Texas leaders — including Gov. Greg Abbott, Sen. Pete Flores and TACA President Andrew Pinkerton — gathered at Texas State University’s Concrete Industry Management Scholarship Gala to celebrate a program advancing education and workforce development in construction materials.',
+  alternates: { canonical: '/insights/cim-gala-workforce-development' },
+  openGraph: {
+    type: 'article',
+    siteName: 'How Texas Is Built',
+    publishedTime: '2026-04-27',
+    authors: ['Texas Aggregates & Concrete Association'],
+    images: [
+      {
+        url: '/images/cim-gala-gov-abbott.jpg',
+        alt: 'Gov. Greg Abbott with TACA leaders at the CIM Scholarship Gala',
+      },
+    ],
+  },
 };
+
+const BASE = 'https://www.howtexasisbuilt.com';
+const articleJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: 'TACA Celebrates Workforce Development at the CIM Gala',
+    description:
+      'Texas leaders — including Gov. Greg Abbott, Sen. Pete Flores and TACA President Andrew Pinkerton — gathered at Texas State University’s Concrete Industry Management Scholarship Gala.',
+    image: [`${BASE}/images/cim-gala-gov-abbott.jpg`],
+    datePublished: '2026-04-27',
+    dateModified: '2026-04-27',
+    author: {
+      '@type': 'Organization',
+      name: 'Texas Aggregates & Concrete Association',
+      url: 'https://www.tx-taca.org/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'How Texas Is Built',
+      logo: { '@type': 'ImageObject', url: `${BASE}/images/htib-logo.png` },
+    },
+    mainEntityOfPage: `${BASE}/insights/cim-gala-workforce-development`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE },
+      { '@type': 'ListItem', position: 2, name: 'News & Insights', item: `${BASE}/insights` },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'TACA Celebrates Workforce Development at the CIM Gala',
+        item: `${BASE}/insights/cim-gala-workforce-development`,
+      },
+    ],
+  },
+];
 
 export default function CimGalaArticle() {
   return (
     <div>
+      <JsonLd data={articleJsonLd} />
       <header
         className="page-hero page-hero--compact"
         style={{ '--hero-img': 'url(/images/cim-gala-gov-abbott.jpg)' }}

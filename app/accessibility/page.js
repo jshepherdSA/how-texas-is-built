@@ -1,7 +1,8 @@
 export const metadata = {
-  title: 'Accessibility Statement — How Texas Is Built',
+  title: 'Accessibility Statement',
   description:
     'How Texas Is Built is committed to providing an accessible and inclusive experience for all individuals, including people with disabilities.',
+  alternates: { canonical: '/accessibility' },
 };
 
 export default function AccessibilityPage() {

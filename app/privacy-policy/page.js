@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy — How Texas Is Built',
+  title: 'Privacy Policy',
   description:
-    'How How Texas Is Built collects, uses, discloses, and protects information when you visit howtexasisbuilt.com or otherwise interact with our Services.',
+    'How the How Texas Is Built website collects, uses, discloses, and protects your information when you visit howtexasisbuilt.com or interact with our Services.',
+  alternates: { canonical: '/privacy-policy' },
 };
 
 export default function PrivacyPolicyPage() {

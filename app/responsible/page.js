@@ -3,7 +3,12 @@ import RegulationHero from '@/components/graphics/RegulationHero';
 import RegulationStats from '@/components/graphics/RegulationStats';
 import OnePagerDownload from '../components/OnePagerDownload';
 
-export const metadata = { title: 'Responsible Operations — How Texas Is Built' };
+export const metadata = {
+  title: 'Responsible Operations',
+  description:
+    "One of the most regulated industries in Texas: see how aggregate and concrete operations protect air, water, and land while building the state's future.",
+  alternates: { canonical: '/responsible' },
+};
 
 // Body + graphics use brand navy; the hero keeps step 4's icon color
 // (bluebonnet violet).

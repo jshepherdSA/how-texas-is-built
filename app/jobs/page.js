@@ -5,7 +5,12 @@ import CareersGrid from '@/components/graphics/CareersGrid';
 import RippleEffect from '@/components/graphics/RippleEffect';
 import OnePagerDownload from '../components/OnePagerDownload';
 
-export const metadata = { title: 'Jobs & Economic Impact — How Texas Is Built' };
+export const metadata = {
+  title: 'Jobs & Economic Impact',
+  description:
+    'The Texas aggregates and concrete industry is a $10+ billion engine supporting over 100,000 jobs and the affordable infrastructure communities depend on.',
+  alternates: { canonical: '/jobs' },
+};
 
 // Body + graphics use brand navy; the hero keeps step 2's icon color
 // (penny green).

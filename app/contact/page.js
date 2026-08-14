@@ -1,7 +1,12 @@
 import JotformEmbed from '../components/JotformEmbed';
 import SocialLinks from '../components/SocialLinks';
 
-export const metadata = { title: 'Contact — How Texas Is Built' };
+export const metadata = {
+  title: 'Contact',
+  description:
+    'Get in touch with How Texas Is Built, an advocacy initiative of the Texas Aggregates & Concrete Association (TACA) — media, questions, and partnership inquiries.',
+  alternates: { canonical: '/contact' },
+};
 
 export default function ContactPage() {
   return (

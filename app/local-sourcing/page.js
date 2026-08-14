@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import LocalSourcingFact from '@/components/graphics/LocalSourcingFact';
 
-export const metadata = { title: 'Why Local Sourcing Matters — How Texas Is Built' };
+export const metadata = {
+  title: 'Why Local Sourcing Matters',
+  description:
+    "Transportation can be up to 70% of the delivered cost of aggregates, so local sourcing keeps Texas roads, homes, and infrastructure affordable. Here's why.",
+  alternates: { canonical: '/local-sourcing' },
+};
 
 // Body + graphics use brand navy; the hero keeps step 3's icon color
 // (tire teal).

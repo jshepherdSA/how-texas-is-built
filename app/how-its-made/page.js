@@ -1,6 +1,11 @@
 import Link from 'next/link';
 
-export const metadata = { title: 'Aggregates & Concrete: The Foundation of Texas — How Texas Is Built' };
+export const metadata = {
+  title: 'How Aggregates & Concrete Are Made',
+  description:
+    'From quarry to construction site: see how aggregates and concrete are produced and combined to build the roads, homes, and infrastructure across Texas.',
+  alternates: { canonical: '/how-its-made' },
+};
 
 export default function HowItsMadePage() {
   return (
