@@ -31,7 +31,7 @@ export default function HowItsMadePage() {
         <div className="howmade-intro">
           <div className="howmade-video">
             <iframe
-              src="https://www.youtube.com/embed/wJ7RyXQaEgM?si=9cbrOzPEsH9knNHV"
+              src="https://www.youtube.com/embed/_ieTb69dLs8?si=rFG0gHNtqlo3fL4M"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
