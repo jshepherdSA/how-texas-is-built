@@ -13,6 +13,7 @@ const ROUTES = [
   { path: '/insights', priority: 0.7, changeFrequency: 'weekly' },
   { path: '/insights/taca-72nd-annual-meeting', priority: 0.6, changeFrequency: 'yearly' },
   { path: '/insights/cim-gala-workforce-development', priority: 0.6, changeFrequency: 'yearly' },
+  { path: '/insights/environmental-sustainability-safety-seminar', priority: 0.6, changeFrequency: 'yearly' },
   { path: '/take-action', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
   { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },

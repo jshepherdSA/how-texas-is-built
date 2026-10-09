@@ -26,6 +26,15 @@ export default function InsightsPage() {
       <section className="section">
         <div className="container">
           <div className="posts posts--single reveal">
+            <Link href="/insights/environmental-sustainability-safety-seminar" className="post post--featured">
+              <div className="post-img"><Image src="/images/ess-tracie-phillips-tceq.jpg" alt="Tracie Phillips of the TCEQ presents crystalline silica research at TACA's Environmental, Sustainability and Safety Seminar" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
+              <div className="post-body">
+                <div className="post-meta">October 7, 2026</div>
+                <h3 className="post-title">TACA Seminar Examines Silica Research and AI in Safety</h3>
+                <p className="post-excerpt">State regulators, scientists and safety professionals gathered in San Antonio for TACA&apos;s Environmental, Sustainability and Safety Seminar &mdash; featuring new TCEQ crystalline silica research, the growing role of AI in workplace safety, and emerging environmental and regulatory issues.</p>
+                <span className="post-foot">Read the story →</span>
+              </div>
+            </Link>
             <Link href="/insights/taca-72nd-annual-meeting" className="post post--featured">
               <div className="post-img"><Image src="/images/taca-annual-meeting-zach-fuller.jpg" alt="Cybersecurity leader Zach Fuller of Silent Sector speaks at TACA's 72nd Annual Meeting" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
               <div className="post-body">
