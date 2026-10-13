@@ -15,6 +15,10 @@ export const metadata = {
 const ACCENT = '#002868';
 const HERO_ACCENT = '#BF0A30';
 
+// The "What it takes to build tomorrow" section (FutureDemand graphic + copy) is
+// hidden for now, not removed — it may come back. Set to true to restore it.
+const SHOW_FUTURE_DEMAND = false;
+
 export default function WhyPage() {
   return (
     <div className="page--accent" style={{ '--accent': ACCENT, '--hero-accent': HERO_ACCENT }}>
@@ -69,10 +73,14 @@ export default function WhyPage() {
         <BuildingBlocksStats accentColor={ACCENT} />
         <p>It&apos;s easy to forget how much material goes into the places Texans live, learn, heal, and gather. The average home takes 400 tons of aggregates. One mile of six-lane highway takes 15,000 cubic yards of concrete. A modern hospital takes 30,000. A high school football stadium takes 100,000. Even day to day, the average American uses the equivalent of 50 to 60 pounds of aggregates.</p>
 
-        <div style={{ clear: 'both' }} />
-        <h2>What it takes to build tomorrow</h2>
-        <FutureDemand accentColor={ACCENT} />
-        <p>Today&apos;s growth is only the start. To keep pace, experts estimate Texas could need 15 to 50 million additional tons of aggregates over the next decade alone &mdash; plus another 3 to 10 million cubic yards of ready-mix concrete and 1 to 3 million additional tons of cement. The demand is already here. The question is whether supply keeps up.</p>
+        {SHOW_FUTURE_DEMAND && (
+          <>
+            <div style={{ clear: 'both' }} />
+            <h2>What it takes to build tomorrow</h2>
+            <FutureDemand accentColor={ACCENT} />
+            <p>Today&apos;s growth is only the start. To keep pace, experts estimate Texas could need 15 to 50 million additional tons of aggregates over the next decade alone &mdash; plus another 3 to 10 million cubic yards of ready-mix concrete and 1 to 3 million additional tons of cement. The demand is already here. The question is whether supply keeps up.</p>
+          </>
+        )}
         <div style={{ clear: 'both' }} />
         <OnePagerDownload href="/one-pagers/fueling-the-texas-miracle.pdf" label="Download the Fueling the Texas Miracle one-pager" />
       </article>
