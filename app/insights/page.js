@@ -26,6 +26,15 @@ export default function InsightsPage() {
       <section className="section">
         <div className="container">
           <div className="posts posts--single reveal">
+            <Link href="/insights/ela-backpack-giveaway-recognition" className="post post--featured">
+              <div className="post-img"><Image src="/images/ela-backpacks-annual-meeting.jpg" alt="TACA Emerging Leaders Academy members with the 2,000 backpacks they packed for children in need" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Community</span></div>
+              <div className="post-body">
+                <div className="post-meta">October 28, 2026</div>
+                <h3 className="post-title">TACA Emerging Leaders Recognized for Providing 2,000 Backpacks</h3>
+                <p className="post-excerpt">Communities In Schools of San Antonio honored TACA&apos;s Emerging Leaders Academy for a service project that doubled its goal &mdash; 2,000 backpacks of school supplies for students in San Antonio, Austin, Midland, Houston and Dallas&ndash;Fort Worth.</p>
+                <span className="post-foot">Read the story →</span>
+              </div>
+            </Link>
             <Link href="/insights/environmental-sustainability-safety-seminar" className="post post--featured">
               <div className="post-img"><Image src="/images/ess-tracie-phillips-tceq.jpg" alt="Tracie Phillips of the TCEQ presents crystalline silica research at TACA's Environmental, Sustainability and Safety Seminar" fill style={{ objectFit: 'cover' }} sizes="(max-width:720px) 100vw, 420px" /><span className="post-cat">Industry News</span></div>
               <div className="post-body">
