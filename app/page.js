@@ -22,8 +22,8 @@ const STEPS = [
     icon: '/images/icons/state_red.png',
     img: '/images/home/H-%20texas%20is%20growing.jpg',
     points: [
-      { title: 'The Texas Miracle', text: 'Favorable business and tax environment leads to the highest population growth rate in the nation.' },
-      { title: 'What it Takes', text: 'Texas already produces more aggregates, concrete, and cement than any other state in the nation. We will need to produce even more every year to keep up with growth and the associated consumption increase.' },
+      { title: 'The Texas Miracle', text: 'A high quality of life - supported by a strong job market, favorable business and tax environment, and regional diversity - has led to the highest population growth rate in the nation.' },
+      { title: 'What it Takes', text: 'Texas already produces more aggregates, concrete, and cement than any other state in the nation. We will need to produce even more every year to keep up with the demands of developing communities.' },
       { title: 'Benefitting the Communities', text: 'A strong local supply of materials is essential to keeping Texas affordable. Providing materials close to the areas they serve reduces traffic and keeps the positive economic impact local.' },
     ],
   },
